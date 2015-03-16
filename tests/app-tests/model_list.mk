@@ -15,6 +15,7 @@ MODEL_LIST    = \
             limited_variableDef.dml        \
             simple_aero.dml                \
             simplest_aero.dml              \
+            switch_logic.dml               \
             tables.dml                     \
             threeD_ungridded.dml           \
             trig_functions.dml             \
