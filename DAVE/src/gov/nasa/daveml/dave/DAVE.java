@@ -1031,7 +1031,7 @@ public class DAVE {
             VectorInfo inVal = in.next();
 
             // write name, units, default value
-            System.out.print("   " + inVal.getName() + " (" + inVal.getUnits() + ") ["
+            System.out.print("   " + inVal.getName() + " {" + inVal.getVarID() + "} (" + inVal.getUnits() + ") ["
                     + inVal.getValue() + "]  : ");
 
             // look for number in input stream; abort on EOF; skip to next on EOL
@@ -1086,7 +1086,7 @@ public class DAVE {
         Iterator<VectorInfo> it = outVec.iterator();
         while (it.hasNext()) {
             VectorInfo vi = it.next();
-            System.out.print("  " + vi.getName() + " = " + vi.getValue());
+            System.out.print("  " + vi.getName() + " {" + vi.getVarID() + "} = " + vi.getValue());
 
             // add units if any
             if (vi.getUnits().length() > 0) {

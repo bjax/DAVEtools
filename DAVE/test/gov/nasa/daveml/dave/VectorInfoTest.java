@@ -24,6 +24,7 @@ public class VectorInfoTest extends TestCase {
 	public void testVectorInfo() {
 		assertNotNull( _vi );
 		assertEquals( "", _vi.getName() );
+                assertEquals( "", _vi.getVarID() );
 		assertEquals( "", _vi.getUnits() );
 		assertEquals( null, _vi.getSource() );
 		assertEquals( null, _vi.getSink() );
@@ -32,9 +33,10 @@ public class VectorInfoTest extends TestCase {
 	}
 
 	public void testVectorInfoStringStringBlockBoolean() {
-		_vi = new VectorInfo("alpha", "deg", null, true );
+		_vi = new VectorInfo("alpha", "ALPHA", "deg", null, true );
 		assertNotNull( _vi );
 		assertEquals( "alpha", _vi.getName() );
+                assertEquals( "ALPHA", _vi.getVarID() );
 		assertEquals( "deg", _vi.getUnits() );
 		assertEquals( null, _vi.getSource() );
 		assertEquals( null, _vi.getSink() );

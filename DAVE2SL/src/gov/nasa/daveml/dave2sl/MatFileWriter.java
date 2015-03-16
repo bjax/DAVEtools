@@ -304,7 +304,7 @@ public class MatFileWriter extends FileWriter
                     }
                 }
                 if (!found) {	// record placeholder with infinite tolerance
-                    vi = new VectorInfo( name, "", null, false );
+                    vi = new VectorInfo( name, "", "", null, false );
                     vi.setTolerance( Double.POSITIVE_INFINITY );
                     outputInfo.add(vi);
                     // has this one been encountered before?

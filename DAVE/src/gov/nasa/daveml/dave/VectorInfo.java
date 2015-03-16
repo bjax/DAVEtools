@@ -34,6 +34,12 @@ public class VectorInfo
 	String  signalName;
 
 	/**
+	 *  ID of signal
+	 */
+
+        String  varID;
+
+	/**
 	 *  units of measure
 	 */
 
@@ -77,6 +83,7 @@ public class VectorInfo
 	public VectorInfo()
 	{
 		this.signalName =  "";
+		this.varID = "";
 		this.myUnits = "";
 		this.source = null;
 		this.sink = null;
@@ -97,10 +104,11 @@ public class VectorInfo
 	 *
 	 **/
 
-	public VectorInfo(String signalName, String units, Block blk, boolean isInput)
+        public VectorInfo(String signalName, String id, String units, Block blk, boolean isInput)
 	{
 		this(); // initialize tol, e.g.
 		this.signalName = signalName;
+		this.varID = id;
 		this.myUnits = units;
 		if (isInput) {
                     this.isInput = true;
@@ -193,6 +201,14 @@ public class VectorInfo
 	 **/
 
 	public String getName() { return this.signalName; }
+
+	/**
+	 *
+	 * <p> Returns signal ID as <code>String</code> </p>
+	 *
+	 **/
+
+	public String getVarID() { return this.varID; }
 
 	/**
 	 *

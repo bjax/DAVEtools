@@ -94,7 +94,7 @@ public class StaticShot
                 System.err.println("Error reading checkcase data: no signal name found.");
                 System.exit(0);
             }
-            VectorInfo signal = new VectorInfo( theSignalName.getTextTrim(),
+            VectorInfo signal = new VectorInfo( theSignalName.getTextTrim(), "",
                                                 theUnits, null, true);
             Element theSignalValue = theSignal.getChild("signalValue",ss_ns);
             if (theSignalValue == null) {
@@ -122,7 +122,7 @@ public class StaticShot
             Element theSignal = (Element) itout.next();
             try {
                 VectorInfo signal = new VectorInfo( theSignal.getChild("signalName",ss_ns).getTextTrim(),
-                                                    null, null, false);
+                                                    "", null, null, false);
                 signal.setValue(     theSignal.getChild("signalValue",ss_ns).getTextTrim() );
                 signal.setTolerance( theSignal.getChild("tol",ss_ns).getTextTrim() );
                 Element units =      theSignal.getChild("signalUnits",ss_ns);

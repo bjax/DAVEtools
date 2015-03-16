@@ -963,7 +963,7 @@ public class Model
             
 	StringWriter strwriter = null;// used only when verbose, so we can call
 				// describeSelf(writer)
-	if (this.isVerbose()) {
+        if (this.isVerbose()) {
 	    System.out.println();
 	    System.out.println("Method initialize() called for model '" 
 			       + this.getName() + "'");
@@ -1155,10 +1155,11 @@ public class Model
 		if (!(theBlk instanceof BlockOutput)) {
 		    throw new DAVEException("Non-output block found in outputBlocks list.");
                 }
-		String theName = theBlk.getName();
+		String theName  = theBlk.getName();
+		String theID    = theBlk.getVarID(1);
 		String theUnits = ((BlockOutput) theBlk).getUnits();
 		double theValue = theBlk.getValue();
-		VectorInfo vi = new VectorInfo(theName, theUnits, theBlk, false);
+		VectorInfo vi = new VectorInfo(theName, theID, theUnits, theBlk, false);
 		vi.setValue( theValue );
 		this.outputVec.add( vi );
 	    }
@@ -1188,8 +1189,9 @@ public class Model
 		    throw new DAVEException("Non-input block found in inputBlocks list.");
                 }
 		String inName = theBlk.getName();
+		String inID   = theBlk.getOutputVarID();
 		String inUnits = ((BlockInput) theBlk).getUnits();
-		VectorInfo vi = new VectorInfo(inName, inUnits, theBlk, true);
+		VectorInfo vi = new VectorInfo(inName, inID, inUnits, theBlk, true);
 		this.inputVec.add( vi );
 	    }
 	}
@@ -1281,11 +1283,12 @@ public class Model
 		if (!(theBlk instanceof BlockOutput)) {
 		    throw new DAVEException("Non-output block found in outputBlocks.");
                 }
-		String theName = theBlk.getName();
+		String theName  = theBlk.getName();
+		String theID    = theBlk.getVarID(1);
 		String theUnits = ((BlockOutput) theBlk).getUnits();
 		double theValue = theBlk.getValue();
 		// create an output record
-		VectorInfo vi = new VectorInfo(theName, theUnits, theBlk, false);
+		VectorInfo vi = new VectorInfo(theName, theID, theUnits, theBlk, false);
 		if (vi == null) {
 		    throw new DAVEException("Unable to allocate memory for output vector element");
                 }
@@ -1409,9 +1412,10 @@ public class Model
                     if (!theSignal.isDerived()) {
                         String theName = theSignal.getName();
                         if (!theName.contentEquals("unnamed")) {
+			    String theID    = theSignal.getVarID();
                             String theUnits = theSignal.getUnits();
                             double theValue = theSignal.sourceValue();
-                            VectorInfo vi = new VectorInfo(theName, theUnits, theBlk, false);
+                            VectorInfo vi = new VectorInfo(theName, theID, theUnits, theBlk, false);
                             vi.setValue( theValue );
                             internalsVec.add( vi );
                         }

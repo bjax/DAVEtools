@@ -51,11 +51,11 @@ public class StaticShotTest extends TestCase {
         // build fake model's input vector
         VectorInfoArrayList inVec = new VectorInfoArrayList(3);
 
-        VectorInfo airspeed = new VectorInfo("trueAirspeed", "f_s", null, true);
+        VectorInfo airspeed = new VectorInfo("trueAirspeed", "VT", "f_s", null, true);
         airspeed.setValue(300.);
         inVec.add(airspeed);
 
-        VectorInfo alpha = new VectorInfo("angleOfAttack", "deg", null, true);
+        VectorInfo alpha = new VectorInfo("angleOfAttack", "ALPHA", "deg", null, true);
         alpha.setValue(5.);
         inVec.add(alpha);
 
@@ -70,7 +70,7 @@ public class StaticShotTest extends TestCase {
             assertEquals(expectedMessage, e.getMessage());
         }
 
-        VectorInfo beta = new VectorInfo("angleOfSideslip", "deg", null, true);
+        VectorInfo beta = new VectorInfo("angleOfSideslip", "BETA", "deg", null, true);
         beta.setValue(0.);
         inVec.add(beta);
 
@@ -125,12 +125,12 @@ public class StaticShotTest extends TestCase {
         // build fake model's output vector
         VectorInfoArrayList outVec = new VectorInfoArrayList(3);
 
-        VectorInfo X = new VectorInfo("aeroBodyForceCoefficient_X", "nd", null, false);
+        VectorInfo X = new VectorInfo("aeroBodyForceCoefficient_X", "CX", "nd", null, false);
         X.setValue(-0.004);
         X.setTolerance(1.0e-6);
         outVec.add(X);
 
-        VectorInfo Y = new VectorInfo("aeroBodyForceCoefficient_Y", "nd", null, false);
+        VectorInfo Y = new VectorInfo("aeroBodyForceCoefficient_Y", "CY", "nd", null, false);
         Y.setValue(0.000);
         Y.setTolerance(1.0e-6);
         outVec.add(Y);
@@ -148,7 +148,7 @@ public class StaticShotTest extends TestCase {
 
         // add missing output
 
-        VectorInfo Z = new VectorInfo("aeroBodyForceCoefficient_Z", "nd", null, false);
+        VectorInfo Z = new VectorInfo("aeroBodyForceCoefficient_Z", "CZ", "nd", null, false);
         Z.setValue(-0.416);
         Z.setTolerance(1.0e-6);
         outVec.add(Z);
