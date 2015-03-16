@@ -958,6 +958,7 @@ public class Model
 
     public void initialize() throws DAVEException 
     {
+        int passCount = 0;
         if (!this.initialized) { // only do this once
             
 	StringWriter strwriter = null;// used only when verbose, so we can call
@@ -1049,6 +1050,7 @@ public class Model
             // Number of not ready blocks should shrink each pass through loop
 	    progress = blocksNotReady < oldBlocksNotReady;
 	    oldBlocksNotReady = blocksNotReady;
+            passCount += 1;
 
             // if not, we'll kick out of loop and whine.
 	}
@@ -1067,7 +1069,9 @@ public class Model
 	
 	if (this.verbose) {
             System.out.println("");
-	    System.out.println("Model '" + this.getName() + "' is initialized. Order is:");
+	    System.out.println("Model '" + this.getName() + 
+                    "' is initialized. Sorting took " + 
+                    passCount + "cycles. Order is:");
             System.out.println("");
         }
 	try {
