@@ -18,6 +18,7 @@ package gov.nasa.daveml.dave;
 
 import java.util.Iterator;
 import java.util.List;
+import org.jdom.Attribute;
 import org.jdom.Element;
 
 /**
@@ -30,6 +31,12 @@ abstract public class BlockMath extends Block
 {
     
     /**
+     *  variable ID
+     */
+
+    static String variableID;
+
+    /**
      *
      * <p>Basic constructor for math Block <p>
      *
@@ -39,6 +46,7 @@ abstract public class BlockMath extends Block
     {
 	// Initialize Block elements
 	super();
+        variableID = "";
     }
 
     /**
@@ -53,6 +61,7 @@ abstract public class BlockMath extends Block
     {
 	// Initialize Block elements
 	super(m);
+        variableID = "";
     }
 
 
@@ -70,6 +79,7 @@ abstract public class BlockMath extends Block
     {
 	// Initialize Block elements
 	super(blockName, blockType, 1, m); 
+        variableID = "";
     }
 
 
@@ -88,6 +98,17 @@ abstract public class BlockMath extends Block
     {
 	// Initialize Block elements
 	super(blockName, blockType, numInputs, m); 
+        variableID = "";
+    }
+    
+    /**
+     *  Put variable name on error stream
+     * @param errorMsg Message to be preceded with variableID
+     */
+    
+    static public void printErrWithVarID( String errorMsg ) {
+        System.err.println("In calculations for variable '" + variableID + "':");
+        System.err.println( errorMsg );
     }
 
 
@@ -116,7 +137,16 @@ abstract public class BlockMath extends Block
 	Element first  = ikid.next();
 	String theType = first.getName();
 	
-	// take appropriate action based on type
+        // find the variable's ID
+	Element varDef;
+        varDef = applyElement.getParentElement().getParentElement().getParentElement();
+        Attribute varID;
+        varID = varDef.getAttribute("varID");
+        if (varID != null) {
+            variableID = varID.getValue();
+        }
+	
+// take appropriate action based on type
 	if( theType.equals("abs") ) {
 	    return new BlockMathAbs( applyElement, m );
         }
@@ -163,7 +193,7 @@ abstract public class BlockMath extends Block
 		try {
 			return new BlockMathFunction( applyElement, m);
 		} catch (DAVEException e) {
-			System.err.println("Exception when tryng to build a math function of type '"
+			printErrWithVarID("Exception when trying to build a math function of type '"
 					+ theType + "' - which is unrecognized. Aborting...");
 			System.exit(-1);
 		}
@@ -172,9 +202,9 @@ abstract public class BlockMath extends Block
 	    return new BlockMathFunctionExtension( applyElement, m);
         }
 
-	System.err.println("DAVE's BlockMath factory() method doesn't allow a <"
-                + theType + "> element directly after an <apply> element.");
-	return null;
+        printErrWithVarID("  DAVE's MathML implementation doesn't allow a <"
+                + theType + "> element directly after an <apply> element");
+        return null;
     }
 
     /**
@@ -214,7 +244,7 @@ abstract public class BlockMath extends Block
                 try {
                     s = new Signal(in, ourModel);       // Signal constructor recognizes <apply>...
                 } catch (DAVEException e) {
-                    System.err.println("Bad syntax while parsing <apply> in element '" +
+                    printErrWithVarID("Bad syntax while parsing <apply> in element '" +
                             in.getName() + "'. Aborting.");
                 }
                                                         // .. and will call our BlockMath.factory() ...
@@ -222,10 +252,10 @@ abstract public class BlockMath extends Block
                     s.addSink(this,i);			// hook us up as output of new signal path
                     s.setDerivedFlag();	// Note that this is a newly-created signal not part of orig model
                 } else {
-                    System.err.println("Null signal returned when creating recursive math element.");
+                    printErrWithVarID("Null signal returned when creating recursive math element.");
                 }
             } else {
-                System.err.println("BlockMath didn't find usable element (something like 'apply', 'ci' or 'cn'),"
+                printErrWithVarID("BlockMath didn't find usable element (something like 'apply', 'ci' or 'cn'),"
                                    + " instead found: " + in.getName());
             }
             i++;
