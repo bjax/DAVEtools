@@ -104,6 +104,7 @@ abstract public class BlockMath extends Block
     /**
      *  Put variable name on error stream
      * @param errorMsg Message to be preceded with variableID
+     * @since 0.9.8
      */
     
     static public void printErrWithVarID( String errorMsg ) {
