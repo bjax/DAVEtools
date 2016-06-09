@@ -31,8 +31,7 @@ import org.jdom.input.SAXBuilder;
  * dynamic flight vehicle models for exchange between simulation tools and
  * facilities in an open-software, facility-neutral manner. <p> More information
  * about DAVE-ML is available at the project website:
- * {@link <a href="http://daveml.org">
- * http://daveml.org</a>} 
+ * {@link <a href="http://daveml.org">http://daveml.org</a>} 
  * 
  * <p> Modification history: 
  * <ul> 
@@ -77,7 +76,7 @@ public class DAVE {
      */
     String inputFileName;
     /**
-     * name of the txt output file, if selected for output
+     * name of the text output file, if selected for output
      */
     String listFileName;
     /**
@@ -180,10 +179,10 @@ public class DAVE {
         this.checkCaseCount = 0;
         this.m = new Model(20, 20);
 
-        String date = "2015-03-02";
+        String date = "2016-06-09";
 
         // add date (now that we're under git)
-        this.myVersion = "0.9.7 (" + date + ")";
+        this.myVersion = "0.9.8b (" + date + ")";
     }
 
     /**
@@ -225,7 +224,7 @@ public class DAVE {
 
     /**
      *
-     * Returns the status of the debug flag.
+     * @return the status of the debug flag.
      *
      *
      */
@@ -235,7 +234,7 @@ public class DAVE {
 
     /**
      *
-     * Returns the version of software
+     * @return the version of software
      *
      *
      */
@@ -246,7 +245,7 @@ public class DAVE {
     /**
      *
      * Indicates if checkcases were included in file.
-     *
+     * @return true if checkcases were included
      *
      */
     public boolean hasCheckcases() {
@@ -255,7 +254,7 @@ public class DAVE {
 
     /**
      *
-     * Returns the checkcase data.
+     * @return the CheckData checkcase data.
      *
      *
      */
@@ -280,7 +279,7 @@ public class DAVE {
 
     /**
      *
-     * Returns input file name string.
+     * @return input file name string.
      *
      *
      */
@@ -290,7 +289,7 @@ public class DAVE {
 
     /**
      *
-     * Returns the stub name string.
+     * @return the stub name string.
      *
      *
      */
@@ -343,7 +342,7 @@ public class DAVE {
 
     /**
      *
-     * Returns the input argument array
+     * @return the input argument array
      *
      *
      */
@@ -352,7 +351,7 @@ public class DAVE {
     }
 
     /**
-     * Number of command line option switches provided by user
+     * @return number of command line option switches provided by user
      *
      * @since version 0.8 / rev 193
      */
@@ -370,7 +369,7 @@ public class DAVE {
 
     /**
      * Verifies any checkcases provided in XML file.
-     *
+     * @return true if verified
      */
     public boolean verify() {
         boolean result = true;
@@ -431,7 +430,11 @@ public class DAVE {
                     }
                 }
 
-            } catch (Exception e) {
+            } catch (DAVEException e) {
+                System.err.println("Problem performing verification - ");
+                System.err.println(e.getMessage());
+                System.exit(exit_failure);
+            } catch (IOException e) {
                 System.err.println("Problem performing verification - ");
                 System.err.println(e.getMessage());
                 System.exit(exit_failure);
@@ -626,9 +629,8 @@ public class DAVE {
      * <code>BlockBPs</code> is deferred until creation of
      * <code>BlockFuncTable</code>s.
      *
-     * @throws
-     * <code>IOException</code> - when errors occur.
-     *
+     * @throws java.io.IOException - when some errors occur.
+     * @return true if successful; false if error
      *
      */
     public boolean parseFile()
@@ -727,6 +729,7 @@ public class DAVE {
      * DAVE-ML model being loaded.
      *
      * @return Document object with the parsed file
+     * @throws java.io.IOException
      */
 // Example catalog.xml file contents
 //
@@ -817,6 +820,10 @@ public class DAVE {
                 }
                 builder.setEntityResolver(cr);
                 doc = builder.build(_inputStream, directory_uri);
+                if (doc == null) {
+                    System.err.println("Unable to parse the input file.");
+                    System.exit(-1);    
+                }
             } catch (java.io.FileNotFoundException e) {
                 errorLine = errorLine + e.getMessage();
                 numberOfFailures++;
@@ -852,12 +859,22 @@ public class DAVE {
             System.exit(-1);
         }
 //        if (success && this.isVerbose()) {
-        if (success) {
+        if (success && (doc != null)) {
             System.out.println("Loaded '" + this.inputFileName + "' successfully, ");
-            org.jdom.DocType dt = doc.getDocType();
+            org.jdom.DocType dt;
+            dt = doc.getDocType();
+            if (dt == null) {
+                System.err.println("Unable to obtain the document type.");
+                System.exit(-1);    
+            }
+
             switch (numberOfFailures) {
                 case 0: // validated against some DTD
                     System.out.print("Validating against '");
+                    if (cr == null) {
+                        System.err.println("Unable to open catalog resolver.");
+                        System.exit(-1);
+                    }
                     String catalogURI = cr.resolvePublic(dt.getPublicID(), dt.getSystemID());
                     if (catalogURI == null) {
                         System.out.print(dt.getSystemID());
@@ -888,7 +905,6 @@ public class DAVE {
             writer.describe(m);
             writer.close();
         } catch (IOException e) {
-            return;
         }
     }
 
@@ -931,7 +947,7 @@ public class DAVE {
         File F = new File(inString);
         String name = F.getName();              // strips pathname from filename
 
-        StringBuilder buf = new StringBuilder(name);
+        String buf = name;
         String stubName;
 
         stubName = null;
@@ -966,7 +982,7 @@ public class DAVE {
     static String toFileName(String inString) {
         int limit = 32; // max file name length
 
-        StringBuilder buf = new StringBuilder(inString);
+        String buf = inString;
         StringWriter fileName = new StringWriter(limit);
 
         for (int i = 0; (i < buf.length()) && (fileName.getBuffer().length() < limit); i++) {
@@ -1369,7 +1385,9 @@ public class DAVE {
                         dave.listInternals(internalVec);
                     }
     
-                } catch (Exception e) {
+                } catch (DAVEException e) {
+                    System.err.println(e.getMessage());
+                } catch (IOException e) {
                     System.err.println(e.getMessage());
                 }
             }
