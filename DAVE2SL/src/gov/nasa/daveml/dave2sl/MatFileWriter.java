@@ -14,7 +14,9 @@ package gov.nasa.daveml.dave2sl;
 import gov.nasa.daveml.dave.*;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 
 /**
@@ -153,12 +155,16 @@ public class MatFileWriter extends FileWriter
 
     public void writeVerifyScriptHeader( String modelName ) 
     {
+        SimpleDateFormat timeStamp = new SimpleDateFormat("EE MMM d HH:mm:ss yyyy");
+        Iterator<String> nameit;
+        ArrayList<String> modelOutputNames = this.diagram.getOutputNames();
+
         this.modelName = modelName;
         try {
             this.writeln("function [success] = " + modelName + "_verify()");
             this.writeln("% Script file to verify implementation of " + modelName + ".xml in Simulink");
             this.writeln("%");
-            this.writeln("% Created 02-MAR-04 by DAVE2SL utility");
+            this.writeln("% Created " + timeStamp.format( new Date() ) + " by DAVE2SL utility");
             this.writeln("%");
             this.writeln("");
             this.writeln("% set filename");
@@ -168,6 +174,15 @@ public class MatFileWriter extends FileWriter
             this.writeln("");
             this.writeln("% Set options");
             this.writeln("options = simset('FixedStep',1,'MaxStep',1,'MinStep',1,'Solver','FixedStepDiscrete','SrcWorkspace','current');");
+            this.writeln("");
+             this.writeln("% Output names");
+            this.writeln("output_names = {...");
+            nameit = modelOutputNames.iterator();
+            while (nameit.hasNext()) {
+                String name = nameit.next();
+                this.writeln("    '" + name + "'");
+            }
+            this.writeln("};");
             this.writeln("");
             this.writeln("%");
             this.writeln("% Checkcase data");
@@ -199,10 +214,18 @@ public class MatFileWriter extends FileWriter
             this.writeln("   y_good = checkcase{i}.y;");
             this.writeln("   y_tol = checkcase{i}.tol;");
             this.writeln("   [t,x,y] = sim('" + this.modelName + "',[0 0],options,UT);");
-            this.writeln("   outcome(i) = (length(y_good) == sum(abs(y-y_good)<y_tol));");
+            this.writeln("   diffs = y-y_good;");
+            this.writeln("   good_matches = abs(diffs) < y_tol;");
+            this.writeln("   outcome(i) = (length(y_good) == sum(good_matches));");
             this.writeln("");
             this.writeln("   if outcome(i) == 0");
             this.writeln("      fprintf(' Case %s FAILED.\\n', checkcase{i}.name);");
+            this.writeln("      bad_matches = find(good_matches<1);");
+            this.writeln("      for j=bad_matches");
+            this.writeln("        fprintf(' Error (%12g) greater than allowed (%6g) for output ''%s''\\n',...");
+            this.writeln("                diffs(j), y_tol(j), output_names{j});");
+            this.writeln("      end");
+            this.writeln("      fprintf('\\n');");
             this.writeln("   else");
             this.writeln("      fprintf(' Case %d passed...\\n', i);");
             this.writeln("   end");
