@@ -134,7 +134,7 @@ public class BlockInput extends Block {
      *
      * <p> Generates description of self </p>
      *
-     * @throws <code>IOException</code>
+     * @throws IOException if problems writing out description
      **/
     @Override
     public void describeSelf(Writer writer) throws IOException {

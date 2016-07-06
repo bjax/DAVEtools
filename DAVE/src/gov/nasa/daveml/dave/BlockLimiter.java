@@ -179,10 +179,8 @@ public class BlockLimiter extends Block {
 
 
     /**
-     *
-     * <p> Generates description of self </p>
-     *
-     * @throws <code>IOException</code>
+     * Generates description of self
+     * @throws IOException if problems encountered when writing description
      **/
 
     @Override

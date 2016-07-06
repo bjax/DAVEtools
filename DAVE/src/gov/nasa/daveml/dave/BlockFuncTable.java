@@ -74,13 +74,11 @@ public final class BlockFuncTable extends Block
 
 
     /**
-     *
-     * <p> Constructor for BlockFuncTable </p>
+     * Constructor for BlockFuncTable
      *
      * @param function  Top-level Element function definition
      * @param m <code>Model</code> to which we attach
-     * @throws <code>IOException</code>
-     *
+     * @throws IOException if problems encountered 
      **/
 
     public BlockFuncTable( Element function, Model m) throws IOException
@@ -171,27 +169,24 @@ public final class BlockFuncTable extends Block
 
 
     /**
-     *
-     * Copy constructor.
-     *
+     * Copy constructor
+     * @param b The BlockFuncTable to be copied
      **/
 
     public BlockFuncTable( BlockFuncTable b ) 
     {
 	super( b );		// call Block copy constructor
 	// copy all BlockFuncTable-specific fields
-	this.simple              = b.simple;
-	this.gtID                = b.gtID;
-	this.functionTableDef    = b.functionTableDef;
-	this.description         = b.description;
-	this.functionDefName     = b.functionDefName;
+	simple              = b.simple;
+	gtID                = b.gtID;
+	functionTableDef    = b.functionTableDef;
+	description         = b.description;
+	functionDefName     = b.functionDefName;
     }
 
 
     /**
-     *
      * Return pointer to function table 
-     *
      **/
 
     public FuncTable getFunctionTableDef() { return this.functionTableDef; }
@@ -448,17 +443,15 @@ public final class BlockFuncTable extends Block
 
 
     /**
-     *
-     * <p> Hook up to specified breakpoint blocks. Note that a
-     *  breakpoint vector can be used by more than function block, for
-     *  example, left and right aileron deflections may use same
-     *  breakpoint values but be normalized by different values when
-     *  running. Therefore, we create a unique block name for the
-     *  breakpoint block that combines the breakpoint set name with
-     *  the independent value name. this assures we are free to reuse
-     *  an offset-and-index (normalized breakpoint) when they have the
-     *  same combined name. </p>
-     *
+     * Hook up to specified breakpoint blocks. 
+     * 
+     * Note that a breakpoint vector can be used by more than function block,
+     * for example, left and right aileron deflections may use same breakpoint
+     * values but be normalized by different values when running. Therefore, we
+     * create a unique block name for the breakpoint block that combines the
+     * breakpoint set name with the independent value name. this assures we are
+     * free to reuse an offset-and-index (normalized breakpoint) when they have
+     * the same combined name.
      **/
 
     @Override
@@ -534,12 +527,10 @@ public final class BlockFuncTable extends Block
 
 
     /** 
-     *
-     * <p> This method directs output to designated Writer </p>
+     * This method directs output to designated Writer
      *
      * @param writer <code>PrinterWriter</code> to receive values
-     * @throws <code>IOException</code>
-     *
+     * @throws IOException if problem encountered writing table
      **/
 
     public void printTable( Writer writer )
@@ -554,11 +545,10 @@ public final class BlockFuncTable extends Block
 
 
     /**
-     *
-     * <p> Generates written description of current instance on output stream </p>
+     * Generates written description of current instance on output stream
      *
      * @param writer FileWriter instance to write to
-     * @throws <code>IOException</code>
+     * @throws IOException if problem encountered performing output
      *
      **/
 

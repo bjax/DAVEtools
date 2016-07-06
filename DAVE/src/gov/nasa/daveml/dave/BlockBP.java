@@ -82,18 +82,15 @@ public class BlockBP extends Block
 
 
     /**
-     * <p> Return our bpID </p>
-     *
+     * Return our bpID
      * @return String our bpID
      **/
 
     public String getBPID() { return this.bpSet.getBPID(); }
 
     /**
-     *
-     * <p> Update our output value </p>
-     * @throws DAVEException
-     *
+     * Update our output value
+     * @throws DAVEException if a problem is encountered when parsing
      **/
 
     @Override
@@ -152,7 +149,7 @@ public class BlockBP extends Block
                     " has no breakpoints.");
         }
 
-	bpValue = (bpIt.next()).doubleValue();	// get 0 index value
+	bpValue = bpIt.next();	// get 0 index value
 	prevValue = bpValue;
 
 	if (this.isVerbose()) {
@@ -209,9 +206,8 @@ public class BlockBP extends Block
     }
 
     /**
-     *
-     * <p> Returns length of breakpoint vector </p>
-     *
+     * Returns length of breakpoint vector
+     * @return int with number of breakpoint values
      **/
 
     public int length() {
@@ -220,20 +216,18 @@ public class BlockBP extends Block
 
 
     /**
-     *
      * Returns our breakpoint set
-     *
+     * @return BreakpointSet
      **/
 
     public BreakpointSet getBPset() { return this.bpSet; }
 
 
     /**
-     *
-     * <p> Generates written description of current instance on output stream </p>
+     * Generates written description of current instance on output stream
      *
      * @param writer FileWriter instance to write to
-     * @throws <code>IOException</code>
+     * @throws IOException when writing
      *
      **/
 

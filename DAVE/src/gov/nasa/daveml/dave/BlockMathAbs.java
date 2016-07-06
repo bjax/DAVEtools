@@ -150,10 +150,8 @@ public class BlockMathAbs extends BlockMath
 
 
     /**
-     *
-     * <p> Generates description of self </p>
-     *
-     * @throws <code>IOException</code>
+     * Generates description of self
+     * @throws IOException if problems encountered writing description
      **/
 
     @Override

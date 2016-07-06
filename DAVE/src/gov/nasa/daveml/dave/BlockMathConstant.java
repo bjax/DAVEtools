@@ -10,19 +10,19 @@
 package gov.nasa.daveml.dave;
 
 /**
- *
- * <p> Object representing a constant value in a model </p>
- * <p> 031214 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
- *
+ * Object representing a constant value in a {@link Model}.
+ * 
+ * Modification history: 
+ * <ul> 
+ * <li>031214 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </li> 
+ * </ul>
  */
 
 import java.io.IOException;
 import java.io.Writer;
 
 /**
- *
- * <p>  The constant block represents a constant value source </p>
- *
+ * The constant block represents a constant value source.
  **/
 
 public class BlockMathConstant extends BlockMath
@@ -34,11 +34,10 @@ public class BlockMathConstant extends BlockMath
     String stringValue;
 
     /**
+     * BlockMathConstant: Constructor for constant value Block.
      *
-     * <p> Constructor for constant value Block <p>
-     *
-     * @param constantValue <code>String</code> containing value of constant
-     *
+     * @param constantValue {@link String} containing value of constant
+     * @param m Our parent {@link Model}
      **/
 
     public BlockMathConstant( String constantValue, Model m )
@@ -50,25 +49,31 @@ public class BlockMathConstant extends BlockMath
 
 
     /**
+     * Returns our numeric value.
      * 
-     * Returns our numeric value
-     *
+     * @return double containing the current output value
      **/
 
     public double getValueAsDouble() { return this.value; }
 
 
     /**
+     * Returns our string value.
      *
-     * Returns our string value
-     *
+     * @return String representing the current output value
      **/
 
     public String getValueAsString() { return this.stringValue; }
 
 
     /**
-     * Sets our value from a string
+     * Sets our value from a string.
+     * 
+     * If the provided String can't be converted to a double, we emit an error
+     * message on System.err and exit the program.
+     * 
+     * @param newValue is a String containing a representation of the value of the 
+     * constant to which we're set.
      */
     
     public final void setValue( String newValue ) {
@@ -86,7 +91,9 @@ public class BlockMathConstant extends BlockMath
     }
     
     /**
-     * Sets our value from a Double
+     * Sets our value from a Double.
+     * 
+     * @param newValue is the value of the constant to which we're to be set
      */
     
     public void setValue( Double newValue ) {
@@ -95,7 +102,10 @@ public class BlockMathConstant extends BlockMath
     }
     
     /**
-     * <p> Generate C-code equivalent of our constant</p>
+     * Generate C-code equivalent of our constant.
+     * 
+     * @return CodeAndVarNames object containing a C source code representation 
+     *         of our constant value
      */
     
     @Override
@@ -121,10 +131,9 @@ public class BlockMathConstant extends BlockMath
 
         
     /**
-     *
-     * <p> Generates description of self </p>
-     *
-     * @throws <code>IOException</code>
+     * Generates description of self.
+     * 
+     * @throws IOException if problems encountered writing description
      **/
 
     @Override
@@ -135,10 +144,11 @@ public class BlockMathConstant extends BlockMath
     }
 
     /**
-     *
-     * <p> Implements update() method </p>
-     * @throws DAVEException
-     *
+     * Implements update() method.
+     * 
+     * If the verbose flag is on, generate a narrative on System.out.
+     * 
+     * @throws DAVEException if the block has any inputs (it should be a constant)
      **/
 
     @Override
@@ -160,8 +170,10 @@ public class BlockMathConstant extends BlockMath
     /**
     *
     * Indicates if all results are up-to-date.
+    * 
     * Constant blocks are always ready!
     *
+    * @return true always
     **/
 
     @Override

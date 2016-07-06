@@ -10,10 +10,12 @@
 package gov.nasa.daveml.dave;
 
 /**
- *
- * <p> Superclass representing an arbitrary math function </p>
- * <p> 031212 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
- *
+ * Superclass representing an arbitrary math function.
+ * 
+ * Modification history:
+ * <ul>
+ * <li>031212 Bruce Jackson <mailto:bruce.jackson@nasa.gov></li>
+ * </ul>
  **/
 
 import java.util.Iterator;
@@ -22,9 +24,8 @@ import org.jdom.Attribute;
 import org.jdom.Element;
 
 /**
- *
- * <p>  The Math block represents an arbitrary math function </p>
- *
+ * The Math block extends the generic {@link Block} to represent an arbitrary 
+ * math function.
  **/
 
 abstract public class BlockMath extends Block
@@ -37,9 +38,7 @@ abstract public class BlockMath extends Block
     static String variableID;
 
     /**
-     *
-     * <p>Basic constructor for math Block <p>
-     *
+     * Basic BlockMath constructor.
      **/
 
     public BlockMath()
@@ -50,11 +49,9 @@ abstract public class BlockMath extends Block
     }
 
     /**
+     * BlockMath Constructor that accepts a {@link Model}.
      *
-     * <p> Constructor for math Block <p>
-     *
-     * @param m <code>Model</code> we're part of
-     *
+     * @param m {@link Model} we're part of
      **/
 
     public BlockMath( Model m)
@@ -66,13 +63,11 @@ abstract public class BlockMath extends Block
 
 
     /**
-     *
-     * <p> Constructor for math Block <p>
+     * BlockMath Constructor that accepts a name and type String.
      *
      * @param blockName our name
      * @param blockType our type
-     * @param m <code>Model</code> we're part of
-     *
+     * @param m {@link Model} we're part of
      **/
 
     public BlockMath(String blockName, String blockType, Model m)
@@ -85,13 +80,13 @@ abstract public class BlockMath extends Block
 
     /**
      *
-     * <p> Constructor for math Block <p>
+     * BlockMath Constructor that accepts a name and type String and an 
+     * estimate of the number of inputs needed.
      *
      * @param blockName our name
      * @param blockType our type
      * @param numInputs how many inputs we have
-     * @param m <code>Model</code> we're part of
-     *
+     * @param m {@link Model} we're part of
      **/
 
     public BlockMath(String blockName, String blockType, int numInputs, Model m)
@@ -102,7 +97,8 @@ abstract public class BlockMath extends Block
     }
     
     /**
-     *  Put variable name on error stream
+     * Put variable name on System error stream.
+     * 
      * @param errorMsg Message to be preceded with variableID
      * @since 0.9.8
      */
@@ -114,23 +110,21 @@ abstract public class BlockMath extends Block
 
 
     /**
+     * Determines block type and calls appropriate constructor.
      *
-     * <p> Determines block type and calls appropriate constructor </p>
-     *
-     * @param applyElement Reference to <code>org.jdom.Element</code>
+     * @param applyElement Reference to {@link org.jdom.Element}
      * containing "apply" element
-     * @param m		The parent <code>Model</code>
+     * @param m Our parent {@link Model}
      * @return Math block of appropriate type
      * @throws DAVEException if problems were encountered
-     *
      **/
 
     @SuppressWarnings("unchecked")
     public static BlockMath factory( Element applyElement, Model m)
            throws DAVEException
     {
-//System.out.println("    BlockMath factory called.");
-	// Parse parts of the Apply element
+
+        // Parse parts of the Apply element
 	List<Element> kids = applyElement.getChildren();
 	Iterator<Element> ikid = kids.iterator();
 
@@ -147,7 +141,7 @@ abstract public class BlockMath extends Block
             variableID = varID.getValue();
         }
 	
-// take appropriate action based on type
+        // take appropriate action based on type
 	if( theType.equals("abs") ) {
 	    return new BlockMathAbs( applyElement, m );
         }
@@ -192,11 +186,11 @@ abstract public class BlockMath extends Block
             theType.equals("ceiling") ||
             theType.equals("floor"  ) ) {
 		try {
-			return new BlockMathFunction( applyElement, m);
+                    return new BlockMathFunction( applyElement, m);
 		} catch (DAVEException e) {
-			printErrWithVarID("Exception when trying to build a math function of type '"
+                    printErrWithVarID("Exception when trying to build a math function of type '"
 					+ theType + "' - which is unrecognized. Aborting...");
-			System.exit(-1);
+                    System.exit(-1);
 		}
         }
 	if( theType.equals("csymbol") ) {
@@ -209,12 +203,10 @@ abstract public class BlockMath extends Block
     }
 
     /**
-     *
-     * <p> Finds or generates appropriate inputs from math constructs </p>
+     * Finds or generates appropriate inputs from math constructs.
      * 
      * @param ikid List <code>Iterator</code> for elements of top-level &lt;apply&gt;.
      * @param inputPortNumber <code>Int</code> with 1-based input number
-     *
      **/
 
     public void genInputsFromApply( Iterator<Element> ikid, int inputPortNumber ) 
