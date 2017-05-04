@@ -17,7 +17,7 @@
  * <p>Grid images can be exported as PNGs or as text tables using buttons
  * provided.</p>
  *
- * @author Bruce Jackson, NASA Langley Research Center, bruce.jackson@nasa.gov
+ * @author Bruce Jackson, Adaptive Aerospace Group Inc., bjackson@adaptiveaero.com
  *
  * @since 1.0
  * @see gov.nasa.daveml.dave

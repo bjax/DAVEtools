@@ -1,9 +1,9 @@
 // This file can be turned into XHTML using AsciiDoc
 
-DAVEtools 0.9.7 README
+DAVEtools 0.9.8 README
 ======================
-Bruce Jackson, NASA Langley Research Center <bruce.jackson@nasa.gov>
-README Version 8, 2015-03-02
+Bruce Jackson, Adaptive Aerospace Group, Inc. <bjackson@adaptiveaero.com>
+README Version 9, 2017-05-04
 :TOC:
 
 Introduction
@@ -485,6 +485,13 @@ https://github.com/nasa/DAVEtools .
 
 Changes since V 0.8.1
 ---------------------
+V 0.9.8::
+  Cleaned up some Java syntax. Switched from junit3 to 4. Improved
+  error messages in MatFileWriter and elsewhere. Added unit test of
+  switch logic. Updated HowToRelease notes. Evaluate option now
+  includes internal varID. Added message with count of cycles to sort
+  blocks.  Moved email address to AAG.
+  
 V 0.9.7::
   Added support for simple logic (not, and, or) operations; added
   "ignore checkcase" (-x) option, reduced spacing of blocks to fit in

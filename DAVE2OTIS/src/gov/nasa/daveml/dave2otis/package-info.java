@@ -7,7 +7,7 @@
  *     <code>java -jar DAVE2OTIS.jar [-vcdelw] <em>inputFile</em></code>
  * </p>
  *
- * @author Bruce Jackson, NASA Langley Research Center, bruce.jackson@nasa.gov
+ * @author Bruce Jackson, Adaptive Aerospace Group Inc., bjackson@adaptiveaero.com
  *
  * @since 0.9.4
  */
