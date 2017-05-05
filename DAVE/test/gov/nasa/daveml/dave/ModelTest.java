@@ -20,7 +20,7 @@ import junit.framework.*;
 /**
  * Tests the Model object
  *
- * 060913 Bruce Jackson, NASA Langley <mailto:bruce.jackson@nasa.gov>
+ * 060913 Bruce Jackson, NASA Langley <mailto:bjackson@adaptiveaero.com>
  *
  **/
 

@@ -35,7 +35,7 @@ import java.io.Writer;
  * <li>031211 Written EBJ</li>
  * </ul>
  *
- * @author <a href="bruce.jackson@nasa.gov">Bruce Jackson</a>
+ * @author <a href="bjackson@adaptiveaero.com">Bruce Jackson</a>
  * @version 0.9
  */
 

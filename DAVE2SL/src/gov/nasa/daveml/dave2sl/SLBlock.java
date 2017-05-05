@@ -36,7 +36,7 @@ import java.util.Iterator;
  *   <li>060901 Rewritten to use 'add_block', 'add_line', etc instead of raw MDL.
  *  </ul>
  *
- * @author Bruce Jackson &lt;bruce.jackson@nasa.gov&gt;
+ * @author Bruce Jackson &lt;bjackson@adaptiveaero.com&gt;
  * @version 0.9
  *
  **/

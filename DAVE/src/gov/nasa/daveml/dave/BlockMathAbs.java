@@ -17,7 +17,7 @@ package gov.nasa.daveml.dave;
 /**
  *
  * <p> Absolute value math function block </p>
- * <p> 031214 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
+ * <p> 031214 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
  *
  **/
 
@@ -72,15 +72,14 @@ public class BlockMathAbs extends BlockMath
                 this.genInputsFromApply(ikid, 1);
             }
         }
-
-//System.out.println("    BlockMathAbs constructor: " + myName + " created.");
     }
 
 
     /**
      *
-     * <p> Update our output value </p>
-     * @throws DAVEException
+     * Update our output value
+     *
+     * @throws DAVEException if error occurs during update
      *
      **/
 

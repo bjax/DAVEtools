@@ -18,7 +18,7 @@ import gov.nasa.daveml.dave.VectorInfo;
 
 /**
  * Wrapper class to add nominal, max and min values to model inputs.
- * @author Bruce Jackson, NASA Langley Research Center, bruce.jackson@nasa.gov
+ * @author Bruce Jackson, AAG <mailto:bjackson@adaptiveaero.com>
  */
 public class InputInfo {
 

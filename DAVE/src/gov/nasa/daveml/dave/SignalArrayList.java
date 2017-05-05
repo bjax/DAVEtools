@@ -18,7 +18,7 @@ package gov.nasa.daveml.dave;
 
 /**
  * <p>  Extends ArrayList for Signal objects </p>
- * <p> 031212 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
+ * <p> 031212 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
  *
  */
 

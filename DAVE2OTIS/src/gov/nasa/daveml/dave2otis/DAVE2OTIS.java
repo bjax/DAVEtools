@@ -44,7 +44,7 @@ import java.util.logging.Logger;
  *  <li>2012-01-18: Written EBJ</li>
  * </ul>
  *
- * @author Bruce Jackson {@link <mailto:bruce.jackson@nasa.gov>}
+ * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
  * @since 0.9.4
  *
  **/

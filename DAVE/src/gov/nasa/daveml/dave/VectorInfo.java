@@ -19,7 +19,7 @@ package gov.nasa.daveml.dave;
  * <p> Object providing information about an input or output to a
  * <code>Model</code> </p>
  *
- * <p> 031227 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
+ * <p> 031227 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
  *
  */
 

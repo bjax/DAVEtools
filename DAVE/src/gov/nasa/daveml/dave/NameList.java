@@ -24,7 +24,7 @@ package gov.nasa.daveml.dave;
  *     unique block names for Simulink MDL file. Not to be confused with XML and 
  *     JDOM Namespace object which relate to unique names of XML elements; this 
  *     object ensures block and signal names are unique within a model.</p>
- * <p> 031211 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
+ * <p> 031211 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
  * <p> 2010-05-04 Renamed from NameSpace to NameList to avoid confusion with JDOM Namespace</p>
  *
  */

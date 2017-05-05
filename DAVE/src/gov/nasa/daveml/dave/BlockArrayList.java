@@ -19,7 +19,7 @@ package gov.nasa.daveml.dave;
  * <p>
  * Modification history:
  * <ul>
- * <li>031211 Bruce Jackson <mailto:bruce.jackson@nasa.gov></li>
+ * <li>031211 Bruce Jackson <mailto:bjackson@adaptiveaero.com></li>
  * </ul>
  */
 

@@ -45,7 +45,7 @@ import org.jdom.input.SAXBuilder;
  * <li>031220: Substantially modified for DAVE_tools 0.4</li> 
  * </ul>
  *
- * @author Bruce Jackson {@link <mailto:bruce.jackson@nasa.gov>}
+ * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
  * @version 0.9
  *
  *
@@ -185,10 +185,10 @@ public class DAVE {
         this.checkCaseCount = 0;
         this.m = new Model(20, 20);
 
-        String date = "2016-06-09";
+        String date = "2017-05-05";
 
         // add date (now that we're under git)
-        this.myVersion = "0.9.8b (" + date + ")";
+        this.myVersion = "0.9.8 (" + date + ")";
     }
 
     /**

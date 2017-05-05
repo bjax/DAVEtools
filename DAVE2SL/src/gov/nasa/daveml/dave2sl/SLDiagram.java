@@ -42,7 +42,7 @@ import java.util.Iterator;
  *  <li>040520: Added resetOuputsWhenDisabled, makeLib and makeEnabledSubSys flags EBJ</li>
  * </ul>
  *
- * @author Bruce Jackson {@link <mailto:bruce.jackson@nasa.gov>}
+ * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
  * @version 0.9
  *
  **/

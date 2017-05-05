@@ -9,8 +9,11 @@
 //  Title 17, U.S. Code. All Other Rights Reserved.
 //
 //  Copyright (c) 2017 Adaptive Aerospace Group, Inc.
+
+/**
  *
- * @author Bruce Jackson, Adaptive Aerospace Group Inc., bjackson@nasa.gov
+ * @author Bruce Jackson, Adaptive Aerospace Group Inc., mailto:bjackson@adaptiveaero.com
  * @since 0.9.8
  */
+
 package gov.nasa.daveml.dave;

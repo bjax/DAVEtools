@@ -44,7 +44,7 @@ import java.util.Iterator;
  *  <li>2011-01-07: Added additional information when aborting.</li>
  * </ul>
  *
- * @author Bruce Jackson {@link <mailto:bruce.jackson@nasa.gov>}
+ * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
  * @version 0.9
  *
  **/

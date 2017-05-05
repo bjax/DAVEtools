@@ -18,7 +18,7 @@ package gov.nasa.daveml.dave;
  *
  * <p> Object representing a two-sided limiter block </p>
  * <p> 2010-12-15 Bruce Jackson, NASA Langley Research Center
- *     <mailto:bruce.jackson@nasa.gov> </p>
+ *     <mailto:bjackson@adaptiveaero.com> </p>
  * @author Bruce Jackson
  *
  **/
@@ -118,7 +118,10 @@ public class BlockLimiter extends Block {
 
 
     /**
-     * <p> Returns the units of measure of the output signal </p>
+     * Returns the units of measure of the output signal
+     *
+     * @return String with units of measure (encoded per ANSI/AIAA
+     * S-119-2011) of output signal
      *
      **/
 
@@ -199,7 +202,7 @@ public class BlockLimiter extends Block {
     /**
      *
      * <p> Implements update() method </p>
-     * @throws DAVEException
+     * @throws DAVEException if update fails
      *
      **/
 

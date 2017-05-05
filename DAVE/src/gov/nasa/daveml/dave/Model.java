@@ -27,7 +27,7 @@ import java.util.Set;
  *
  * Object representing top-level model; owns all blocks and signals
  *
- * @author 031211 {@link <a href="mailto:bruce.jackson@nasa.gov">Bruce Jackson</a>}
+ * @author 031211 {@link <a href="mailto:bjackson@adaptiveaero.com">Bruce Jackson</a>}
  *
  **/
 

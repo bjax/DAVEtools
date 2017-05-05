@@ -18,7 +18,7 @@ package gov.nasa.daveml.dave;
  *
  * <p> Minus value math function block </p>
  * <p> Was named BlockMathGain, but that isn't supported by mathml2?</p>
- * <p> 031211 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
+ * <p> 031211 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
  *
  **/
 

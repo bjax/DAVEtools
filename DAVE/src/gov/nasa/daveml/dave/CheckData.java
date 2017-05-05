@@ -18,7 +18,7 @@ package gov.nasa.daveml.dave;
  *
  * Check case data for self-verification
  *
- * @author 040202 Bruce Jackson <mailto:bruce.jackson@nasa.gov>
+ * @author 040202 Bruce Jackson <mailto:bjackson@adaptiveaero.com>
  *
  **/
 
@@ -32,7 +32,7 @@ import org.jdom.Element;
  * A class to handle checkcases found in DAVE-ML files
  * 
  * @since DAVE_tools 0.4
- * @author Bruce Jackson {@link <mailto:bruce.jackson@nasa.gov>}
+ * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
  * <p> 040202: Written, EBJ
  *
  **/

@@ -24,7 +24,7 @@ import org.jdom.Element;
  * test routines; this module should test the common methods 
  * to all blocks.
  *
- * 040220 Bruce Jackson <mailto:bruce.jackson@nasa.gov>
+ * 040220 Bruce Jackson <mailto:bjackson@adaptiveaero.com>
  * 2010-05-08 Slightly rewritten
  *
  **/

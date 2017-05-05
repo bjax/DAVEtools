@@ -53,7 +53,7 @@ class DMLFilter extends javax.swing.filechooser.FileFilter {
 }
 /**
  * Model Sweeper user interface class (includes main() function)
- * @author Bruce Jackson, NASA Langley Research Center, bruce.jackson@nasa.gov
+ * @author Bruce Jackson, AAG, <mailto:bjackson@adaptiveaero.com>
  */
 public class ModelSweeperUI extends javax.swing.JFrame {
 

@@ -1,8 +1,8 @@
 #
 #	Makefile for tests subdirectory
 #
-# 060920 Bruce Jackson, NASA Langley Research Center
-#                      <mailto:e.b.jackson@larc.nasa.gov>  
+# 060920 Bruce Jackson, Adaptive Aerospace Group, Inc.
+#                      <mailto:bjackson@adaptiveaero.com>  
 
 HOME   = /Users/bjax
 

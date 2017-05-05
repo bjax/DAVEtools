@@ -14,10 +14,10 @@ How to prepare for a release or other distribution
 4.  Edit DAVE/src/gov/nasa/daveml/dave/DAVE.java; change this.myVersion
     in DAVE constructor as appropriate (until we automate this)
 
-5.  Edit overview.html; update 'revision history' section
-
-6.  Update README/README.txt summary of changes; run make in README
+5.  Update README/README.txt summary of changes; run make in README
     directory
+
+6.  Edit overview.html; update 'revision history' section
 
 7.  Copy README/README.txt to README.adoc for github; change all links
     with 'image' to 'README/image' in README.adoc since it's location

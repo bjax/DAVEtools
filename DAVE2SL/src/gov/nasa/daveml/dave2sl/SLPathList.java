@@ -33,7 +33,7 @@ import java.util.Iterator;
  *   <li>2010-05-04 Modified to use SLBranches instead of ArrayList of SLLineSegments</li>
  *  </ul>
  *
- * @author Bruce Jackson {@link <mailto:bruce.jackson@nasa.gov>}
+ * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
  * @version 0.9
  *
  **/

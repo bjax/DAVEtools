@@ -17,7 +17,7 @@ package gov.nasa.daveml.dave;
 /**
  *
  * <p> Logical operator math function block </p>
- * <p> 2015-02-13 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
+ * <p> 2015-02-13 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
  * @since 0.9.7
  *
  **/

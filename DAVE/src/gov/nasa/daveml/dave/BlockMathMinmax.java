@@ -17,7 +17,7 @@ package gov.nasa.daveml.dave;
 /**
  *
  * <p> Extrema math function block </p>
- * <p> 2011-07-26 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
+ * <p> 2011-07-26 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
  *
  **/
 

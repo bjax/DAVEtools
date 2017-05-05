@@ -22,7 +22,7 @@ package gov.nasa.daveml.dave;
  * <p> Despite misleading name, the actual table is stored as a
  *     FuncTable block and is referenced by this Block.</p>
  *
- * @author Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
+ * @author Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
  *
  **/
 
@@ -192,6 +192,8 @@ public final class BlockFuncTable extends Block
 
     /**
      * Return pointer to function table 
+     *
+     * @return pointer to function table
      **/
 
     public FuncTable getFunctionTableDef() { return this.functionTableDef; }
@@ -325,11 +327,12 @@ public final class BlockFuncTable extends Block
 
     /**
      *
-     * <p> Using specified output (dependent) variable name, look for
+     * Using specified output (dependent) variable name, look for
      * such a declared variable. If not found, create appropriate
-     * one. </p>
+     * one.
      *
      * @param function JDOM function Element
+     * @return dependent variable name String 
      *
      **/
 
@@ -390,8 +393,13 @@ public final class BlockFuncTable extends Block
 
     /**
      *
-     * <p> Create a new breakpoint block and associated
-     * index-and-weight signal to serve as an input to this block. </p>
+     * Create a new breakpoint block and associated
+     * index-and-weight signal to serve as an input to this block.
+     *
+     * @param bpID String with ID of breakpoint table
+     * @param varID String with ID of independent variable for breakpoint
+     * @param iwSignalID String with name of output Signal ID
+     * @param portNum 1-based? input port number
      *
      **/
 
@@ -569,7 +577,7 @@ public final class BlockFuncTable extends Block
     /**
      *
      * <p> Implements update() method </p>
-     * @throws DAVEException
+     * @throws DAVEException if an error occurs
      *
      **/
 

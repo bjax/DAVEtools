@@ -5,10 +5,11 @@ function dave_demo
 % requires a copy of DAVEtools (NASA Open Source), available
 % from
 %
-%  http://dscb.larc.nasa.gov/Products/SW/DAVEtools.html
+%  http://github/bjax/DAVETools
 %
 % 2011-03-07 Bruce Jackson, NASA Langley
 %            bruce.jackson@nasa.gov
+% 2017-05-05 Updated to new URL, email now bjackson@adaptiveaero.com
 %
 %
 pathNeeded = 1;

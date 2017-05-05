@@ -20,7 +20,7 @@ package gov.nasa.daveml.dave;
  *
  * DAVE-ML extensions to MathML 2 functions
  *
- * @author 070223 Bruce Jackson <mailto:bruce.jackson@nasa.gov>
+ * @author 070223 Bruce Jackson <mailto:bjackson@adaptiveaero.com>
  * @since version 0.8 / rev 193
  *
  **/

@@ -17,7 +17,7 @@ package gov.nasa.daveml.dave;
 /**
  *
  * <p> Exception class for DAVE package </p>
- * @author Bruce Jackson {@link <mailto:bruce.jackson@nasa.gov>} </p>
+ * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>} </p>
  * @since DAVE_tools 0.4
  **/
 

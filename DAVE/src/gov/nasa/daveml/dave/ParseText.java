@@ -18,7 +18,7 @@ package gov.nasa.daveml.dave;
  *
  * <p> Object to convert string containing list of comma, tab, or
  *      space-separated values into an array. </p>
- * <p> 031214 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
+ * <p> 031214 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
  *
  **/
 

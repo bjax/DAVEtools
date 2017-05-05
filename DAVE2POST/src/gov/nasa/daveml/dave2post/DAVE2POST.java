@@ -44,7 +44,7 @@ import java.util.Iterator;
  *  <li>2011-12-19: Written EBJ</li>
  * </ul>
  *
- * @author Bruce Jackson {@link <mailto:bruce.jackson@nasa.gov>}
+ * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
  * @since 0.9.4
  *
  **/

@@ -18,7 +18,7 @@ package gov.nasa.daveml.dave;
 /**
  * 
  * <p> Object representing a Function Table definition </p>
- * <p> 040105 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
+ * <p> 040105 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
  *
  **/
 

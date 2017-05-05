@@ -12,7 +12,7 @@
 //
 //  Copyright (c) 2017 Adaptive Aerospace Group, Inc.
 //
-//	020621 E. B. Jackson <bruce.jackson@larc.nasa.gov>
+//	020621 E. B. Jackson <bjackson@adaptiveaero.com>
 //
 
 package gov.nasa.daveml.dave2sl;
@@ -31,7 +31,7 @@ import java.util.ArrayList;
  *   <li>040227 Updated for version 0.5</li>
  *  </ul>
  *
- * @author Bruce Jackson {@link <mailto:bruce.jackson@nasa.gov>}
+ * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
  * @version 0.9
  *
  **/

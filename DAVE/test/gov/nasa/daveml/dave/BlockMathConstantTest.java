@@ -26,7 +26,7 @@ import junit.framework.*;
 /**
  * A Constant Block test routine
  *
- * 081217 Bruce Jackson <mailto:bruce.jackson@nasa.gov>
+ * 081217 Bruce Jackson <mailto:bjackson@adaptiveaero.com>
  *
  **/
 

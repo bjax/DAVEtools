@@ -16,7 +16,7 @@ package gov.nasa.daveml.dave;
 
 /**
  * <p>  Object representing each "variable" in algorithm </p>
- * <p> 031211 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
+ * <p> 031211 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
  *
  */
 
@@ -41,7 +41,7 @@ import org.jdom.Namespace;
  *  <li>031211: Written EBJ</li>
  * </ul>
  *
- * @author Bruce Jackson {@link <mailto:bruce.jackson@nasa.gov>}
+ * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
  * @version 0.9
  *
  **/

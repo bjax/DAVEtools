@@ -17,7 +17,7 @@ package gov.nasa.daveml.dave;
 /**
  *
  * <p> Summing math function block </p>
- * <p> 031211 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
+ * <p> 031211 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
  *
  **/
 

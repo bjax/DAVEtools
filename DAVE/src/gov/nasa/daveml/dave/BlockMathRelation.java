@@ -17,7 +17,7 @@ package gov.nasa.daveml.dave;
 /**
  *
  * <p> Relational operator math function block </p>
- * <p> 031214 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
+ * <p> 031214 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
  *
  **/
 

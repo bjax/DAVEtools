@@ -18,7 +18,7 @@ package gov.nasa.daveml.dave;
  *
  * <p> Object representing an output block </p>
  * <p> 031215 Bruce Jackson, NASA Langley Research Center
- *     <mailto:bruce.jackson@nasa.gov> </p>
+ *     <mailto:bjackson@adaptiveaero.com> </p>
  *
  **/
 

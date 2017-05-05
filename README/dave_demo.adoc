@@ -3,7 +3,7 @@
 Matlab(R) integration using DAVEtools
 =====================================
 
-Bruce Jackson, NASA Langley Research Center <bruce.jackson@nasa.gov>
+Bruce Jackson, Adaptive Aerospace Group, Inc. <bjackson@adaptiveaero.com>
 
 Shown below is a Matlab(R) script, link:dave_demo.m[], that exercises a DAVE-ML model,
 using the DAVEtools Java objects.
@@ -22,6 +22,7 @@ function dave_demo
 %
 % 2011-03-07 Bruce Jackson, NASA Langley
 %            bruce.jackson@nasa.gov
+% 2017-05-05 New URL; new email bjackson@adaptiveaero.com
 %
 %
 pathNeeded = 1;

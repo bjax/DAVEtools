@@ -18,7 +18,7 @@ package gov.nasa.daveml.dave;
  * <p> Extends ArrayList for VectorInfo objects </p> 
  * <p> A VectorInfo contains external names and values for I/O lists
  * to communicate with other DAVE utilities.</p>
- * <p> 031227 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
+ * <p> 031227 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
  *
  */
 

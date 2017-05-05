@@ -37,7 +37,7 @@ import java.io.IOException;
  *   <li>040227 Updated for version 0.5</li>
  *  </ul>
  *
- * @author Bruce Jackson {@link <mailto:bruce.jackson@nasa.gov>}
+ * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
  * @version 0.9
  *
  **/

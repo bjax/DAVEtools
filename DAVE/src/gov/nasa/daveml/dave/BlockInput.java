@@ -18,7 +18,7 @@ package gov.nasa.daveml.dave;
  *
  * <p> Object representing an input block </p>
  *
- * <p> 031215 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
+ * <p> 031215 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
  **/
 import java.io.IOException;
 import java.io.Writer;
@@ -73,7 +73,7 @@ public class BlockInput extends Block {
     }
 
     /**
-     * <p> Accepts a new input value </p>
+     * Accepts a new input value
      *
      * @param theValue a <code>double</code> value which represents the new input value
      *
@@ -83,7 +83,9 @@ public class BlockInput extends Block {
     }
 
     /**
-     * <p> Returns the units of measure of the input signal </p>
+     * Returns the units of measure of the input signal
+     *
+     * @return String containing units of measure (encoded per ANSI/AIAA S-119-2011)
      *
      **/
     public String getUnits() {
@@ -102,6 +104,7 @@ public class BlockInput extends Block {
     /**
      *
      * Returns our sequence number (1-based) such as input 1, input 2, etc.
+     * @return 1-based sequence number
      *
      **/
     public int getSeqNumber() {
@@ -151,7 +154,7 @@ public class BlockInput extends Block {
     /**
      *
      * <p> Implements update() method </p>
-     * @throws DAVEException
+     * @throws DAVEException if an error occurs while updating
      *
      **/
     @Override

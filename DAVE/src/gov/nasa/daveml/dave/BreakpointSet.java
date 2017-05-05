@@ -18,7 +18,7 @@ package gov.nasa.daveml.dave;
 /**
  * 
  * <p> Object representing a Breakpoint Set definition </p>
- * <p> 040107 Bruce Jackson <mailto:bruce.jackson@nasa.gov> </p>
+ * <p> 040107 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
  *
  * @author Bruce Jackson
  *

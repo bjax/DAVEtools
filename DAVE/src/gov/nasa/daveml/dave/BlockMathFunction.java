@@ -22,7 +22,7 @@ package gov.nasa.daveml.dave;
  *
  * Multipurpose function block
  *
- * @author 031214 Bruce Jackson <mailto:bruce.jackson@nasa.gov>
+ * @author 031214 Bruce Jackson <mailto:bjackson@adaptiveaero.com>
  *
  **/
 
@@ -159,10 +159,11 @@ public class BlockMathFunction extends BlockMath
         }
     }
 
-	/**
+    /**
      *
      * Returns type string
      *
+     * @return String with math function name (type)
      **/
 
     public String getFuncType() { return funcType; }
@@ -170,9 +171,9 @@ public class BlockMathFunction extends BlockMath
  
     /**
      *
-     * <p> Generates description of self </p>
+     * Generates description of self
      *
-     * @throws <code>IOException</code>
+     * @throws IOException if problems generating description
      **/
 
     @Override
