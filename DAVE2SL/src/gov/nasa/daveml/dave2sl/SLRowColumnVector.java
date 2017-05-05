@@ -33,7 +33,7 @@ import java.util.Vector;
  *   <li>040227 Updated for version 0.5</li>
  *  </ul>
  *
- * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
+ * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
  * @version 0.9
  *
  **/
@@ -90,6 +90,7 @@ public class SLRowColumnVector
 	 * Registers cell at specified offset
 	 *
 	 * @param offset offset amount (index)
+         * @param cell the {@link SLCell} to register at the given offset
 	 *
 	 **/
 
@@ -110,7 +111,8 @@ public class SLRowColumnVector
 	 * Gets cell at specified offset
 	 *
 	 * @param offset 0-based offset value
-	 *
+	 * @return the {@link SLCell} located at that offset
+         *
 	 **/
 
 	public SLCell get( int offset )
@@ -126,7 +128,8 @@ public class SLRowColumnVector
 	 * Returns index (offset) of specified cell
 	 *
 	 * @param theCell <code>SLCell</code> to find index of 
-	 *
+	 * @return the offset (0-based) location of the cell within this SLRowColumVector
+         *
 	 **/
 
 	public int getOffset( SLCell theCell )
@@ -138,7 +141,8 @@ public class SLRowColumnVector
 	/**
 	 *
 	 * Returns width of column or height of row, including cable tray
-	 *
+	 * @return width of column or height of row, including cable tray
+         *
 	 **/
 
 	public int getSize()
@@ -156,7 +160,8 @@ public class SLRowColumnVector
 	/**
 	 *
 	 * Returns width of column or height of row, not including cable tray
-	 *
+	 * @return width of column or height of row, not including cable tray
+         *
 	 **/
 
 	public int getSizeNoTray()
@@ -203,7 +208,7 @@ public class SLRowColumnVector
 	/**
 	 *
 	 * Indicates status of verbose flag
-	 *
+	 * @return <code>true</code> if verbose flag set; otherwise <code>false</code>
 	 **/
 
 	public boolean isVerbose() { return this.verboseFlag; }

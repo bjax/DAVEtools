@@ -16,17 +16,10 @@ package gov.nasa.daveml.dave;
 
 /**
  *
- * <p> Object providing information about an input or output to a
- * <code>Model</code> </p>
+ * Object providing information about an input or output Signal to a
+ * <code>Model</code>
  *
- * <p> 031227 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
- *
- */
-
-/**
- *
- * <p> Object giving variable name and value for any input, output,
- * state, or state derivative in a <code>Model</code> </p>
+ * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
  *
  **/
 
@@ -99,10 +92,11 @@ public class VectorInfo
 
 	/**
 	 *
-	 * <p> Simple constructor </p>
+	 * Simple constructor (builds from scratch)
 	 *
 	 * @param signalName A <code>String</code> containing the name of
 	 * the signal to construct
+         * @param id String with the variable ID we represent
 	 * @param units Our units-of-measure
 	 * @param blk The source or sink <code>Block</code> we represent
 	 * @param isInput If true, we represent an input
@@ -201,7 +195,8 @@ public class VectorInfo
 
 	/**
 	 *
-	 * <p> Returns signal name as <code>String</code> </p>
+	 * Returns signal name as <code>String</code>
+         * @return name of Signal as <code>String</code>
 	 *
 	 **/
 
@@ -209,7 +204,8 @@ public class VectorInfo
 
 	/**
 	 *
-	 * <p> Returns signal ID as <code>String</code> </p>
+	 * Returns signal ID as <code>String</code>
+         * @return ID of signal as <code>String</code>
 	 *
 	 **/
 
@@ -217,7 +213,9 @@ public class VectorInfo
 
 	/**
 	 *
-	 * <p> Returns variable name as <code>String</code> </p>
+	 * Returns variable name as <code>String</code>
+         * @return a String containing units-of-measure encoded per
+         * ANSI/AIAA-S-119-2011
 	 *
 	 **/
 
@@ -226,7 +224,8 @@ public class VectorInfo
 
 	/**
 	 *
-	 * <p> Returns the value of this element </p>
+	 * Returns the value of this element
+         * @return double value of this element
 	 *
 	 **/
 
@@ -235,17 +234,21 @@ public class VectorInfo
 
 	/**
 	 *
-	 * <p> Returns the verification tolerance of this element </p>
+	 * Returns the verification tolerance of this element. Only
+	 * makes sense for outputs; default value for inputs is <code>NaN</code>.
+         * @return double with the verification tolerance for this element
 	 *
 	 **/
 
 	public double getTolerance() { return this.tolerance; }
 
-
+    
 	/**
 	 *
-	 * <p> Indicates if we're an input or not </p>
-	 *
+	 * Indicates if we're an input or not
+	 * @return boolean <code>true</code> if we're an input;
+	 * otherwise <code>false</code>
+         *
 	 **/
 
 	public boolean isInput() { return this.isInput; }
@@ -253,7 +256,8 @@ public class VectorInfo
 
 	/**
 	 *
-	 * <p> Returns source block </p>
+	 * Returns source block for output values
+         * @return BlockOutput where we obtain our calculated output value (output vectors only)
 	 *
 	 **/
 
@@ -262,7 +266,8 @@ public class VectorInfo
 
 	/**
 	 *
-	 * <p> Returns sink block </p>
+	 * Returns input block we overwrite for input vector elements
+         * @return BlockInput where we overwrite the current value (input vectors only)
 	 *
 	 **/
 

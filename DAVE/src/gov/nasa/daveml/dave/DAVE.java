@@ -30,22 +30,25 @@ import org.jdom.input.SAXBuilder;
 /**
  *
  * <b>D</b>igital <b>A</b>erospace <b>V</b>ehicle <b>E</b>xchange <b>M</b>arkup
- * <b>L</b>anguage utility routines. <p> Converts <b>DAVE-ML</b> files into
- * networked {@link Block} &amp;
- * {@link Signal} objects contained within a {@link Model} object. <p>
- * <b>DAVE-ML</b> is being considered as a possible AIAA standard for encoding
- * dynamic flight vehicle models for exchange between simulation tools and
- * facilities in an open-software, facility-neutral manner. <p> More information
- * about DAVE-ML is available at the project website:
- * {@link <a href="http://daveml.org">http://daveml.org</a>} 
+ * <b>L</b>anguage utility routines. 
  * 
- * <p> Modification history: 
+ * Converts <b>DAVE-ML</b> files into networked {@link Block} &amp;
+ * {@link Signal} objects contained within a {@link Model} object. 
+ * 
+ * <b>DAVE-ML</b> is part of the AIAA standard S-119-2011 for encoding
+ * dynamic flight vehicle models for exchange between simulation tools and
+ * facilities in an open-software, facility-neutral manner. 
+ *
+ * More information about DAVE-ML is available at the project website,
+ * <a href="http://daveml.org">http://daveml.org</a>
+ * 
+ *  Modification history: 
  * <ul> 
  * <li>020419: Written EBJ</li> 
  * <li>031220: Substantially modified for DAVE_tools 0.4</li> 
  * </ul>
  *
- * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
+ * @author Bruce Jackson
  * @version 0.9
  *
  *
@@ -735,7 +738,8 @@ public class DAVE {
      * DAVE-ML model being loaded.
      *
      * @return Document object with the parsed file
-     * @throws java.io.IOException
+     * @throws IOException if unable to read the JDOM document
+     *
      */
 // Example catalog.xml file contents
 //
@@ -1026,8 +1030,7 @@ public class DAVE {
      * @param inVec A {@link VectorInfoArrayList} listing inputs and default
      * values
      * @return int -1 to quit, 0 to keep going
-     * @throws IOException;
-     *
+     * @throws IOException if unable to parse the inputs
      *
      */
     public int loadInputs(VectorInfoArrayList inVec) throws IOException {
@@ -1319,9 +1322,8 @@ public class DAVE {
     /**
      *
      * Provides a static entry point for running DAVE as standalone utility.
+     * @param args Java command-line arguments as an array of String
      *
-     *
-     * @param args
      */
     public static void main(String args[]) {
 

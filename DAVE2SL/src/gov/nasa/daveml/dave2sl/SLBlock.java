@@ -180,7 +180,7 @@ public class SLBlock
      * @param writer Instance of the SLFileWriter class
      * @param x  horizontal position of block
      * @param y  vertical position of block
-     * @throws java.io.IOException
+     * @throws IOException if unable to write Matlab command to specified writer
      *
      **/
 
@@ -217,6 +217,10 @@ public class SLBlock
     /**
      *
      * Generates add_block command for limiter block
+     * @param writer an {@link SLFileWriter} to direct output
+     * @param x int value for X (horizontal +right) displacement of box
+     * @param y int value for Y (vertical +down) displacement of box
+     * @throws IOException if unable to generate output
      *
      **/
 
@@ -243,6 +247,10 @@ public class SLBlock
     /**
      *
      * Generates add_block command for breakpoint block
+     * @param writer an {@link SLFileWriter} to direct output
+     * @param x int value for X (horizontal +right) displacement of box
+     * @param y int value for Y (vertical +down) displacement of box
+     * @throws IOException if unable to generate output
      *
      **/
 
@@ -269,6 +277,10 @@ public class SLBlock
     /**
      *
      * Generates add_block command for function block
+     * @param writer the {@link SLFileWriter} we're writing to
+     * @param x integer with the horizontal location (+right) of block
+     * @param y integer with the vertical location (+down) of block
+     * @throws IOException if unable to generate output
      *
      **/
 
@@ -294,6 +306,10 @@ public class SLBlock
     /**
      *
      * Generates add_block command for input block
+     * @param writer the {@link SLFileWriter} we're writing to
+     * @param x integer with the horizontal location (+right) of block
+     * @param y integer with the vertical location (+down) of block
+     * @throws IOException if trouble writing to Writer
      *
      **/
 
@@ -311,6 +327,10 @@ public class SLBlock
     /**
      *
      * Generates add_block command for output block
+     * @param writer the {@link SLFileWriter} we're writing to
+     * @param x integer with the horizontal location (+right) of block
+     * @param y integer with the vertical location (+down) of block
+     * @throws IOException if trouble writing to Writer
      *
      **/
 
@@ -328,6 +348,10 @@ public class SLBlock
     /**
      *
      * Generates add_block command for MathAbs block
+     * @param writer the {@link SLFileWriter} we're writing to
+     * @param x integer with the horizontal location (+right) of block
+     * @param y integer with the vertical location (+down) of block
+     * @throws IOException if trouble writing to Writer
      *
      **/
 
@@ -341,6 +365,10 @@ public class SLBlock
     /**
      *
      * Generates add_block command for constant block
+     * @param writer the {@link SLFileWriter} we're writing to
+     * @param x integer with the horizontal location (+right) of block
+     * @param y integer with the vertical location (+down) of block
+     * @throws IOException if trouble writing to Writer
      *
      **/
 
@@ -358,6 +386,10 @@ public class SLBlock
     /**
      *
      * Generates add_block command for MathFunc block
+     * @param writer the {@link SLFileWriter} we're writing to
+     * @param x integer with the horizontal location (+right) of block
+     * @param y integer with the vertical location (+down) of block
+     * @throws IOException if trouble writing to Writer
      *
      **/
 
@@ -400,6 +432,10 @@ public class SLBlock
     /**
      *
      * Generates add_block command for minus block
+     * @param writer the {@link SLFileWriter} we're writing to
+     * @param x integer with the horizontal location (+right) of block
+     * @param y integer with the vertical location (+down) of block
+     * @throws IOException if trouble writing to Writer
      *
      **/
 
@@ -422,6 +458,10 @@ public class SLBlock
     /**
      *
      * Generates add_block command for Min-max block
+     * @param writer the {@link SLFileWriter} we're writing to
+     * @param x integer with the horizontal location (+right) of block
+     * @param y integer with the vertical location (+down) of block
+     * @throws IOException if trouble writing to Writer
      *
      **/
 
@@ -447,6 +487,10 @@ public class SLBlock
     /**
      *
      * Generates add_block command for product block
+     * @param writer the {@link SLFileWriter} we're writing to
+     * @param x integer with the horizontal location (+right) of block
+     * @param y integer with the vertical location (+down) of block
+     * @throws IOException if trouble writing to Writer
      *
      **/
 
@@ -470,12 +514,13 @@ public class SLBlock
 
     /**
      *
-     * Generates add_block command for MathLogic block
+     * Generates Matlab <code>add_block</code> command for MathLogic block
      *
-     * @param writer
-     * @param x
-     * @param y
-     * @throws java.io.IOException
+     * @param writer the {@link SLFileWriter} we're writing to
+     * @param x integer with the horizontal location (+right) of block
+     * @param y integer with the vertical location (+down) of block
+     * @throws IOException if unable to generate output
+     *
      **/
 
     public void writeMforLogic( SLFileWriter writer, int x, int y )
@@ -494,6 +539,10 @@ public class SLBlock
     /**
      *
      * Generates add_block command for MathRelation block
+     * @param writer the {@link SLFileWriter} we're writing to
+     * @param x integer with the horizontal location (+right) of block
+     * @param y integer with the vertical location (+down) of block
+     * @throws IOException if trouble writing to Writer
      *
      **/
 
@@ -515,6 +564,10 @@ public class SLBlock
     /**
      *
      * Generates add_block command for MathSum block
+     * @param writer the {@link SLFileWriter} we're writing to
+     * @param x integer with the horizontal location (+right) of block
+     * @param y integer with the vertical location (+down) of block
+     * @throws IOException if trouble writing to Writer
      *
      **/
 
@@ -534,6 +587,10 @@ public class SLBlock
     /**
      *
      * Generates add_block command for node (gain = 1) block
+     * @param writer the {@link SLFileWriter} we're writing to
+     * @param x integer with the horizontal location (+right) of block
+     * @param y integer with the vertical location (+down) of block
+     * @throws IOException if trouble writing to Writer
      *
      **/
 
@@ -549,6 +606,10 @@ public class SLBlock
     /**
      *
      * Generates add_block command for switch block
+     * @param writer the {@link SLFileWriter} we're writing to
+     * @param x integer with the horizontal location (+right) of block
+     * @param y integer with the vertical location (+down) of block
+     * @throws IOException if trouble writing to Writer
      *
      **/
 
@@ -563,7 +624,7 @@ public class SLBlock
 
     /**
      *
-     * <p> Creates Position parameter setting string to properly position the block with padding </p>
+     * Creates Position parameter setting string to properly position the block with padding
      *
      * @param x int containing centerpoint horizontal position relative to upper left corner of diagram
      * @param y int containing centerpoint vertical offset relative to upper left corner of diagram
@@ -587,6 +648,7 @@ public class SLBlock
      * Creates necessary m-script lines to save our data.
      *
      * @param writer <code>MatFileWriter</code> to receive data
+     * @throws IOException if trouble writing to Writer
      *
      **/
 
@@ -627,6 +689,7 @@ public class SLBlock
     /**
      *
      * Returns row number (1-based)
+     * @return int with row number (+down)
      *
      **/
 
@@ -636,6 +699,7 @@ public class SLBlock
     /**
      *
      * Returns col number (1-based)
+     * @return int with column (+right)
      *
      **/
 
@@ -645,7 +709,7 @@ public class SLBlock
     /**
      *
      * Returns the name of the encased Block
-     *
+     * @return block name as String
      **/
 
     public String getName() { return this.block.getName(); }
@@ -653,6 +717,7 @@ public class SLBlock
     /**
      *
      * Returns the width of the desired Simulink block.
+     * @return int with width of SLBlock
      *
      **/
 
@@ -662,6 +727,7 @@ public class SLBlock
     /**
      *
      * Returns the height of the desired Simulink block.
+     * @return int with the height of the SLBlock
      *
      **/
 
@@ -686,6 +752,7 @@ public class SLBlock
     /**
      *
      * Indicates status of verbose flag
+     * @return boolean <code>true</code> if verbose, otherwise <code>false</code>
      *
      **/
 
@@ -709,8 +776,8 @@ public class SLBlock
 
     /**
      *
-     * Return encapsulated {@link gov.nasa.daveml.dave.Block}
-     *
+     * Return encapsulated {@link Block}
+     * @return the {@link Block} this SLBlock encloses
      **/
 
     public Block getBlock() { return this.block; }
@@ -718,7 +785,9 @@ public class SLBlock
 
     /**
      *
-     * Calls the main findChildren routine with a starter prefix string.
+     * Calls the main findChildren routine with a starter prefix
+     * string. Recursively calls {@link #findChildren( String )} to
+     * look through all Blocks to add them to the list of {@link #children}.
      *
      **/
 
@@ -727,8 +796,12 @@ public class SLBlock
 
     /**
      *
-     * Should only run after network complete. Searches downstream
-     * signal and gets list of all immediate children.
+     * Searches downstream signal and adds immediate child blocks to
+     * the {@link #children} block list, then invokes those Blocks
+     * enclosing SLBLock {@link findChildren(String)} methods so their
+     * children's list will be filled. Should only run once after
+     * network complete.
+     * @param prefix String containing one or more whitespace characters so lists will be nested.
      *
      **/
 
@@ -781,6 +854,7 @@ public class SLBlock
      * @param minimumRow (1-based) value of our min row. 
      * @param minimumCol (1-based) value of our min column. Inports usually row 1.
      * @param prefix <code>String</code> containing offset prefix for writing diagnostics
+     * @return int with lowest row (higher value) of any child block.
      *
      **/
 
@@ -828,10 +902,13 @@ public class SLBlock
 
     /**
      *
-     * Sets position with a default indentation of single space, if not specified
+     * Sets position with a default indentation of single space, if
+     * not specified, by calling the {@link #setPosition( int, int,
+     * String )} method.
      *
      * @param minRow (1-based) value of our min row. 
      * @param minCol (1-based) value of our min column. Inports usually row 1.
+     * @return int with lowest row (higher value) of any child block.
      *
      **/
 
@@ -860,6 +937,7 @@ public class SLBlock
     /**
      *
      * Recurse through children to find farthest column.
+     * @return int with the (1-based) farthest column (+right)
      *
      **/
 
@@ -886,6 +964,7 @@ public class SLBlock
     /**
      *
      * Recurse through children to find deepest row.
+     * @return int with the (1-based) deepest row (+down)
      *
      **/
 
@@ -910,13 +989,15 @@ public class SLBlock
 
     /** 
      *
-     * <p> Recursively prints table values </p>
-     *
-     * @param table the <code>ArrayList</code> representing the values in the table
+     * Recursively prints values in an array list of double values
+     * @param writer the Writer on which to produce output
+     * @param table the <code>ArrayList</code> of doubles representing the values in the table
      * @param dims a vector of <code>int</code>s containing the
      *        dimensions of the table represented by <code>table</code>
      * @param startIndex a zero-based offset into the <code>dims</code> vector 
      *        showing which dimension to operate on (to support recursion)
+     * @return int the new starting index
+     * @throws IOException if unable to generate output
      *
      **/
 
@@ -965,7 +1046,12 @@ public class SLBlock
 
     /** 
      *
-     * <p> This method calls recursive table value printer method </p>
+     * This method calls recursive table value printer method to put
+     * the values on <code>System.out</code>
+     * @param table the <code>ArrayList</code> of doubles representing the values in the table
+     * @param dims a vector of <code>int</code>s containing the
+     *        dimensions of the table represented by <code>table</code>
+     * @throws IOException if unable to print the table
      *
      **/
 
@@ -979,11 +1065,15 @@ public class SLBlock
 
     /** 
      *
-     * <p> This method directs output to designated Writer </p>
+     * This method directs output to designated Writer. This is the
+     * starter routine that then calls the 
+     * {@link #printTable( Writer, ArrayList, int[], int)} 
+     * recursive method.
      *
      * @param writer <code>Writer</code> to receive values
      * @param table <code>ArrayList</code> of values to print
      * @param dims array of integers representing dimensions of table
+     * @throws IOException if unable to print the table
      *
      **/
 

@@ -104,7 +104,8 @@ public class FuncTable
 
     /**
      *
-     * <p> Common constructor </p>
+     * Common constructor
+     * @param m the parent Model
      *
      **/
 
@@ -134,17 +135,16 @@ public class FuncTable
 
     /**
      *
-     * <p> Constructor for FuncTable with manual ID </p>
+     * Constructor for FuncTable with manual ID 
      *
      * @param gtid The ID of this table
      * @param gtd  either griddedTableDef or griddedTable
      * @param m <code>Model</code> to which we attach
-     * @throws <code>IOException</code>
+     * @throws IOException if unable to construct table
      *
      **/
 
-    public FuncTable( String gtid, Element gtd, Model m) throws IOException
-    { 
+    public FuncTable( String gtid, Element gtd, Model m) throws IOException { 
         this( m );      // call common constructor
 
         // Save our name, if any
@@ -184,7 +184,7 @@ public class FuncTable
      *
      * @param gtd  Top-level <code>Element</code> griddedTableDef
      * @param m <code>Model</code> to which we attach
-     * @throws <code>IOException</code>
+     * @throws IOException if unable to build table
      *
      **/
 
@@ -195,28 +195,31 @@ public class FuncTable
     }
 
     /**
-     * <p> Constructor from basics, not XML Element </p>
+     * Constructor from basics, not from XML Elements
      *
-     * <p> This constructor intended for non-reused, simple tables
-     * local to a single function. We need to know what Model we're
-     * associated with so we can look up breakpoint sets by ID.</p>
+     * This constructor intended for non-reused, simple tables
+     * local to a single function. We need to know what {@link Model} we're
+     * associated with so we can look up breakpoint sets by ID.
      *
-     * <p> After calling this constructor, the BlockFuncTable needs to
+     * After calling this constructor, the BlockFuncTable needs to
      * also add any bpIDs associated with this table by calling
-     * addBPID() method and then call setDimensions(). </p>
+     * {@link #addBPID} and then call {@link #setDimensions}.
      *
-     * <p> The BlockFuncTable should also call the register()
-     * method so this table can keep track of who is using this table
-     * definition. </p>
+     * The resulting <code>BlockFuncTable</code> should also call the
+     * {@link #register} method so this table can keep track of who is
+     * using this table definition.
+     *
+     * @param tableID     a String containing the table's identifier
+     * @param tableName   a String containing the more readable name of the table
+     * @param tableValues a String containing comma-separated floating point values unraveled to a vector
+     * @param description a String with a description of the function represented by the table
+     * @param ndim        an integer with the number of dimensions in the reconstructed table
+     * @param m           our parent {@link Model}
      *
      **/
 
-    public FuncTable( String tableID, String tableName, String tableValues, String description, int ndim, Model m )
-    {
+    public FuncTable( String tableID, String tableName, String tableValues, String description, int ndim, Model m ) {
     	
-		// FIXME - This constructor may be pointless, since it doesn't include any breakpoint info
-		// so dims is empty and not many methods will work.
-
         this( m );      // call common constructor
 
         this.gtID = tableID;
@@ -253,14 +256,15 @@ public class FuncTable
 
 
     /**
-     * <p> Returns verbose status </p>
+     * Returns verbose status
+     * @return the status of the verbose flag
      **/
 
     public boolean isVerbose() { return this.verbose; }
 
 
     /**
-     * <p> Sets verbose status flag </p>
+     * Sets verbose status flag
      **/
     
     public void makeVerbose() { this.verbose = true; }
@@ -340,7 +344,8 @@ public class FuncTable
 
     /**
      * 
-     * <p> Returns an iterator for the bpID ArrayList </p>
+     * Returns an iterator for the bpID ArrayList
+     * @return an Iterator of String for elements within the bpID ArrayList
      *
      **/
 
@@ -349,10 +354,11 @@ public class FuncTable
 
     /**
      *
-     * <p> Returns breakpoint ID (<code>bpID</code>) associated with
-     *     particular port number. </p>
+     * Returns breakpoint ID (<code>bpID</code>) associated with
+     *  particular port number (1-based).
      *
      * @param portNum integer offset (1-based) port number
+     * @return a String containing the bpID associated with the given port number
      *
      **/
 
@@ -364,14 +370,20 @@ public class FuncTable
 
 
     /**
-     * <p> Returns our name </p>
+     *
+     * Returns our name
+     * @return String with the name of the table
+     *
      **/
 
     public String getName() { return this.tableName; }
 
 
     /**
-     * <p> Returns our table ID </p>
+     *
+     * Returns our table ID 
+     * @return String with our gridded table ID (gtID)
+     *
      **/
 
     public String getGTID() { return this.gtID; }
@@ -406,7 +418,9 @@ public class FuncTable
     }
 
     /**
-     * <p> Return our table size </p>
+     *
+     * Return our table size
+     * @return the number of values in the embedded table
      *
      **/
 
@@ -421,6 +435,7 @@ public class FuncTable
     /**
      *
      * Return our number of dimensions
+     * @return the number of dimensions in the table
      *
      **/
 
@@ -437,6 +452,7 @@ public class FuncTable
      * Return a specific dimension's length
      *
      * @param theAxis <code>int</code> (0-based) dimension to get length of
+     * @return the length of the table in a given dimension
      *
      **/
 
@@ -446,6 +462,7 @@ public class FuncTable
     /**
      *
      * Return the dimensions vector
+     * @return an array of integers giving the length in each dimension of our table
      *
      **/
 
@@ -455,6 +472,8 @@ public class FuncTable
     /**
      *
      * Return the function values as an ArrayList
+     * @return the function values as a single-dimensional ArrayList of Doubles
+     * TODO: figure out the sequence of dimensions
      *
      **/
 
@@ -463,9 +482,24 @@ public class FuncTable
 
     /** 
      *
-     * Recursively prints table values
+     * Recursively prints table values dimension by dimension
+     * 
+     * The order of values in the provided table array must be
      *
-     * @throws <code>IOException</code>
+     *  [1, ... 1, 1], 
+     *  [1, ... 1, 2], 
+     *  [1, ... 1, 3],
+     *   .
+     *   .
+     *   .
+     *  [n, ... q, r]
+     *
+     * @param  writer      Writer    to receive the function table values
+     * @param  table       ArrayList of type Double containing the table values
+     * @param  dims        array     of integers whose product should match the number of values in the table parameter.
+     * @param  startIndex  integer   0-based offset into the next elements to print (when called recursively for multiple dimensions)
+     * @throws IOException if unable to write the values
+     * @return             integer   representing the next starting index for a recursive application
      *
      **/
 
@@ -526,11 +560,10 @@ public class FuncTable
 
     /** 
      *
-     * <p> This method directs output to designated Writer </p>
+     * This method directs output to designated Writer
      *
      * @param writer <code>Writer</code> to receive values
-     *
-     * @throws <code>IOException</code>
+     * @throws IOException if unable to generate output
      *
      **/
 
@@ -542,7 +575,10 @@ public class FuncTable
 
 
     /**
-     * <p> Returns data point at specified coordinates </p>
+     *
+     * Returns data point at specified coordinates
+     * @param indices an array of integers (0-based) identifying which value to retrieve
+     * @return the data value at specified coordinates
      **/
 
     public double getPt( int[] indices )

@@ -117,9 +117,10 @@ public class BlockMathMinmax extends BlockMath
 
     /**
      *
-     * <p> Generates description of self </p>
+     * Generates description of self
+     * @param writer The output stream Writer
+     * @throws IOException if unable to write
      *
-     * @throws <code>IOException</code>
      **/
 
     @Override
@@ -131,8 +132,8 @@ public class BlockMathMinmax extends BlockMath
 
     /**
      *
-     * <p> Implements update() method </p>
-     * @throws DAVEException
+     * Implements update() method
+     * @throws DAVEException if update fails
      *
      **/
 

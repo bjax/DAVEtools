@@ -45,6 +45,7 @@ public abstract class OtisWriter extends FileWriter {
      * name.
      * 
      * @param varID variable ID to translate into OTIS name
+     * @return a String containing the translated varID
      */
     
     protected String translate( String varID ) {
@@ -123,7 +124,11 @@ public abstract class OtisWriter extends FileWriter {
     
     
     /**
+     *
      * Remove extra whitespace from input string
+     * @param input a String possibly with redundant whitespace
+     * @return a String with whitespace normalized
+     *
      */
     
     public String normalize( String input ) {

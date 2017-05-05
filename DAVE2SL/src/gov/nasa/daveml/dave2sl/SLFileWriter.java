@@ -32,7 +32,7 @@ import java.text.SimpleDateFormat;
  *  <li>040225 Modified for 0.4</li>
  * </ul>
  *
- * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
+ * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
  * @version 0.9
  *
  **/
@@ -125,8 +125,9 @@ public class SLFileWriter extends FileWriter
 	 *
 	 *  Constructor for SLFileWriter; derived from FileWriter
 	 *  but specialized to write Simulink-model creation scripts.
-	 *
+	 * @param theDiagram the {@link SLDiagram} to document
 	 * @param fileName Name of file to open
+	 * @throws IOException if problems when writing
 	 *
 	 */
 
@@ -143,7 +144,8 @@ public class SLFileWriter extends FileWriter
 	 * Adds newline to the end of each write.
 	 *
 	 * @param cbuf String containing text to write
-	 *
+	 * @throws IOException if problems when writing
+         *
 	 */
 
 	public void writeln( String cbuf ) throws IOException
@@ -161,6 +163,7 @@ public class SLFileWriter extends FileWriter
 	 * @param protoPath   Name of simulink block type
 	 * @param blockName   Caption of block
 	 * @param paramString Parameter values, such as position
+	 * @throws IOException if problems when writing
 	 *
 	 */
 
@@ -183,6 +186,7 @@ public class SLFileWriter extends FileWriter
 	 * @param builtInType Name of simulink block type
 	 * @param blockName   Caption of block
 	 * @param paramString Parameter values, such as position
+	 * @throws IOException if problems when writing
 	 *
 	 */
 
@@ -201,6 +205,7 @@ public class SLFileWriter extends FileWriter
 	 * @param blockName  Caption of block
 	 * @param paramName  Name of parameter to set
 	 * @param paramValue Value of parameter to set
+	 * @throws IOException if problems occurred while constructing the set_param() line
 	 *
 	 */
 
@@ -220,6 +225,7 @@ public class SLFileWriter extends FileWriter
 	 * @param toBlock     Name of simulink block destination
 	 * @param toPort      Number of destination block's port
 	 * @param name        Name of signal to label
+	 * @throws IOException if problems when writing
 	 *
 	 */
 
@@ -258,6 +264,7 @@ public class SLFileWriter extends FileWriter
 	 * vertical spacing above top line and below bottom line.
 	 *
 	 * @param modelName Name of model being implemented
+	 * @throws IOException if problems when writing
 	 *
 	 */
 
@@ -383,6 +390,7 @@ public class SLFileWriter extends FileWriter
 	 *
 	 * @param version String with version number to embed
 	 * @param modelName Name of model being implemented
+	 * @throws IOException if problems when writing
 	 *
 	 */
 

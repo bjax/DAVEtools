@@ -28,7 +28,7 @@ import java.util.ArrayList;
  *  <li>2010-05-04: Written to simplify SLSignal and SLDiagram classes</li>
  * </ul>
  *
- * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
+ * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>}
  * @since 0.9
  * @version 0.9
  *

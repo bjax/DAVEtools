@@ -31,7 +31,7 @@ package gov.nasa.daveml.dave2sl;
  *   <li>040225 Updated for version 0.5</li>
  *  </ul>
  *
- * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
+ * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
  * @version 0.9
  *
  **/
@@ -94,7 +94,8 @@ public class SLCell
 	/**
 	 *
 	 * Returns the block contained herein.
-	 *
+	 * @return the {@link SLBlock} contained by this SLCell
+         *
 	 **/
 
 	public SLBlock getBlock() { return this.myBlock; }
@@ -103,7 +104,8 @@ public class SLCell
 	/**
 	 *
 	 * Returns the row index (why is this reversed? may be bug)
-	 *
+	 * @return the row index
+         *
 	 **/
 
 	public int getRowIndex()  { return myCol.getOffset( this ); }
@@ -111,8 +113,9 @@ public class SLCell
 
 	/**
 	 *
-	 * Returns the column index (why is this reversed?)
-	 *
+	 * Returns the column index (why is this reversed? 0-based?)
+	 * @return the column index
+         *
 	 **/
 
 	public int getColIndex()  { return myRow.getOffset( this ); }
@@ -120,8 +123,9 @@ public class SLCell
 
 	/**
 	 *
-	 * Returns the row {@link SLRowColumnVector} to which cell belongs
-	 *
+	 * Returns the row to which cell belongs
+	 * @return the {@link SLRowColumnVector} representing the row to which cell belongs
+         *
 	 **/
 
 	public SLRowColumnVector getRow() { return this.myRow; }
@@ -129,8 +133,9 @@ public class SLCell
 
 	/**
 	 *
-	 * Returns the column {@link SLRowColumnVector} to which cell belongs
-	 *
+	 * Returns the column to which cell belongs
+	 * @return the {@link SLRowColumnVector} representing the column to which this cell belongs
+         *
 	 **/
 
 	public SLRowColumnVector getCol() { return this.myCol; }
@@ -139,47 +144,50 @@ public class SLCell
 	/**
 	 *
 	 * Returns the <code>SLCell</code> adjacent to us in our column
-	 *
+	 * @return the <code>SLCell</code> adjacent to us in our column
+         *
 	 **/
 
-	public SLCell previousCellInColumn() 
-	{
-		return myParent.getCell(this.getRowIndex()-1, this.getColIndex());
+        public SLCell previousCellInColumn() {
+            return myParent.getCell(this.getRowIndex()-1, this.getColIndex());
 	}
 
 
 	/**
 	 *
 	 * Returns the <code>SLCell</code> adjacent to us in our row
-	 *
-	 **/
+	 * @return the <code>SLCell</code> adjacent to us in our row
+         *
+         **/
 
 	public SLCell previousCellInRow()
 	{
-		return myParent.getCell(this.getRowIndex(), this.getColIndex()-1);
+            return myParent.getCell(this.getRowIndex(), this.getColIndex()-1);
 	}
 
 
 	/**
 	 *
 	 * Returns the <code>SLCell</code> adjacent to us in our column
+	 * @return the <code>SLCell</code> adjacent to us in our column
 	 *
 	 **/
 	public SLCell nextCellInColumn()
 	{
-		return myParent.getCell(this.getRowIndex()+1, this.getColIndex());
+            return myParent.getCell(this.getRowIndex()+1, this.getColIndex());
 	}
 
 
 	/**
 	 *
 	 * Returns the <code>SLCell</code> adjacent to us in our row
+	 * @return the <code>SLCell</code> adjacent to us in our row
 	 *
 	 **/
 
 	public SLCell nextCellInRow()
 	{
-		return myParent.getCell(this.getRowIndex(), this.getColIndex()+1);
+            return myParent.getCell(this.getRowIndex(), this.getColIndex()+1);
 	}
 
 
@@ -187,7 +195,7 @@ public class SLCell
 	 *
 	 * Assigns this SLCell to a given row.
 	 *
-	 * @param theRow the row to which we are assigned
+	 * @param theRow the row (as a {@link SLRowColumnVector}) to which we are assigned
 	 *
 	 **/
 
@@ -198,7 +206,7 @@ public class SLCell
 	 *
 	 * Assigns this SLCell to a given column.
 	 *
-	 * @param theCol the column to which we are assigned
+	 * @param theCol the column (as a {@link SLRowColumnVector}) to which we are assigned
 	 *
 	 **/
 
@@ -209,15 +217,16 @@ public class SLCell
 	 *
 	 * Returns desired minimum width, based on specified margin around
 	 * encapsulated block.
-	 *
-	 * <p>Note we use only a single pad for height, but double pad for
+	 * <p>
+	 * Note we use only a single pad for height, but double pad for
 	 * width.
+         * @return the desired minimimum width
 	 *
 	 **/
 
 	public int getMinWidth()
 	{
-		return this.myBlock.getMDLWidth() + 2*this.myParent.getPadding();
+            return this.myBlock.getMDLWidth() + 2*this.myParent.getPadding();
 	}
 
 
@@ -225,9 +234,10 @@ public class SLCell
 	 *
 	 * Returns desired minimum height, based on specified margin
 	 * around encapsulated block. 
-	 *
-	 * <p>Note we use only a single pad for height, but double pad for
+	 * <p>
+	 * Note we use only a single pad for height, but double pad for
 	 * width.
+         * @return the desired minimimum height
 	 *
 	 **/
 
@@ -240,7 +250,8 @@ public class SLCell
 	/**
 	 *
 	 * Returns our column's width.
-	 *
+	 * @return our column's width
+         *
 	 **/
 
 	public int getWidth()  { return myCol.getSize(); }
@@ -249,7 +260,8 @@ public class SLCell
 	/**
 	 *
 	 * Returns our row's height.
-	 *
+	 * @return our row's height.
+         *
 	 **/
 
 	public int getHeight() { return myRow.getSize(); }
@@ -259,7 +271,10 @@ public class SLCell
 	 *
 	 * Returns distance from input or output port to edge of cell,
 	 * based on size of block and cell itself.
-	 *
+	 * @return estimate of the distance, in pixels, from the top
+	 * or bottom edge of a cell to the input or output port 'nib'
+	 * that will be generated by Simulink
+         *
 	 **/
 
 	public int distToEdge()

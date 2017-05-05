@@ -35,7 +35,7 @@ import java.util.Iterator;
  * facility-neutral manner.
  * <p>
  * More information about DAVE-ML is available at the project website:
- * {@link <a href="http://daveml.org">  http://daveml.org</a>} 
+ * <a href="http://daveml.org">http://daveml.org</a>
  *<p> 
  * Modification history: 
  * <ul>
@@ -44,7 +44,7 @@ import java.util.Iterator;
  *  <li>2011-01-07: Added additional information when aborting.</li>
  * </ul>
  *
- * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
+ * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
  * @version 0.9
  *
  **/
@@ -91,8 +91,10 @@ public class DAVE2SL extends DAVE {
     /**
      *
      * Command-line argument-parsing constructor
+     * @param args a String array with command line arguments
      *
      **/
+    
     public DAVE2SL(String[] args) {
         this();		// calls non-parsing DAVE constructor which
         // initializes DAVE flags and creates Model
@@ -109,7 +111,7 @@ public class DAVE2SL extends DAVE {
     /**
      *
      * Returns the "makeLib" flag
-     *
+     * @return <code>true</code> if successful, <code>false</code> otherwise
      **/
     public boolean makeLib() {
         return this.makeLib;
@@ -203,7 +205,7 @@ public class DAVE2SL extends DAVE {
     /**
      *
      * Calls each block in DAVE model to generate appropriate m-script
-     *
+     * @throws IOException if a problem arises
      **/
     public void createModel() throws IOException {
         // create Diagram (rough layout for Simulink model)
@@ -292,7 +294,9 @@ public class DAVE2SL extends DAVE {
      *
      * Main routine for DAVE-ML-to-Simulink utility
      *
+     * @param args a String array with command line options
      **/
+    
     public static void main(String args[]) {
 
         boolean success = false;

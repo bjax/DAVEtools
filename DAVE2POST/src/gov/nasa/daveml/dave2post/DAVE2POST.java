@@ -37,14 +37,14 @@ import java.util.Iterator;
  * facility-neutral manner.
  * <p>
  * More information about DAVE-ML is available at the project website:
- * {@link <a href="http://daveml.org">  http://daveml.org</a>} 
+ * <a href="http://daveml.org">http://daveml.org</a>
  *<p> 
  * Modification history: 
  * <ul>
  *  <li>2011-12-19: Written EBJ</li>
  * </ul>
  *
- * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
+ * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
  * @since 0.9.4
  *
  **/
@@ -86,6 +86,7 @@ public class DAVE2POST extends DAVE {
     /**
      *
      * Command-line argument-parsing constructor
+     * @param args a String array containing command line options
      *
      **/
     public DAVE2POST(String[] args) {
@@ -193,7 +194,8 @@ public class DAVE2POST extends DAVE {
     /**
      *
      * Calls each block in DAVE model to generate appropriate m-script
-     *
+     * @throws IOException if unable to create the model
+     * 
      **/
     public void createModel() throws IOException {
 //        // create Diagram (rough layout for Simulink model)
@@ -294,6 +296,7 @@ public class DAVE2POST extends DAVE {
     /**
      *
      * Main routine for DAVE-ML-to-POST utility
+     * @param args a String array containing command line options
      *
      **/
     public static void main(String args[]) {

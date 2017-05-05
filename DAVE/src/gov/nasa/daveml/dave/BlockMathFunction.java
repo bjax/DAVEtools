@@ -62,7 +62,7 @@ public class BlockMathFunction extends BlockMath
 
     /**
      *
-     * <p> Constructor for Function Block <p>
+     * Constructor for Function Block
      *
      **/
 
@@ -90,12 +90,12 @@ public class BlockMathFunction extends BlockMath
 
     /**
      *
-     * <p> Constructor for Function Block <p>
+     * Constructor for Function Block
      *
      * @param applyElement Reference to <code>org.jdom.Element</code>
      * containing "apply" element
-     * @param m         The parent <code>Model</code>
-     * @throws DAVEException 
+     * @param m is the parent Model
+     * @throws DAVEException if unable to build
      *
      **/
 
@@ -186,8 +186,8 @@ public class BlockMathFunction extends BlockMath
 
     /**
      *
-     * <p> Update our output value </p>
-     * @throws DAVEException
+     * Update our output value
+     * @throws DAVEException if output fails
      *
      **/
 

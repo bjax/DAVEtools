@@ -15,11 +15,12 @@
  * Simulink&reg; model from a DAVE-ML file.</p>
  *
  * <p>
- *    To use, run <br/>
+ *    To use, run
+ * <p>
  *     <code>java -jar DAVE2SL.jar [-vcdelw] <em>inputFile</em></code>
- * </p>
  *
- * @author Bruce Jackson, Adaptive Aerospace Group, Inc.
+ * @author Bruce Jackson, Adaptive Aerospace Group, Inc. 
+ *      &lt;<a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>&gt;
  *
  * @since 0.9.8
  */

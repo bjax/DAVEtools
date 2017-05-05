@@ -33,7 +33,7 @@ import org.jdom.Namespace;
  * A class to bundle input and output vectors for checkcases found in DAVE-ML files
  * 
  * @since DAVE_tools 0.4
- * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
+ * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
  * <p> 040202: Written, EBJ
  *
  **/
@@ -62,8 +62,8 @@ public class StaticShot
  
     /** 
      *
-     * Constructor to built from JDOM Elements
-     *
+     * Constructor to build StaticShot from JDOM Elements
+     * @param staticShot A top-level JDOM Element containing the XML for a static shot
      **/
 
     @SuppressWarnings("unchecked")
@@ -151,7 +151,7 @@ public class StaticShot
     /**
      *
      * Returns name of scenario associated with this shot
-     *
+     * @return String with the name of the checkcase scenario
      **/
 
     public String getName() { return this.scenario; }
@@ -160,6 +160,8 @@ public class StaticShot
     /**
      *
      * Returns input vector information
+     * @return VectorInfoArrayList containing the checkcase input
+     * variables and values
      *
      **/
 
@@ -169,6 +171,7 @@ public class StaticShot
     /**
      *
      * Returns output vector information
+     * @return VectorInfoArrayList with output vector information
      *
      **/
 
@@ -240,7 +243,15 @@ public class StaticShot
 
     
     /**
-     * Wrapper which directs error messages to standard out
+     *
+     * Wrapper which directs error messages to standard out by calling
+     * {@link #checkOutputs( VectorInfoArrayList, PrintStream ) }
+     * @param outVec an {@link VectorInfoArrayList} with output information
+     * @return boolean <code>true</code> if all outputs are within
+     *         tolerance, <code>false</code> otherwise
+     * @throws DAVEException if something goes wrong
+     * @see #checkOutputs( VectorInfoArrayList, PrintStream )
+     *
      */
     
     public boolean checkOutputs( VectorInfoArrayList outVec )
@@ -254,9 +265,11 @@ public class StaticShot
      * Compares the supplied outputs to see if within tolerances
      *
      * @param outVec output vector from model
-     *
+     * @param out PrintStream to which output is directed
+     * @return boolean <code>true</code> if outputs are all within
+     *         tolerance, otherwise <code>false</code>
      * @throws DAVEException if vector length or names don't match
-     *
+     * @see #checkOutputs( VectorInfoArrayList )
      **/
 
     public boolean checkOutputs( VectorInfoArrayList outVec, PrintStream out )

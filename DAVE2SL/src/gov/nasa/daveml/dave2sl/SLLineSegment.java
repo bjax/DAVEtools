@@ -37,7 +37,7 @@ import java.io.IOException;
  *   <li>040227 Updated for version 0.5</li>
  *  </ul>
  *
- * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
+ * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
  * @version 0.9
  *
  **/
@@ -209,10 +209,11 @@ public class SLLineSegment
 
 	/**
 	 *
-	 * <p> Returns the vertical or horizontal distance of a given line
-	 *    segment.  If the vertical segment runs downward, returned
-	 *    length is positive. Leftward running horizontal paths are not
-	 *    supported. </p>
+	 * Returns the vertical or horizontal distance of a given line
+	 * segment.  If the vertical segment runs downward, returned
+	 * length is positive. Leftward running horizontal paths are
+	 * not supported.
+         * @return the length of this SLLineSegment.
 	 *
 	 **/
 
@@ -438,11 +439,12 @@ public class SLLineSegment
 
 	/**
 	 *
-	 * <p> Generate a Simulink-model-building description of our branches and paths (recursive) </p>
+	 * Generate a Simulink-model-building description of our branches and paths (recursive)
 	 *
 	 * @param writer SLFileWriter to send description
 	 * @param indent String containing the offset to use for indentation
 	 * @param ptsEntered boolean indicating if semicolon needed to start Points parameter
+	 * @throws IOException if problems when writing
 	 *
 	 **/
 

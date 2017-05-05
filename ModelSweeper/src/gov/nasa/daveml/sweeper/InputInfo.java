@@ -17,9 +17,11 @@ package gov.nasa.daveml.sweeper;
 import gov.nasa.daveml.dave.VectorInfo;
 
 /**
+ *
  * Wrapper class to add nominal, max and min values to model inputs.
- * @author Bruce Jackson, AAG <mailto:bjackson@adaptiveaero.com>
- */
+ * @author Bruce Jackson, AAG <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
+ *
+ **/
 public class InputInfo {
 
     /**

@@ -25,51 +25,49 @@ public class TreeFileWriter extends FileWriter
 {
     /**
      *
-     * <p> Constructor for TreeFileWriter; derived from FileWriter
+     *  Constructor for TreeFileWriter; derived from FileWriter
      *  but specialized to write Simulink .mdl files 
      *
      * @param fileName Name of file to open
-     * @throws IOException
+     * @throws IOException if unable to write to output
      *
      */
 
-    public TreeFileWriter(String fileName) throws IOException
-    {
+    public TreeFileWriter(String fileName) throws IOException {
         super(fileName);
     }
 
     /**
      *
-     * <p> Addeds newline to the end of each write </p>
+     * Adds a newline to the end of each write
      *
      * @param cbuf String containing text to write
-     *
+     * @throws IOException if unable to generate newline
      */
 
-    public void writeln( String cbuf ) throws IOException
-    {
+    public void writeln( String cbuf ) throws IOException {
         super.write( cbuf + "\n" );
     }
 
     /**
      *
-     * <p> Writes newline </p>
+     * Generates a newline on out Writer
+     * @throws IOException if unable to write the newline
      *
      */
 
-    public void writeln() throws IOException
-    {
+    public void writeln() throws IOException {
         super.write( "\n" );
     }
 
     /**
      *
-     * <p> This method writes out contents of DAVE network </p>
-     *
+     * This method writes out contents of DAVE network
+     * @param m our parent {@link Model}
+     * @throws IOException if unable to generate description on output
      **/
 
-    public void describe( Model m ) throws IOException
-    {
+    public void describe( Model m ) throws IOException {
         this.writeln("Contents of model:");
         this.writeln();
 

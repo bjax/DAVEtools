@@ -68,7 +68,7 @@ public class ParseText
     /**
      * Returns next floating point number in input string
      * @return next floating point value in input string
-     * @throws IOException
+     * @throws IOException if unable to parse
      */
     public double next()
         throws IOException
@@ -128,8 +128,11 @@ public class ParseText
     
     /**
      *
-     * <p> Converts string of comma-, space- or tab-separated
-     * floating-point values to ArrayList of Doubles. </p>
+     * Converts string of comma-, space- or tab-separated
+     * floating-point values to ArrayList of Doubles.
+     * @return ArrayList of type Double from parsing of the input text
+     * @throws IOException if unable to parse a string as a Double
+     * @see #toList(String)
      *
      **/
 
@@ -150,9 +153,12 @@ public class ParseText
 
     /**
      *
-     * <p> Static version of routine toList </p>
+     * Static version of routine toList
      *
      * @param values String containing comma- or whitespace-separated values.
+     * @return ArrayList of type Double from parsing of the input text
+     * @throws IOException if unable to parse a string as a Double
+     * @see #toList()
      *
      **/
 
@@ -164,13 +170,19 @@ public class ParseText
 
     /** 
      *
-     * <p> This class defines a main() method to test the ParseText logic. To
-     *  use, run : java ParseText\$Test
+     * This class defines a main() method to test the ParseText logic. To
+     * use, run : java ParseText\$Test
      *
      **/
 
     public static class Test {
-        /** Entry point for testing purposes **/
+
+        /** 
+         * Entry point for testing purposes
+         * @param args An array of Strings with command line options
+         * @throws IOException if something goes wrong
+         **/
+        
         public static void main(String[] args)
             throws IOException
         {

@@ -82,9 +82,9 @@ import java.util.Iterator;
 
     /**
      * 
-     * <p>
-     * This method locates a <code>Signal</code> from a varID
-     * </p>
+     * This method locates a {@link Signal} from a varID
+     * @param ID String with the varID of interest
+     * @return Signal or null if not found
      * 
      **/
 
@@ -100,16 +100,16 @@ import java.util.Iterator;
     }
 
     /**
-     * 
-     * <p>
+     *
      * This method returns a new <code>SignalArrayList</code> containing just
      * the <code>Signal</code>s that are inputs to function blocks. If these do
      * not have a BlockBP as their source, they are "dangling," meaning they
      * need a breakpoint block inserted.
-     * </p>
+     * <p>
+     * Deprecated; no longer used for DAVE-ML v 1.5 syntax and higher.
      * 
-     * @deprecated No longer used due to restructuring to support DAVE-ML v 1.5
-     *             (and later) files.
+     * @return {@link SignalArrayList} containing any dangling function inputs
+     * @deprecated 
      * 
      **/
 

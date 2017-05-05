@@ -49,14 +49,14 @@ import org.jdom.Namespace;
     &lt;/piecewise&gt;
 
 </pre>
- * 
+ * <p>
  * which emits input signal <code>A</code> if <code>A_case</code> is true
  * (non-zero); otherwise it emits <code>B</code>.
  * </p>
  * <p>
  * To implement a switch with more than two positions, such as the three-position
  * switch described in this MathML snippet:
- *
+ * </p>
 <pre>
 
     &lt;piecewise&gt;
@@ -77,10 +77,12 @@ import org.jdom.Namespace;
  *
  * then the problem has five inputs: <code>A</code>, <code>A_case</code>, 
  * <code>B</code>, <code>B_case</code>, and <code>C</code>. 
- * 
+ *
+ * <p>
  * The output should be the first input pair whose case is true (non-zero); if no 
- * input is true, the otherwise input (</code>C</code>) should be chosen.
+ * input is true, the otherwise input (<code>C</code>) should be chosen.
  * </p>
+ *
  * <p>
  * This is implemented in our {@link Model} by cascading BlockMathSwitches, one per input pair;
  * the final downstream block deals with <code>A</code> and <code>A_case</code>;
@@ -88,6 +90,7 @@ import org.jdom.Namespace;
  * <code>B</code> and <code>B_case</code>, with <code>C</code> as 
  * its otherwise block.
  * </p>
+ *
  * <p>
  * The multiple case switch is implemented this way as it is the 'lowest common
  * denominator' way of several potential software implementations 
@@ -255,10 +258,12 @@ public class BlockMathSwitch extends BlockMath {
 
     /**
      *
-     * <p> Generates description of self </p>
+     * Generates description of self
+     * @param writer the Writer to receive our text description
+     * @throws IOException if unable to generate self-description on output Writer
      *
-     * @throws <code>IOException</code>
      **/
+    
     @Override
     public void describeSelf(Writer writer) throws IOException {
         super.describeSelf(writer);
@@ -267,9 +272,10 @@ public class BlockMathSwitch extends BlockMath {
 
     /**
      *
-     * <p> Implements update() method </p>
-     * <p> Passes input 0 if input 1 > 0.; otherwise passes input 2 to output </p>
-     * @throws DAVEException
+     * Implements update() method
+     * Passes input 0 if input 1 &gt; 0.; otherwise passes input 2 to output
+     *
+     * @throws DAVEException if unable to perform update
      *
      **/
     @Override

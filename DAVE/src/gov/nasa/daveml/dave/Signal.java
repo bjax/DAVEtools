@@ -41,7 +41,7 @@ import org.jdom.Namespace;
  *  <li>031211: Written EBJ</li>
  * </ul>
  *
- * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
+ * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
  * @version 0.9
  *
  **/
@@ -285,8 +285,8 @@ public class Signal
      * Based on the type of <code>Element</code> provided, different actions occur. 
      * 
      * A variableDef element is parsed for information about the signal; if a 
-     * sequence of child <math><calculation><apply> elements are found, the first
-     * <apply> element is handled (an upstream block of proper type is created, and 
+     * sequence of child &lt;math&gt;&lt;calculation&gt;&lt;apply&gt; elements are found, the first
+     * &lt;apply&gt; element is handled (an upstream block of proper type is created, and 
      * our signal is hooked onto it).
      * 
      * An apply element does the same (creates an upstream block and connects us to
@@ -385,7 +385,10 @@ public class Signal
     }
     
     /**
+     *
      * Converts String to valid XML ID by replacing spaces with underscores
+     * @param input String with possible whitespace (invalid XML id}
+     * @return String with whitespace replaced with underscores
      */
     
     protected static String toValidId( String input ) {
@@ -488,7 +491,7 @@ public class Signal
     /**
      *
      * Indicate if upstream block has new value.
-     *
+     * @return <code>true</code> if the upstream source block is up-to-date, else <code>false</code>a
      * @throws DAVEException if missing source block
      *
      **/
@@ -505,7 +508,7 @@ public class Signal
     /**
      *
      * Returns output value of source block.
-     *
+     * @return double output value of block
      * @throws DAVEException if missing source block
      *
      **/
@@ -540,7 +543,7 @@ public class Signal
     /**
      *
      * Returns verbose flag
-     *
+     * @return <code>true</code> if we're to be chatty; otherwise <code>false</code>
      **/
 
     public boolean isVerbose() { return this.verboseFlag; }
@@ -685,6 +688,8 @@ public class Signal
      *  This flag should be set for all 'derived' signals; i.e. those
      *  not corresponding to varDefs in the DAVE-ML source file
      *
+     * @return <code>true</code> if this Signal was automatically
+     * generated, else <code>false</code>
      **/
 
     public boolean isDerived() { return this.derived; }
@@ -705,6 +710,8 @@ public class Signal
     
     /**
      * Returns true if this signal has been encoded already
+     * @return <code>true</code> if this Signal has already been
+     * encoded; otherwise <code>false</code>
      */
     
     public boolean isDefined() { return this.defined; }
@@ -726,6 +733,7 @@ public class Signal
     
     /**
      * Returns true if the signal is marked for some reason
+     * @return <code>true</code> if signal is marked, otherwise <code>false</code>
      * @since 0.9.4
      */
     
@@ -867,6 +875,7 @@ public class Signal
      *
      * <p> Returns output block array list </p>.
      * <em> Alias for getDestBlocks() </em>
+     * @return {@link BlockArrayList} of destination blocks
      * @deprecated since 0.9.6
      *
      **/
@@ -875,8 +884,9 @@ public class Signal
 
     /**
      *
-     * <p> Returns <code>ArrayList</code> with the port numbers of the associated
-     *     output blocks </p>
+     * Returns <code>ArrayList</code> with the port numbers of the associated
+     * output blocks
+     * @return ArrayList with the port numbers of the associated output blocks
      *
      **/
 
@@ -904,7 +914,8 @@ public class Signal
 
     /**
      *
-     * <p> Returns signal name as <code>String</code> </p>
+     * Returns signal name as <code>String</code>
+     * @return String with the nane of this Signal
      *
      **/
 
@@ -912,7 +923,8 @@ public class Signal
 
     /**
      *
-     * <p> Returns variable name as <code>String</code> </p>
+     * Returns variable ID as <code>String</code>
+     * @return String with the varID of this Signal
      *
      **/
 
@@ -920,7 +932,8 @@ public class Signal
 
     /**
      *
-     * <p> Returns units as <code>String</code> </p>
+     * Returns units as <code>String</code>
+     * @return String with the units-of-measure encoded per ANSI/AIAA-S-119-2011
      *
      **/
 
@@ -936,8 +949,9 @@ public class Signal
     
     /**
      *
-     * <p> Returns source block </p>
+     * Returns source block
      * <em> Alias for getSourceBlock </em>
+     * @return {@link Block} that is our upstream Block
      * @deprecated
      *
      **/
@@ -947,7 +961,9 @@ public class Signal
 
     /**
      *
-     * <p> Returns source (1-based) port number </p>
+     * Returns source (1-based) port number
+     * @return int with the 1-based output port number of our upstream
+     * Block
      *
      **/
     
@@ -956,7 +972,9 @@ public class Signal
 
     /**
      *
-     * <p> Returns true if we have are connected to an upstream block </p>
+     * Returns true if we have are connected to an upstream block
+     * @return <code>true</code> if we are connected to a source
+     * Block, else <code>false</code>
      *
      **/
 
@@ -965,7 +983,9 @@ public class Signal
 
     /**
      *
-     * <p> Returns true if we have are connected to any downstream block </p>
+     * Returns true if we have are connected to any downstream block
+     * @return <code>true</code> if we are connected to at least one
+     * downstream Block, else <code>false</code>
      *
      **/
 
@@ -991,7 +1011,9 @@ public class Signal
     
     /**
      *
-     * <p> Returns true if IC value specified for this variable </p>
+     * Returns true if IC value specified for this variable
+     * @return boolean <code>true</code> if an initial value was
+     * specified for this Signal, otherwise <code>false</code>. 
      *
      **/
 
@@ -1020,7 +1042,9 @@ public class Signal
     
     /**
      *
-     * <p> Indicates if we were declared an input signal </p>
+     * Indicates if we were declared an input signal
+     * @return boolean <code>true</code> if we are an input signal,
+     * otherwise <code>false</code>.
      *
      */
 
@@ -1028,7 +1052,10 @@ public class Signal
 
     /**
      *
-     * <p> Indicates if we were declared a simulation control parameter </p>
+     * Indicates if we were declared a simulation control parameter
+     * @return boolean <code>true</code> if we are flagged as a
+     * 'simulation control parameter' per ANSI/AIAA-S-119-2011,
+     * otherwise <code>false</code>
      *
      */
 
@@ -1036,7 +1063,10 @@ public class Signal
 
     /**
      *
-     * <p> Indicates if we were declared a disturbance input </p>
+     * Indicates if we were declared a disturbance input
+     * @return boolean <code>true</code> if we were declared a
+     * 'disturbance input' per ANSI/AIAA-S-119-2011, otherwise
+     * <code>false</code>.
      *
      */
 
@@ -1044,14 +1074,21 @@ public class Signal
 
     /**
      *
-     * <p> Indicates if we were declared a state variable </p>
+     * Indicates if we were declared a state variable
+     * @return boolean <code>true</code> if we were declared a
+     * 'state variable' per ANSI/AIAA-S-119-2011, otherwise
+     * <code>false</code>.
+     *
      */
 
     public boolean isState() { return this.isState; }
 
     /**
      *
-     * <p> Indicates if we were declared a state derivative </p>
+     * Indicates if we were declared a state derivative
+     * @return boolean <code>true</code> if we were declared a
+     * 'state derivative' per ANSI/AIAA-S-119-2011, otherwise
+     * <code>false</code>.
      *
      */
 
@@ -1059,7 +1096,9 @@ public class Signal
 
     /**
      *
-     * <p> Indicates if we need an output block </p>
+     * Indicates if we need a downstream output block 
+     * @return boolean <code>true</code> if we were declared an output
+     * Signal, otherwise <code>false</code>.
      *
      **/
 
@@ -1067,7 +1106,10 @@ public class Signal
 
     /**
      *
-     * <p> Indicates if we are one of the predefined AIAA variables
+     * Indicates if we are one of the predefined AIAA variables
+     * @return boolean <code>true</code> if our variable name conforms
+     * to one of the standard variables defined in
+     * ANSI/AIAA-S-119-2011, otherwise <code>false</code>.
      *
      */
 
@@ -1075,7 +1117,10 @@ public class Signal
     
     
     /**
-     *  Set the description directly
+     *
+     * Set the description directly
+     * @param newDescription String containing our description
+     *
      */
     
     public void setDescription( String newDescription ) {
@@ -1083,13 +1128,20 @@ public class Signal
     }
     
     /**
-     *  Get the description field
+     *
+     * Get the description field
+     * @return String containing out description
+     *
      */
     
     public String getDescription() { return this.description; }
     
     /**
-     * <p> Generate code for signal </p>
+     *
+     * Generate code for signal
+     * @return {@link CodeAndVarNames} a snipped of logic to be turned
+     * into source code based on the code dialect selected.
+     *
      */
     
     public CodeAndVarNames genCode( ) {
@@ -1113,10 +1165,9 @@ public class Signal
 
     /**
      *
-     * <p> Generates brief description on output stream </p>
-     *
+     * Generates brief description on output stream
      * @param writer FileWriter to use
-     * @throws <code>IOException</code>
+     * @throws IOException if unable to write description
      *
      **/
     

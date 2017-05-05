@@ -116,9 +116,10 @@ public class BlockMathMinus extends BlockMath
     
     /**
      *
-     * <p> Generates description of self </p>
+     * Generates description of self
+     * @param writer The output Writer to receive the description
+     * @throws IOException if unable to generate description
      *
-     * @throws <code>IOException</code>
      **/
 
     @Override
@@ -130,8 +131,8 @@ public class BlockMathMinus extends BlockMath
 
     /**
      *
-     * <p> Implements update() method </p>
-     * @throws DAVEException
+     * Implements update() method
+     * @throws DAVEException if update fails
      *
      **/
 

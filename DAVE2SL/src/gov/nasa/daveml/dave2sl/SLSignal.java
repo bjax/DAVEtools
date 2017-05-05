@@ -43,7 +43,7 @@ import java.util.Iterator;
  *   <li>060901 Rewritten to use 'add_block', 'add_line', etc instead of raw MDL.
  *  </ul>
  *
- * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
+ * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
  * @version 0.9
  *
  **/
@@ -268,6 +268,7 @@ public class SLSignal extends Signal
          * one for _k (index), and one for _f (fraction) to each destination.
 	 *
 	 * @param writer Instance of the SLFileWriter class
+	 * @throws IOException if problems when writing
 	 *
 	 */
 

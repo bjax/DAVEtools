@@ -98,6 +98,7 @@ public class BlockMathProduct extends BlockMath
     /**
      *
      * Returns our block type
+     * @return the block type as a String
      *
      **/
 
@@ -143,9 +144,10 @@ public class BlockMathProduct extends BlockMath
 
     /**
      *
-     * <p> Generates description of self </p>
+     * Generates description of self
+     * @param writer the Writer to receive the description
+     * @throws IOException if unable to write description
      *
-     * @throws <code>IOException</code>
      **/
 
     @Override
@@ -157,8 +159,8 @@ public class BlockMathProduct extends BlockMath
 
     /**
      *
-     * <p> Implements update() method </p>
-     * @throws DAVEException
+     * Implements update() method
+     * @throws DAVEException if update fails
      *
      **/
 

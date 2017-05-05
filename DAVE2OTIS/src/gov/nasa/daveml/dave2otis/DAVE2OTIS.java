@@ -37,14 +37,14 @@ import java.util.logging.Logger;
  * facility-neutral manner.
  * <p>
  * More information about DAVE-ML is available at the project website:
- * {@link <a href="http://daveml.org">  http://daveml.org</a>} 
+ * <a href="http://daveml.org">http://daveml.org</a>} 
  *<p> 
  * Modification history: 
  * <ul>
  *  <li>2012-01-18: Written EBJ</li>
  * </ul>
  *
- * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
+ * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
  * @since 0.9.4
  *
  **/
@@ -86,6 +86,7 @@ public class DAVE2OTIS extends DAVE {
     /**
      *
      * Command-line argument-parsing constructor
+     * @param args a String array with command-line arguments
      *
      **/
     public DAVE2OTIS(String[] args) {
@@ -181,8 +182,10 @@ public class DAVE2OTIS extends DAVE {
     /**
      *
      * Calls each block in DAVE model to generate appropriate m-script
+     * @throws IOException if problems when writing
      *
      **/
+    
     public void createModel() throws IOException {
         Model theModel = this.getModel();
 
@@ -291,7 +294,7 @@ public class DAVE2OTIS extends DAVE {
     /**
      *
      * Main routine for DAVE-ML-to-OTIS utility
-     *
+     * @param args a String array with command line options
      **/
     public static void main(String args[]) {
 

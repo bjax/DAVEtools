@@ -43,7 +43,10 @@ public class InputTableJFrame extends javax.swing.JFrame {
     }
 
     /**
+     *
      * Get the embedded table
+     * @return the embedded {@link javax.swing.JTable}
+     *
      */
 
     public javax.swing.JTable getTable() {

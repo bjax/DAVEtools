@@ -42,7 +42,7 @@ import java.util.Iterator;
  *  <li>040520: Added resetOuputsWhenDisabled, makeLib and makeEnabledSubSys flags EBJ</li>
  * </ul>
  *
- * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
+ * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
  * @version 0.9
  *
  **/
@@ -387,6 +387,7 @@ public class SLDiagram
     /**
      * 
      * Returns the padding for cells in diagram.
+     * @return the padding for cells in diagram
      *
      **/
 
@@ -396,6 +397,7 @@ public class SLDiagram
     /**
      *
      * Returns the number of inputs to the diagram
+     * @return the number of inputs to the diagram
      *
      **/
 
@@ -405,6 +407,7 @@ public class SLDiagram
     /**
      *
      * Returns the number of outputs from the diagram
+     * @return the number of outputs from the diagram
      *
      **/
 
@@ -446,6 +449,7 @@ public class SLDiagram
     /**
      *
      * Indicates status of verbose flag
+     * @return <code>true</code> if verbose flag is set, otherwise <code>false</code>
      *
      **/
 
@@ -519,6 +523,7 @@ public class SLDiagram
      * Returns SLCell associated with specified Block.
      *
      * @param b <code>Block</code> whose parent SLCell is sought
+     * @return the {@link SLCell} containing the specified {@link SLBlock}
      *
      **/
 
@@ -534,7 +539,7 @@ public class SLDiagram
     /**
      *
      * Returns SLRowColumnVector object representing the specified row
-     *
+     * @return the {@link SLRowColumnVector} that represents the specified row
      * @param index 0-based offset or index of desired row
      *
      **/
@@ -547,7 +552,7 @@ public class SLDiagram
     /**
      *
      * Returns SLRowColumnVector object representing the specified column
-     *
+     * @return the {@link SLRowColumnVector} that represents the specified column
      * @param index 0-based offset or index of desired column
      *
      **/
@@ -587,6 +592,7 @@ public class SLDiagram
     /**
      *
      * Returns the inputNames vector
+     * @return an <code>ArrayList</code> of <code>String</code>s containing names of inputs to the diagram
      *
      **/
 
@@ -624,6 +630,7 @@ public class SLDiagram
     /**
      *
      * Returns the outputNames vector
+     * @return an <code>ArrayList</code> of <code>String</code>s with output names
      *
      **/
 
@@ -633,6 +640,7 @@ public class SLDiagram
     /**
      *
      * Create text representation of diagram
+     * @param printer the PrintStream on which to draw ASCII graphic layout
      *
      **/
 
@@ -710,7 +718,7 @@ public class SLDiagram
      * @param writer SLFileWriter to output model diagram build script
      * @param mWriter MatFileWriter to output data
      *
-     * @throws java.io.IOException
+     * @throws IOException if unable to create the model.
      *
      **/
 

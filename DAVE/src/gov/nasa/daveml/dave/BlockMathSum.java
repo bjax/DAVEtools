@@ -40,10 +40,10 @@ public class BlockMathSum extends BlockMath
      *
      * <p> Constructor for Sum Block <p>
      *
-     * @param applyElement Reference to <code>org.jdom.Element</code>
+     * @param applyElement Reference to org.jdom.Element
      * containing "apply" element
-     * @param m         The parent <code>Model</code>
-     * @throws DAVEException
+     * @param m Our parent Model
+     * @throws DAVEException if constructor fails
      *
      **/
 
@@ -107,9 +107,9 @@ public class BlockMathSum extends BlockMath
         
     /**
      *
-     * <p> Generates description of self </p>
-     *
-     * @throws <code>IOException</code>
+     * Generates description of self
+     * @param writer the Writer to receive our self-description
+     * @throws IOException if unable to generate description on output Writer
      **/
 
     @Override
@@ -121,8 +121,8 @@ public class BlockMathSum extends BlockMath
 
     /**
      *
-     * <p> Implements update() method </p>
-     * @throws DAVEException
+     * Implements update() method
+     * @throws DAVEException if update fails
      *
      **/
 

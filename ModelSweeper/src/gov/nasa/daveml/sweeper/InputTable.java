@@ -67,6 +67,7 @@ public class InputTable extends javax.swing.table.AbstractTableModel{
      * in the provided DAVE-ML file
      *
      * @param d the input DAVE-ML file (after parsing)
+     * @param mainClass the user interface object
      */
     public InputTable(DAVE d, ModelSweeperUI mainClass) {
 

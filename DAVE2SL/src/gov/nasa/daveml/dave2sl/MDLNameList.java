@@ -34,7 +34,7 @@ import gov.nasa.daveml.dave.NameList;
  *   <li>2010-05-04 Renamed to NameList from NameSpace for clarity</li>
  *  </ul>
  *
- * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
+ * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
  * @version 0.9
  *
  **/

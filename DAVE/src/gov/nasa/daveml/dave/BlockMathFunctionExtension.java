@@ -159,7 +159,7 @@ public class BlockMathFunctionExtension extends BlockMathFunction
     /**
      * Change extended function type (calls superclass setFunction if not "atan2")
      * @param functionType String with name of function
-     * @throws gov.nasa.daveml.dave.DAVEException
+     * @throws DAVEException if extended function fails
      * @since 0.9
      */
     @Override
@@ -172,10 +172,10 @@ public class BlockMathFunctionExtension extends BlockMathFunction
 
     /**
      *
-     * <p> Generates description of self </p>
+     * Generates description of self on writer
      *
      * @param writer FileWriter on which to generate description
-     * @throws IOException
+     * @throws IOException if unable to write to writer
      * @since version 0.8 / rev 193
      **/
 
@@ -188,8 +188,8 @@ public class BlockMathFunctionExtension extends BlockMathFunction
 
     /**
      *
-     * <p> Update our output value </p>
-     * @throws DAVEException
+     * Update our output value
+     * @throws DAVEException if update fails
      * @since version 0.8 / rev 193
      *
      **/

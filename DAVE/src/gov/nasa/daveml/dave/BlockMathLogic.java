@@ -202,9 +202,10 @@ public class BlockMathLogic extends BlockMath
 
     /**
      *
-     * <p> Generates description of self </p>
+     * Generates description of self
+     * @param writer the Writer to receive the description
+     * @throws IOException if unable to output to writer
      *
-     * @throws IOException
      **/
 
     @Override
@@ -217,7 +218,7 @@ public class BlockMathLogic extends BlockMath
     /**
      * Sets logic operator from String
      * @param logicString String with desired operator
-     * @throws DAVEException 
+     * @throws DAVEException if logic string is unrecognized
      */
     
     public void setLogicOp( String logicString ) throws DAVEException {
@@ -251,8 +252,8 @@ public class BlockMathLogic extends BlockMath
 
     /**
      *
-     * <p> Implements update() method </p>
-     * @throws DAVEException
+     * Implements update() method
+     * @throws DAVEException if update fails
      *
      **/
 

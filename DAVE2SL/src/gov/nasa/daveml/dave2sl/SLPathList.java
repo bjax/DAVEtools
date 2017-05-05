@@ -33,7 +33,7 @@ import java.util.Iterator;
  *   <li>2010-05-04 Modified to use SLBranches instead of ArrayList of SLLineSegments</li>
  *  </ul>
  *
- * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
+ * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
  * @version 0.9
  *
  **/
@@ -57,12 +57,13 @@ public class SLPathList extends ArrayList<SLBranch>
 	/**
 	 * 
 	 * Constructor allowing initial size to be specified.
-	 *
+	 * @param size the initial size to allocate room for
+         *
 	 **/
 
 	public SLPathList( int size )
 	{
-		super( size );
+            super( size );
 	}
 
 

@@ -27,7 +27,7 @@ import java.util.Set;
  *
  * Object representing top-level model; owns all blocks and signals
  *
- * @author 031211 {@link <a href="mailto:bjackson@adaptiveaero.com">Bruce Jackson</a>}
+ * @author 2003-12-11 Bruce Jackson &lt;<a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>&gt;
  *
  **/
 
@@ -118,7 +118,7 @@ public class Model
     boolean verbose;
 
     /**
-     *  serves as master clock		
+     *  serves as master clock, counting the number of cycles of execution of the Model.
      */
 
     int cycleCounter;
@@ -205,7 +205,8 @@ public class Model
 
     /**
      * 
-     * <p> Returns the name of this <code>Model</code> </p>
+     * Returns the name of this <code>Model</code>
+     * @return a String containing the Model name
      *
      **/
 
@@ -214,7 +215,8 @@ public class Model
 
     /**
      *
-     * <p> Returns cycleCounter </p>
+     * Returns cycleCounter
+     * @return an int counter that can be incremented and reset externally
      *
      **/
 
@@ -223,7 +225,7 @@ public class Model
 
     /**
      *
-     * <p> Resets cycleCounter </p>
+     * Resets the cycleCounter
      *
      **/
 
@@ -232,7 +234,7 @@ public class Model
 
     /**
      *
-     * Increments cycleCounter 
+     * Increments the cycleCounter 
      *
      **/
     
@@ -291,6 +293,7 @@ public class Model
     
     /**
      * Return status of verbose flag
+     * @return <code>false</code> if verbosity flag set, else <code>true</code>
      **/
 
     public boolean isVerbose() { return this.verbose; }
@@ -310,7 +313,8 @@ public class Model
     
     /**
      * Selects all blocks involved in feeding specified input
-     * @return found boolean true if varName is found
+     * @param varName String with the name of the variable sought
+     * @return found <code>true</code> if varName is found, else <code>false</code>
      * @since 0.9.4
      */
     
@@ -333,7 +337,8 @@ public class Model
 
     /**
      *
-     * <p> Access signals list </p>
+     * Access signals list
+     * @return a {@link SignalArrayList} containing all the {@link Signal} objects in the model
      *
      **/
 
@@ -342,7 +347,8 @@ public class Model
 
     /**
      *
-     * <p> Access blocks list </p>
+     * Access blocks list
+     * @return a {@link BlockArrayList} containing all the {@link Block} objects in the model
      *
      **/
 
@@ -352,6 +358,7 @@ public class Model
     /**
      *
      * Return number of input blocks
+     * @return an integer count of the number of {@link BlockInput} objects in the model
      *
      **/
 
@@ -361,6 +368,7 @@ public class Model
     /**
      *
      * Return input block list
+     * @return {@link BlockArrayList} with all the {@link BlockInput} objects in the model
      *
      **/
 
@@ -370,7 +378,7 @@ public class Model
     /**
      *
      * Return number of output blocks
-     *
+     * @return an integer count of the number of {@link BlockOutput} objects in the model
      **/
 
     public int getNumOutputBlocks() { return outputBlocks.size(); }
@@ -379,6 +387,7 @@ public class Model
     /**
      *
      * Return output block list
+     * @return {@link BlockArrayList} with all the {@link BlockOutput} objects in the model
      *
      **/
 
@@ -387,6 +396,7 @@ public class Model
     /**
      *
      * Return code dialect
+     * @return int indicating what programming language is preferred if any is generated (e.g. DT_FORTRAN, DT_ANSI_C)
      * 
      **/
     
@@ -395,14 +405,15 @@ public class Model
     /**
      * 
      * Set emitted code dialect
+     * @param dialect int indicating what programming language is preferred if any is generated (e.g. DT_FORTRAN, DT_ANSI_C)
      * 
-     */
+     **/
     
     public void setCodeDialect( int dialect ) { codeDialect = dialect; }
 
     /**
      *
-     * <p> Add block </p>
+     * Add block
      *
      * @param newBlock <code>Block</code> to be added to blocks list
      *
@@ -642,7 +653,8 @@ public class Model
 
     /**
      *
-     * <p> Return number of blocks </p>
+     * Return number of blocks
+     * @return number of {@link Block} objects in this Model
      *
      **/
 
@@ -651,7 +663,8 @@ public class Model
 
     /**
      *
-     * <p> Return number of signals </p>
+     * Return number of signals
+     * @return number of {@link Signal} objects in this Model
      *
      **/
 
@@ -660,7 +673,8 @@ public class Model
 
     /**
      *
-     * <p> Return number of tables </p>
+     * Return number of tables
+     * @return int returning the number of {@link BlockFuncTable} objects in the model
      *
      **/
 
@@ -668,7 +682,13 @@ public class Model
 
 
     /**
+     *
      * Calls each block and tells it to hook up inputs &amp; outputs
+     *
+     * This should be called after all the {@link Block}s and {@link
+     * Signal}s have been defined; the ports find any missing signals
+     * by ID.
+     *
      **/
 
     public void wireBlocks()
@@ -952,12 +972,12 @@ public class Model
 
     /**
      *
-     * <p> Performs model initialization: </p>
+     * Performs model initialization:
      * <ol> 
      *   <li>Determines execution order of blocks</li>
      *   <li>Invokes reset</li>
      * </ol>
-     * @throws DAVEException
+     * @throws DAVEException if something goes wrong
      *
      **/
 
@@ -1140,9 +1160,9 @@ public class Model
     
     
     /**
-     * <p> Builds &amp; returns the current values of output blocks </p>
-     *
-     * @throws DAVEException
+     * Builds &amp; returns the current values of {@link BlockOutput}s
+     * @return {@link VectorInfoArrayList} of output values
+     * @throws DAVEException if something goes wrong
      **/
 
 
@@ -1174,9 +1194,9 @@ public class Model
 
 
     /**
-     * <p> Builds &amp; returns the current values of input blocks </p>
-     *
-     * @throws DAVEException
+     * Builds &amp; returns the current values of all {@link BlockInput} blocks
+     * @return {@link VectorInfoArrayList} of input values
+     * @throws DAVEException if anything goes wrong
      **/
 
     public VectorInfoArrayList getInputVector() throws DAVEException
@@ -1206,14 +1226,14 @@ public class Model
 
     /**
      *
-     * <p> Cycle the model. </p>
-     *
-     * <p> The calling routine should complete the input vector (by
+     * Cycle the model.
+     * <p> 
+     * The calling routine should complete the input vector (by
      * providing values for each element of the input vector obtained
-     * by calling the <code>getInputVector()</code> method. It updates the
-     * values of the output vector (obtained by calling <code>Model.getOutputVector()</code> </p>
+     * by calling the {@link #getInputVector()} method. It updates the
+     * values of the output vector (obtained by calling {@link Model#getOutputVector()}
      *
-     * @throws DAVEException
+     * @throws DAVEException if anything goes wrong
      *
      **/
 
@@ -1350,6 +1370,7 @@ public class Model
     /**
      * Returns all the blocks in execution sorted order; available only after call to initialize()
      * @return BlockArrayList of sorted blocks, in appropriate order of execution
+     * @throws DAVEException if the execution order list {@link #executeOrder} has not been created
      */
     
     public BlockArrayList getSortedBlocks() throws DAVEException {
@@ -1361,12 +1382,13 @@ public class Model
     
     /**
      * Returns all the selected blocks in execution order; available only after
-     * a call to initialize(). By default, all blocks are selected; to select
+     * a call to {@link #initialize()}. By default, all blocks are selected; to select
      * blocks involved in calculating only some outputs, a call should be made to
-     * clearSelections() followed by one or more calls to selectOutputByName(). 
+     * {@link #clearSelections()} followed by one or more calls to {@link #selectOutputByName( String )}. 
      * 
-     * @return BlockArrayList of blocks involved in calculating selected outputs,
+     * @return {@link BlockArrayList} of blocks involved in calculating selected outputs,
      * in appropriate order of execution
+     * @throws DAVEException if something goes wrong with the sort.
      * @since 0.9.4
      */
     
@@ -1401,9 +1423,9 @@ public class Model
     }
 
     /**
-     * <p> Builds &amp; returns the current values of all variables </p>
-     *
-     * @throws DAVEException
+     * Builds &amp; returns the current values of all variables
+     * @return {@link VectorInfoArrayList} of internal values
+     * @throws DAVEException if something goes awry
      **/
 
      public VectorInfoArrayList getInternalsVector() throws DAVEException {

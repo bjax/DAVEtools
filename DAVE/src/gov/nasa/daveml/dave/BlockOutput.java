@@ -76,8 +76,8 @@ public class BlockOutput extends Block
 
 
     /**
-     * <p> Returns the units of measure of the output signal </p>
-     *
+     * Returns the units of measure of the output signal
+     * @return a String containing the units-of-measure, in ANSI/AIAA-S-119-2011 encoding
      **/
 
     public String getUnits() { return this.units; }
@@ -86,6 +86,7 @@ public class BlockOutput extends Block
     /**
      *
      * Returns our sequence number (1-based) such as output 1, output 2, etc.
+     * @return our sequuence number (1-base)
      *
      **/
 
@@ -133,9 +134,10 @@ public class BlockOutput extends Block
 
     /**
      *
-     * <p> Generates description of self </p>
+     * Generates description of self
+     * @param  writer The output Writer to receive the text description
+     * @throws IOException if unable to write self-description
      *
-     * @throws <code>IOException</code>
      **/
 
     @Override
@@ -147,8 +149,8 @@ public class BlockOutput extends Block
 
     /**
      *
-     * <p> Implements update() method </p>
-     * @throws DAVEException
+     * Implements update() method
+     * @throws DAVEException if update fails
      *
      **/
 

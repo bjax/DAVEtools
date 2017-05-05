@@ -3,11 +3,13 @@
  * OTIS-4&reg; model from a DAVE-ML file.</p>
  *
  * <p>
- *    To use, run <br/>
+ *    To use, run
+ * <p>
  *     <code>java -jar DAVE2OTIS.jar [-vcdelw] <em>inputFile</em></code>
  * </p>
  *
- * @author Bruce Jackson, Adaptive Aerospace Group Inc., bjackson@adaptiveaero.com
+ * @author Bruce Jackson, Adaptive Aerospace Group, Inc., 
+ *   <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
  *
  * @since 0.9.4
  */

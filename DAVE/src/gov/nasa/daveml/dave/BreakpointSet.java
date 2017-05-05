@@ -104,12 +104,12 @@ public class BreakpointSet // throws DAVEException
 
     /**
      *
-     * <p> Constructor for BreakpointSet </p>
+     * Constructor for BreakpointSet
      *
-     * @param bpdef  Top-level <code>Element</code> breakpointDef
-     * @param m <code>Model</code> to which we attach
+     * @param bpdef  Top-level Element breakpointDef
+     * @param m Model to which we attach
      *
-     * @throws DAVEException
+     * @throws DAVEException if error during construction
      *
      **/
 
@@ -168,17 +168,24 @@ public class BreakpointSet // throws DAVEException
     }
 
     /**
-     * <p> Constructor from parts, not XML Element </p>
+     * Constructor from parts, not XML elements
      *
-     * <p> This constructor intended for non-reused, simple breakpoint
+     * This constructor intended for non-reused, simple breakpoint
      * sets defined on-the-fly from function table definitions that
      * don't use griddedTableDef or griddedTableRef. We still need to
      * know what <code>Model</code> we're associated with so we can look up
-     * breakpoint sets by ID.</p>
+     * breakpoint sets by ID.
      *
-     * <p> The BlockBP should also call the register() method so
+     * The BlockBP should also call the register() method so
      * this object can keep track of who is using this set
-     * definition. </p>
+     * definition.
+     *
+     * @param setName String containing the name of the BreakpointSet
+     * @param bpID Breakpoint identifier String
+     * @param setValues a String containing comma separated floating-point values for breakpoints
+     * @param description a String containing a description of this BreakpointSet
+     * @param m Our parent Model
+     * @throws DAVEException if unable to construct the BreakpointSet
      *
      **/
 
@@ -217,42 +224,54 @@ public class BreakpointSet // throws DAVEException
 
 
     /**
-     * <p> Returns verbose status </p>
+     *
+     * Returns verbose status
+     * @return verbose status as a boolean
+     *
      **/
 
     public boolean isVerbose() { return this.verbose; }
 
 
     /**
-     * <p> Sets verbose status flag </p>
+     * Sets verbose status flag
      **/
     
     public void makeVerbose() { this.verbose = true; }
 
 
     /**
-     * <p> Clears the verbose flag </p>
+     * Clears the verbose flag
      **/
 
     public void silence() { this.verbose = false; }
 
 
     /**
-     * <p> Returns our name </p>
+     * 
+     * Returns our name
+     * @return String containing name of this BreakpointSet
+     *
      **/
 
     public String getName() { return this.myName; }
 
 
     /**
-     * <p> Returns our breakpoint set ID </p>
+     *
+     * Returns our breakpoint set ID
+     * @return the breakpoint set ID
+     *
      **/
 
     public String getBPID() { return this.bpid; }
 
 
     /**
-     * <p> Return our breakpoint set length </p>
+     *
+     * Return our breakpoint set length
+     * @return the number of breakpoints in this set
+     *
      **/
 
     public int length() { 
@@ -264,7 +283,10 @@ public class BreakpointSet // throws DAVEException
 
 
     /**
-     * <p> Return our breakpoint array </p>
+     *
+     * Return our breakpoint array
+     * @return all the breakpoint values as an ArrayList of Double
+     *
      **/
 
     public ArrayList<Double> values() { return this.bpValues; }

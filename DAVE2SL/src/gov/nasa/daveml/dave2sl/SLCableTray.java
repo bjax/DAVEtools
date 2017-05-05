@@ -31,7 +31,7 @@ import java.util.ArrayList;
  *   <li>040227 Updated for version 0.5</li>
  *  </ul>
  *
- * @author Bruce Jackson {@link <mailto:bjackson@adaptiveaero.com>}
+ * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>}
  * @version 0.9
  *
  **/
@@ -62,12 +62,12 @@ public class SLCableTray extends ArrayList<Object>
 	/**
 	 *
 	 * Constructor, with initializing number of elements.
-	 *
+	 * @param count An initial number of slots to reserve
 	 **/
 
 	public SLCableTray( int count )
 	{
-		super( count );
+            super( count );
 	}
 
 
@@ -109,13 +109,12 @@ public class SLCableTray extends ArrayList<Object>
 	 *
 	 * Returns the distance within the tray of a particular signal
 	 * from the left/top edge of the tray.
-	 *
+	 * @param theSignal the {@link SLSignal} to evaluate
 	 * @return the standoff distance of the signal line
 	 *
 	 **/
 
-	public int getStandoff( SLSignal theSignal )
-	{
-		return this.indexOf( theSignal )*offset;
+        public int getStandoff( SLSignal theSignal ) {
+            return this.indexOf( theSignal )*offset;
 	}
 }

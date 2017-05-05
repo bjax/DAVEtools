@@ -204,9 +204,10 @@ public class BlockMathRelation extends BlockMath
 
     /**
      *
-     * <p> Generates description of self </p>
+     * Generates description of self
+     * @param writer the Writer to receive our self-description
+     * @throws IOException if unable to write
      *
-     * @throws <code>IOException</code>
      **/
 
     @Override
@@ -218,7 +219,8 @@ public class BlockMathRelation extends BlockMath
 
     /**
      * Sets relationship operator from String
-     * @throws DAVEException 
+     * @param relationString the String that describes the relation (case insensitive)
+     * @throws DAVEException if the input String is unrecognized
      */
     
     public void setRelationOp( String relationString ) throws DAVEException {
@@ -231,6 +233,7 @@ public class BlockMathRelation extends BlockMath
     /**
      *
      * Returns relationship operator as String
+     * @return the String representing our relational operator
      *
      **/
 
@@ -239,8 +242,8 @@ public class BlockMathRelation extends BlockMath
 
     /**
      *
-     * <p> Implements update() method </p>
-     * @throws DAVEException
+     * Implements update() method
+     * @throws DAVEException if update fails
      *
      **/
 
