@@ -128,7 +128,8 @@ public class BlockLimiter extends Block {
     public String getUnits() { return this.units; }
     
     /**
-     * <p> Generates C algorithm to limit input to output</p>
+     * Generates source code for all code types
+     * @return {link @CodeAndVarNames} with source code to apply limits to input
      */
     
     @Override

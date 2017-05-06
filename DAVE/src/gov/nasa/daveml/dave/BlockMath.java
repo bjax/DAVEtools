@@ -30,7 +30,7 @@ import org.jdom.Element;
 
 /**
  * The Math block extends the generic {@link Block} to represent an arbitrary 
- * math function.
+ * math function, and is the superclass for all Math blocks.
  **/
 
 abstract public class BlockMath extends Block

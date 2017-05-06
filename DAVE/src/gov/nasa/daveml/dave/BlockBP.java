@@ -40,14 +40,15 @@ public class BlockBP extends Block
 
     /**
      *
-     * <p> Constructor that builds BP block from scratch parts </p>
-     * <p> An associated <code>BreakpointSet</code> must be available. </p>
+     * Constructor that builds BP block from scratch parts.
+     * <p> 
+     * An associated <code>BreakpointSet</code> must be available.
      *
      * @param bpID  the ID of the associated breakpoint set to reference
-     * @param ourName <code>String</code> with our name
+     * @param ourName <code>String</code> with the name of this new <code>BlockBP</code>
      * @param inSignal <code>Signal</code> wire that connects to independent variable source
      * @param outSignal <code>Signal</code> wire that connects to function table block
-     * @param m Our parent <code>Model</code>
+     * @param m Our parent {@link Model}
      *
      * @throws DAVEException if bpID not found or if unable to connect to output signal
      *

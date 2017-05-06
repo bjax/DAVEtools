@@ -25,7 +25,7 @@ import java.io.Writer;
 
 /**
  *
- * <p>  The Input Block represents an input to the system </p>
+ * <p>  The Input Block represents an input to the {@link Model} </p>
  *
  **/
 public class BlockInput extends Block {

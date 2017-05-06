@@ -25,11 +25,12 @@ import java.io.Writer;
  * There should be one of these for each computational element in a {@link Model}. These are
  * connected to each other with {@link Signal}s.
  * <p>
- * Hook up convention is, after creating a new <code>Block</code> and <code>Signal</code>, to call
- * the <code>Block</code>'s {@link #addOutput(Signal)} method with the desired output
+ * Hook up convention is: after creating a new <code>Block</code> and output <code>Signal</code>, to
+ * call the <code>Block</code>'s {@link #addOutput(Signal)} method with the desired output
  * <code>Signal</code>; in turn, this <code>Block</code> will invoke that <code>Signal</code>'s
- * {@link Signal#addSource(Block, int portNum)} method with this <code>Block</code> element as the input
- * parameter to port <code>portNum</code>.
+ * {@link Signal#addSource(Block, int portNum)} method with this <code>Block</code> element as the
+ * input parameter to port <code>portNum</code>. [This process is normally done in the output
+ * Signal's private {@link Signal#handleApply(Element, Model)} method.]
  * <p>
  * Modification history:
  * <ul>
@@ -80,12 +81,12 @@ abstract public class Block {
     protected String outVarID;
 
     /**
-     * our sole output signal
+     * our sole output {@link Signal}
      */
     private Signal output;
 
     /**
-     * value of Model cycleCounter when results were valid
+     * value of {@link Model} <code>cycleCounter</code> when results were last valid
      */
     protected int resultsCycleCount;
 
@@ -100,14 +101,15 @@ abstract public class Block {
     boolean verboseFlag;
 
     /**
-     * selected flag
-     *
+     * 
+     * Indicates if this Block has been selected for something special
      * @since 0.9.4
+     *
      */
     protected boolean selectedFlag;
 
     /**
-     * possible masking object (like SLBlock)
+     * possible masking object (like {@link SLBlock})
      */
     Object mask;
 

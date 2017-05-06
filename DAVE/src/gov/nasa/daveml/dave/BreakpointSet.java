@@ -31,8 +31,8 @@ import org.jdom.Namespace;
 
 /**
  *
- * <p> The <code>BreakpointSet</code> stores a breakpoint set and it's associated bpID;
- * it also registers users (BlockBPs) that reference it </p>
+ * The <code>BreakpointSet</code> stores a breakpoint set and its associated <code>bpID</code>;
+ * it also registers users ({@link BlockBP}s) that reference it.
  *
  **/
 
@@ -46,7 +46,7 @@ public class BreakpointSet // throws DAVEException
     String bpid;
 
     /**
-     *  stored as Doubles
+     *  stored as an <code>ArrayList</code> of <code>Double</code>s
      */
 
     ArrayList<Double> bpValues;
@@ -76,7 +76,7 @@ public class BreakpointSet // throws DAVEException
     boolean verbose;
 
     /**
-     *  BlockBPs that reference our table
+     *  {@link BlockBP}s that reference our table
      */
 
     BlockArrayList users;
@@ -106,8 +106,8 @@ public class BreakpointSet // throws DAVEException
      *
      * Constructor for BreakpointSet
      *
-     * @param bpdef  Top-level Element breakpointDef
-     * @param m Model to which we attach
+     * @param bpdef defining <code>&lt;breakpointDef&gt;</code> {@link org.jdom.Element} 
+     * @param m {@link Model} to which we attach
      *
      * @throws DAVEException if error during construction
      *
@@ -169,22 +169,20 @@ public class BreakpointSet // throws DAVEException
 
     /**
      * Constructor from parts, not XML elements
+     * <p>
+     * This constructor intended for non-reused, simple breakpoint sets defined on-the-fly from
+     * function table definitions that aren't defined by <code>&lt;griddedTableDef&gt;</code> or
+     * <code>&lt;griddedTableRef&gt;</code> XML elements. We still need to know what {@link Model}
+     * we're associated with so we can look up breakpoint sets by ID.
+     * <p>
+     * The {@link BlockBP} should also call the {@link #register(BlockBP)} method so this object can
+     * keep track of who is using this set definition.
      *
-     * This constructor intended for non-reused, simple breakpoint
-     * sets defined on-the-fly from function table definitions that
-     * don't use griddedTableDef or griddedTableRef. We still need to
-     * know what <code>Model</code> we're associated with so we can look up
-     * breakpoint sets by ID.
-     *
-     * The BlockBP should also call the register() method so
-     * this object can keep track of who is using this set
-     * definition.
-     *
-     * @param setName String containing the name of the BreakpointSet
+     * @param setName String containing the name of this <code>BreakpointSet</code>
      * @param bpID Breakpoint identifier String
      * @param setValues a String containing comma separated floating-point values for breakpoints
      * @param description a String containing a description of this BreakpointSet
-     * @param m Our parent Model
+     * @param m Our parent {@link Model}
      * @throws DAVEException if unable to construct the BreakpointSet
      *
      **/
@@ -210,11 +208,11 @@ public class BreakpointSet // throws DAVEException
     
     /**
      *
-     * <p> Register a user of our breakpoint set definition
-     *
-     * <p> Should be called by the BlockBP that uses this table </p>
-     *
+     * Register a user of our breakpoint set definition.
+     * <p>
+     * Should be called by the {@link BlockBP} that uses this table
      * @param userBlockBP <code>BlockBP</code> that wishes to register
+     *
      **/
 
     public void register( BlockBP userBlockBP )

@@ -457,14 +457,14 @@ public final class BlockFuncTable extends Block
 
     /**
      * Hook up to specified breakpoint blocks. 
-     * 
-     * Note that a breakpoint vector can be used by more than function block,
-     * for example, left and right aileron deflections may use same breakpoint
-     * values but be normalized by different values when running. Therefore, we
-     * create a unique block name for the breakpoint block that combines the
-     * breakpoint set name with the independent value name. this assures we are
-     * free to reuse an offset-and-index (normalized breakpoint) when they have
-     * the same combined name.
+     * <p>
+     * Note that a breakpoint vector can be used by more than one function block 
+     * ({@link BlockFuncTable}); for example, left and right aileron deflections likely use same
+     * breakpoint set values but be normalized by different input values when running. Therefore, we
+     * create a unique block name for the breakpoint block that combines the breakpoint set name
+     * with the independent value name. This assures we are free to reuse an offset-and-index
+     * (normalized breakpoint) when they have the same combined name.
+     *
      **/
 
     @Override
