@@ -28,8 +28,8 @@ import java.io.Writer;
  * Hook up convention is, after creating a new <code>Block</code> and <code>Signal</code>, to call
  * the <code>Block</code>'s {@link #addOutput(Signal)} method with the desired output
  * <code>Signal</code>; in turn, this <code>Block</code> will invoke that <code>Signal</code>'s
- * {@link Signal#addSource(Block)} method with this <code>Block</code> element as the input
- * parameter.
+ * {@link Signal#addSource(Block, int portNum)} method with this <code>Block</code> element as the input
+ * parameter to port <code>portNum</code>.
  * <p>
  * Modification history:
  * <ul>

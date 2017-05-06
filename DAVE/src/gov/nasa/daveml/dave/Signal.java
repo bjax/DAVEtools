@@ -295,12 +295,12 @@ public class Signal
      * <code>&lt;variableDef&gt;</code> attribute (like <code>varID</code> or <code>units</code>) is
      * parsed.
      * <p>
-     * @param signalElement a <code>jdom.org.Element &lt;variableDef&gt;</code> or
-     * <code>&lt;apply&gt;<code> XML element
+     * @param signalElement a <code>jdom.org.Element</code> <code>&lt;variableDef&gt;</code> or
+     * <code>&lt;apply&gt;</code> XML element
      * @param m the <code>Model</code> to which new blocks and signals belong. Any new blocks or
      * signals are <code>add</code>ed to this <code>Model</code> as they are created, including
      * <b>this</b> <code>Signal</code> object.
-     * @throws {@link DAVEException} if syntax error is found in top-level <code>&lt;apply&gt;</code> element
+     * @throws DAVEException if syntax error is found in top-level <code>&lt;apply&gt;</code> element
      *
      **/
 
