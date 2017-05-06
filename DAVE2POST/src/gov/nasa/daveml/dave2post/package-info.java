@@ -8,8 +8,8 @@
  *     <code>java -jar DAVE2POST.jar [-vcdelw] <em>inputFile</em></code>
  * </p>
  *
- * @author Bruce Jackson, Adaptive Aerospace Group, Inc.
- *   <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
+ * @author Bruce Jackson, Digital Flight Dynamics
+ *   <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
  *
  * @since 0.9.4
  */

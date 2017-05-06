@@ -1,7 +1,7 @@
 // Signal.java
 //
 //  Part of DAVE-ML utility suite, written by Bruce Jackson, originally of NASA LaRC, now at
-//  Adaptive Aerospace Group, Inc. <bjackson@adaptiveaero.com>
+//  Digital Flight Dynamics <bruce@digiflightdyn.com>
 //
 //  Visit <http://daveml.org> for more info.
 //  Latest version can be downloaded from http://github.com/bjax/DAVEtools
@@ -10,13 +10,13 @@
 //  Government as represented by LAR-17460-1. No copyright is claimed in the United States under
 //  Title 17, U.S. Code. All Other Rights Reserved.
 //
-//  Copyright (c) 2017 Adaptive Aerospace Group, Inc.
+//  Copyright (c) 2017 Digital Flight Dynamics
 
 package gov.nasa.daveml.dave;
 
 /**
  * <p>  Object representing each "variable" in algorithm </p>
- * <p> 031211 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
+ * <p> 031211 Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
  *
  */
 
@@ -41,7 +41,7 @@ import org.jdom.Namespace;
  *  <li>031211: Written EBJ</li>
  * </ul>
  *
- * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
+ * @author Bruce Jackson <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
  * @version 0.9
  *
  **/
@@ -279,27 +279,28 @@ public class Signal
 
     /**
      *
-     * <p> Builds <code>Signal</code> from org.jdom.Element </p>
-     * 
-     * <p>Supplied element can be either a 'variableDef' or an 'apply' element.
-     * Based on the type of <code>Element</code> provided, different actions occur. 
-     * 
-     * A variableDef element is parsed for information about the signal; if a 
-     * sequence of child &lt;math&gt;&lt;calculation&gt;&lt;apply&gt; elements are found, the first
-     * &lt;apply&gt; element is handled (an upstream block of proper type is created, and 
-     * our signal is hooked onto it).
-     * 
-     * An apply element does the same (creates an upstream block and connects us to
-     * its output port) but no variableDef information (like varID or units) is parsed.
-     *
-     * @param signalElement jdom.org.Element variableDef' or 'apply' element
-     *
-     * @param m <code>Model</code> to which new blocks and signals
-     * belong. Any new blocks or signals are
-     * <b>add</b>ed to <code>Model</code> as they are created,
-     * including <b>this</b> object.
-     * 
-     * @throws DAVEException if syntax error is found in top-level apply element
+     * Builds <code>Signal</code> from {@link org.jdom.Element}
+     * <p>
+     * The supplied element can be either a <code>&lt;variableDef&gt;</code> or an
+     * <code>&lt;apply&gt;</code> element.  Based on the type of <code>Element</code> encountered,
+     * different actions occur.
+     * <p>
+     * A <code>variableDef</code> element is parsed for information about the <code>Signal</code>;
+     * if a sequence of child <code>&lt;math&gt;&lt;calculation&gt;&lt;apply&gt;</code> elements are
+     * found, the first <code>&lt;apply&gt;</code> element is handled (an upstream block of proper
+     * type is created, and our Signal is hooked onto it).
+     * <p>
+     * An <code>&lt;apply&gt;</code> element is treated the same (we create an upstream
+     * <code>Block</code> and connect this <code>Signal</code> to its output port) but no
+     * <code>&lt;variableDef&gt;</code> attribute (like <code>varID</code> or <code>units</code>) is
+     * parsed.
+     * <p>
+     * @param signalElement a <code>jdom.org.Element &lt;variableDef&gt;</code> or
+     * <code>&lt;apply&gt;<code> XML element
+     * @param m the <code>Model</code> to which new blocks and signals belong. Any new blocks or
+     * signals are <code>add</code>ed to this <code>Model</code> as they are created, including
+     * <b>this</b> <code>Signal</code> object.
+     * @throws {@link DAVEException} if syntax error is found in top-level <code>&lt;apply&gt;</code> element
      *
      **/
 
@@ -336,19 +337,19 @@ public class Signal
             }
 
             // Search for various flags (empty elements)
-            Element isInputElement = signalElement.getChild("isInput",
+            Element isInputElement       = signalElement.getChild("isInput",
                     signalElement.getNamespace());
-            Element isControlElement = signalElement.getChild("isControl",
+            Element isControlElement     = signalElement.getChild("isControl",
                     signalElement.getNamespace());
             Element isDisturbanceElement = signalElement.getChild("isDisturbance",
                     signalElement.getNamespace());
-            Element isStateElement = signalElement.getChild("isState",
+            Element isStateElement       = signalElement.getChild("isState",
                     signalElement.getNamespace());
-            Element isStateDerivElement = signalElement.getChild("isStateDeriv",
+            Element isStateDerivElement  = signalElement.getChild("isStateDeriv",
                     signalElement.getNamespace());
-            Element isOutputElement = signalElement.getChild("isOutput",
+            Element isOutputElement      = signalElement.getChild("isOutput",
                     signalElement.getNamespace());
-            Element isStdAIAAElement = signalElement.getChild("isStdAIAA",
+            Element isStdAIAAElement     = signalElement.getChild("isStdAIAA",
                     signalElement.getNamespace());
             
             // record findings
@@ -400,7 +401,7 @@ public class Signal
     }
     
     /**
-     * Look for and deal with any <code>calculation</code> child element
+     * Look for and deal with a single <code>&lt;calculation&gt;</code> child element
      * 
      * @param theVarDefElement  variableDef parent
      * @param m  Model to which calculations should be added
@@ -409,9 +410,9 @@ public class Signal
     private void handleCalculation( Element theVarDefElement, Model m ) {
         Element calc = theVarDefElement.getChild("calculation", theVarDefElement.getNamespace());
         if (calc != null) {
-        	if (verboseFlag) {
-                    System.out.println("Calculation element found in signal " + myName + "...");
-                }
+            if (verboseFlag) {
+                System.out.println("Calculation element found in signal " + myName + "...");
+            }
             Element math = this.findMathMLChild(calc, "math");
             if (math != null) {
             	if (verboseFlag) {
@@ -553,19 +554,17 @@ public class Signal
     /**
      *
      * Recursive function that builds math element networks.
+     * <p>
      *
-     * <p> This method returns the last block of a perhaps
-     *     extensive network of blocks constructed in accordance with
-     *     a calculation element. It builds and connects blocks and
-     *     signals as required to complete the specified calculation. 
-     *     Implicit signals (variables not named in &lt;ci&gt;
-     *     elements) are created and attached to necessary
-     *     blocks. Explicit inputs (those called out in &lt;ci&gt;
-     *     blocks) are simply named as block inputs to be hooked up
-     *     later. 
+     * This method returns the last block of a perhaps extensive network of blocks constructed in
+     * accordance with a calculation element. It builds and connects blocks and signals as required
+     * to complete the specified calculation.  Implicit signals (variables not named in
+     * <code>&lt;ci&gt;</code> elements) are created and attached to necessary blocks. Explicit
+     * inputs (those called out in <code>&lt;ci&gt;</code> elements) are simply named as block
+     * inputs to be hooked up later.
      *
-     * @param applyElement JDOM <code>Element</code> containing the
-     *     apply description.
+     * @param applyElement JDOM <code>Element</code> representing the <code>&lt;apply&gt;</code> XML
+     * element
      * @return Block that represents the output of the calculation.
      *
      **/

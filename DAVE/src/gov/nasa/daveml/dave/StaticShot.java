@@ -1,7 +1,7 @@
 // StaticShot
 //
 //  Part of DAVE-ML utility suite, written by Bruce Jackson, originally of NASA LaRC, now at
-//  Adaptive Aerospace Group, Inc. <bjackson@adaptiveaero.com>
+//  Digital Flight Dynamics <bruce@digiflightdyn.com>
 //
 //  Visit <http://daveml.org> for more info.
 //  Latest version can be downloaded from http://github.com/bjax/DAVEtools
@@ -10,7 +10,7 @@
 //  Government as represented by LAR-17460-1. No copyright is claimed in the United States under
 //  Title 17, U.S. Code. All Other Rights Reserved.
 //
-//  Copyright (c) 2017 Adaptive Aerospace Group, Inc.
+//  Copyright (c) 2017 Digital Flight Dynamics
 
 package gov.nasa.daveml.dave;
 
@@ -18,7 +18,7 @@ package gov.nasa.daveml.dave;
  *
  * Serves as wrapper for static trim shots
  *
- * @author 040202 Bruce Jackson <mailto:bjackson@adaptiveaero.com>
+ * @author 040202 Bruce Jackson <mailto:bruce@digiflightdyn.com>
  *
  **/
 
@@ -33,7 +33,7 @@ import org.jdom.Namespace;
  * A class to bundle input and output vectors for checkcases found in DAVE-ML files
  * 
  * @since DAVE_tools 0.4
- * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
+ * @author Bruce Jackson <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
  * <p> 040202: Written, EBJ
  *
  **/

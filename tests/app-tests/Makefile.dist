@@ -1,8 +1,8 @@
 #
 #	Makefile for tests/app_tests subdirectory
 #
-# 060921 Bruce Jackson, Adaptive Aerospace Group, Inc.
-#                      <mailto:bjackson@adaptiveaero.com>  
+# 060921 Bruce Jackson, Digital Flight Dynamics
+#                      <mailto:bruce@digiflightdyn.com>  
 
 include model_list.mk
 

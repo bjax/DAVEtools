@@ -1,8 +1,8 @@
 #
 #	Makefile for tests subdirectory
 #
-# 060920 Bruce Jackson, Adaptive Aerospace Group, Inc.
-#                      <mailto:bjackson@adaptiveaero.com>  
+# 060920 Bruce Jackson, Digital Flight Dynamics
+#                      <mailto:bruce@digiflightdyn.com>  
 
 HOME   = /Users/bjax
 

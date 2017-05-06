@@ -1,7 +1,7 @@
 // DAVE2SL.java
 //
 //  Part of DAVE-ML utility suite, written by Bruce Jackson, originally of NASA LaRC, now at
-//  Adaptive Aerospace Group, Inc. <bjackson@adaptiveaero.com>
+//  Digital Flight Dynamics <bruce@digiflightdyn.com>
 //
 //  Visit <http://daveml.org> for more info.
 //  Latest version can be downloaded from http://github.com/bjax/DAVEtools
@@ -10,7 +10,7 @@
 //  Government as represented by LAR-17460-1. No copyright is claimed in the United States under
 //  Title 17, U.S. Code. All Other Rights Reserved.
 //
-//  Copyright (c) 2017 Adaptive Aerospace Group, Inc.
+//  Copyright (c) 2017 Digital Flight Dynamics
 //
 //  Main class file of DAVE-ML to Simulink utility
 package gov.nasa.daveml.dave2sl;
@@ -28,23 +28,23 @@ import java.util.Iterator;
  * Utility program to convert <b>D</b>igital <b>A</b>erospace
  * <b>V</b>ehicle <b>E</b>xchange <b>M</b>arkup <b>L</b>anguage
  * (<b>DAVE-ML</b>) models into Mathworks' Simulink format models.
- *<p>
- * <b>DAVE-ML</b> is being considered as a possible AIAA standard for
- * encoding dynamic flight vehicle models for exchange between
- * simulation tools and facilities in an open-software,
- * facility-neutral manner.
+ * <p>
+ * <b>DAVE-ML</b> is part of the ANSI/AIAA standard S-119-2011 for encoding
+ * dynamic flight vehicle models for exchange between simulation tools and
+ * facilities in an open-software, facility-neutral manner. 
  * <p>
  * More information about DAVE-ML is available at the project website:
  * <a href="http://daveml.org">http://daveml.org</a>
- *<p> 
+ * <p>
  * Modification history: 
  * <ul>
  *  <li>2002-04-19: Written EBJ</li>
  *  <li>2004-02-25: Updated for version 0.5 of DAVE utility suite</li>
  *  <li>2011-01-07: Added additional information when aborting.</li>
+ *  <li>2017-05-06: Cleanup of documentation for 0.9.8. See README for complete change history</li>
  * </ul>
  *
- * @author Bruce Jackson <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
+ * @author Bruce Jackson <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
  * @version 0.9
  *
  **/

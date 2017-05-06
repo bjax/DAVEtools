@@ -2,8 +2,8 @@
 
 DAVEtools 0.9.8 README
 ======================
-Bruce Jackson, Adaptive Aerospace Group, Inc. <bjackson@adaptiveaero.com>
-README Version 9, 2017-05-05
+Bruce Jackson, Digital Flight Dynamics <bjackson@digiflightdyn.com>
+README Version 9, 2017-05-06
 :TOC:
 
 Introduction

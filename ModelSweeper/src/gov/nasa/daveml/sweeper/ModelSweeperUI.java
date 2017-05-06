@@ -1,7 +1,7 @@
 // ModelSweeperUI.java
 //
 //  Part of DAVE-ML utility suite, written by Bruce Jackson, originally of NASA LaRC, now at
-//  Adaptive Aerospace Group, Inc. <bjackson@adaptiveaero.com>
+//  Digital Flight Dynamics <bruce@digiflightdyn.com>
 //
 //  Visit <http://daveml.org> for more info.
 //  Latest version can be downloaded from http://github.com/bjax/DAVEtools
@@ -10,7 +10,7 @@
 //  Government as represented by LAR-17460-1. No copyright is claimed in the United States under
 //  Title 17, U.S. Code. All Other Rights Reserved.
 //
-//  Copyright (c) 2017 Adaptive Aerospace Group,
+//  Copyright (c) 2017 Digital Flight Dynamics
 //
 //  Created on Sep 17, 2010, 10:40:34 AM
 
@@ -55,7 +55,7 @@ class DMLFilter extends javax.swing.filechooser.FileFilter {
  *
  * Model Sweeper user interface class (includes main() function)
  * @author Bruce Jackson, AAG, 
- * <a href="mailto:bjackson@adaptiveaero.com">bjackson@adaptiveaero.com</a>
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
  *
  */
 public class ModelSweeperUI extends javax.swing.JFrame {
@@ -80,9 +80,9 @@ public class ModelSweeperUI extends javax.swing.JFrame {
     int outputSelector;
     InputTable inputTable;
     InputTableJFrame inputTableJFrame;
-    Plot3DPanel plot;
+    org.math.plot.Plot3DPanel plot;
     int plotSurface;
-    Projection projection;
+    org.math.plot.render.Projection projection;
 
     /** Creates new form ModelSweeperUI */
     public ModelSweeperUI() {

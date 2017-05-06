@@ -1,7 +1,7 @@
 // DAVE.java
 //  
 //  Part of DAVE-ML utility suite, written by Bruce Jackson, originally of NASA LaRC, now at
-//  Adaptive Aerospace Group, Inc. <bjackson@adaptiveaero.com>
+//  Digital Flight Dynamics <bruce@digiflightdyn.com>
 //
 //  Visit <http://daveml.org> for more info.
 //  Latest version can be downloaded from http://github.com/bjax/DAVEtools
@@ -10,7 +10,7 @@
 //  Government as represented by LAR-17460-1. No copyright is claimed in the United States under
 //  Title 17, U.S. Code. All Other Rights Reserved.
 //
-//  Copyright (c) 2017 Adaptive Aerospace Group, Inc.
+//  Copyright (c) 2017 Digital Flight Dynamics
 
 package gov.nasa.daveml.dave;
 
@@ -31,26 +31,26 @@ import org.jdom.input.SAXBuilder;
  *
  * <b>D</b>igital <b>A</b>erospace <b>V</b>ehicle <b>E</b>xchange <b>M</b>arkup
  * <b>L</b>anguage utility routines. 
- * 
+ * <p>
  * Converts <b>DAVE-ML</b> files into networked {@link Block} &amp;
  * {@link Signal} objects contained within a {@link Model} object. 
- * 
- * <b>DAVE-ML</b> is part of the AIAA standard S-119-2011 for encoding
+ * <p> 
+ * <b>DAVE-ML</b> is part of the ANSI/AIAA standard S-119-2011 for encoding
  * dynamic flight vehicle models for exchange between simulation tools and
  * facilities in an open-software, facility-neutral manner. 
- *
+ * <p>
  * More information about DAVE-ML is available at the project website,
  * <a href="http://daveml.org">http://daveml.org</a>
- * 
- *  Modification history: 
+ * <p>
+ * Modification history: 
  * <ul> 
- * <li>020419: Written EBJ</li> 
- * <li>031220: Substantially modified for DAVE_tools 0.4</li> 
+ *  <li>2002-04-19: Written EBJ</li> 
+ *  <li>2003-12-20: Substantially modified for DAVEtools 0.4</li> 
+ *  <li>2017-05-06: Cleanup of documentation for 0.9.8. See README for complete change history</li>
  * </ul>
  *
  * @author Bruce Jackson
  * @version 0.9
- *
  *
  */
 public class DAVE {
@@ -172,8 +172,7 @@ public class DAVE {
 
     /**
      *
-     * Simple constructor.
-     *
+     * Simple constructor; creates a new {@link Model}
      *
      */
     public DAVE() {
@@ -242,9 +241,9 @@ public class DAVE {
     }
 
     /**
-     *
+     * 
+     * Returns the version of software
      * @return the version of software
-     *
      *
      */
     public String getVersion() {
@@ -254,7 +253,7 @@ public class DAVE {
     /**
      *
      * Indicates if checkcases were included in file.
-     * @return true if checkcases were included
+     * @return <code>true</code> if checkcases were included; otherwise <code>false</code>
      *
      */
     public boolean hasCheckcases() {
@@ -263,8 +262,8 @@ public class DAVE {
 
     /**
      *
-     * @return the CheckData checkcase data.
-     *
+     * Returns the CheckData checkcase data.
+     * @return the {@link CheckData} checkcase data.
      *
      */
     public CheckData getCheckcaseData() {
@@ -274,11 +273,10 @@ public class DAVE {
     /**
      *
      * Sets the input file and stub name strings.
-     *
-     * <p> This method needed to support packages that extend DAVE.
+     * <p>
+     * This method needed to support packages that extend DAVE.
      *
      * @param fn the new file name
-     *
      *
      */
     public void setInputFileName(String fn) {
@@ -288,8 +286,8 @@ public class DAVE {
 
     /**
      *
-     * @return input file name string.
-     *
+     * Returns input file name String.
+     * @return input file name String.
      *
      */
     public String getInputFileName() {
@@ -298,8 +296,8 @@ public class DAVE {
 
     /**
      *
+     * Returns the stub name string.
      * @return the stub name string.
-     *
      *
      */
     public String getStubName() {
@@ -309,8 +307,9 @@ public class DAVE {
     /**
      *
      * Returns our model.
+     * @return the {@link Model} with the relationships defined in the
+     * associated input file
      *
-     * @return Model
      */
     public Model getModel() {
         return this.m;
@@ -318,7 +317,7 @@ public class DAVE {
 
     /**
      *
-     * Sets the 'generate statistics' flag
+     * Sets the 'generate statistics' {@link #genStatsFlag}
      *
      **/
 
@@ -329,8 +328,8 @@ public class DAVE {
     /**
      *
      * Returns the genStatsFlag
-     *
-     * @return the generate stats flag
+     * @return the generate stats flag; <code>true</code> if
+     * statistics are requested, otherwise returns <code>false</code>
      *
      */
     public boolean getGenStatsFlag() {
@@ -340,9 +339,7 @@ public class DAVE {
     /**
      *
      * Stores the input arguments to the command line
-     *
-     * @param args The input argument strings
-     *
+     * @param args The input argument <code>String</code> array
      *
      */
     public void setArgs(String args[]) {
@@ -351,8 +348,8 @@ public class DAVE {
 
     /**
      *
-     * @return the input argument array
-     *
+     * Returns the input argument array
+     * @return the input argument <code>String</code> array
      *
      */
     public String[] getArgs() {
@@ -360,9 +357,11 @@ public class DAVE {
     }
 
     /**
-     * @return number of command line option switches provided by user
      *
+     * Returns number of command line option switches provided by user
+     * @return number of command line option switches provided by user
      * @since version 0.8 / rev 193
+     *
      */
     public int numCmdLineSwitches() {
         int index;
@@ -377,8 +376,10 @@ public class DAVE {
     }
 
     /**
+     *
      * Verifies any checkcases provided in XML file.
-     * @return true if verified
+     * @return <code>true</code> if verified
+     *
      */
     public boolean verify() {
         boolean result = true;
@@ -486,7 +487,6 @@ public class DAVE {
                     System.err.println("Exception thrown while parsing variableDefs: " +
                             ex.getLocalizedMessage());
                     System.err.println("aborting further parsing.");
-                    
                 }
             }
         }
@@ -620,26 +620,31 @@ public class DAVE {
 
     /**
      *
-     * Parses whole file of DAVE-ML markup. <p> This method will take the
-     * supplied DAVE xml file, and convert that file into lists of {@link Signal}
-     * and {@link Block}, as well as {@link BreakpointSet} and {@link FuncTable}
-     * objects. <p> The procedure is to locate and create objects for each type
-     * of DAVE-ML element, in sequence: <ul> <li><code>&lt;variableDef&gt;</code>s</li> <li><code>&lt;breakpointDef&gt;</code>s</li> <li><code>&lt;griddedTableDef&gt;</code>s</li> <li><code>&lt;function&gt;</code>s</li>
-     * </ul> <p> An interesting quirk about building a model: the
-     * <code>&lt;function&gt;</code> elements specify a table, one or more
-     * breakpoint sets, and the independent variable to be normalized with the
-     * particular breakpoint set(s). Thus, only when the function definition is
-     * read and parsed can we construct breakpoint blocks ({@link BlockBP}s).
-     * So, the function table parsing routine (
-     * <code>new</code> {@link
-     * BlockFuncTable}) has to do a lot of
-     * <code>BlockBP</code> creation and wiring of {@link Signal}s That's why
-     * creation of
-     * <code>BlockBPs</code> is deferred until creation of
-     * <code>BlockFuncTable</code>s.
-     *
-     * @throws java.io.IOException - when some errors occur.
-     * @return true if successful; false if error
+     * Parses a whole file containing DAVE-ML (a custom XML grammar) markup. 
+     * <p>
+     * This method will take the supplied DAVE xml file, and convert that file into lists of 
+     * {@link Signal} and {@link Block}, as well as {@link BreakpointSet} and 
+     * {@link FuncTable} objects.
+     * <p>
+     * The procedure is to locate and create objects for each type of DAVE-ML element, in sequence:
+     * <ul>
+     *  <li><code>&lt;variableDef&gt;</code>s</li>
+     *  <li><code>&lt;breakpointDef&gt;</code>s</li>
+     *  <li><code>&lt;griddedTableDef&gt;</code>s</li>
+     *  <li><code>&lt;function&gt;</code>s</li> 
+     * </ul>
+     * <p> 
+     * An interesting quirk about building a model: the <code>&lt;function&gt;</code> elements
+     * specify a table, one or more breakpoint sets, and the independent variable to be normalized
+     * with the particular breakpoint set(s). Thus, only when the function definition is read and
+     * parsed can we construct breakpoint blocks ({@link BlockBP}s).
+     * <p>
+     * So, the function table parsing routine (<code>new</code> {@link BlockFuncTable}) has to do a
+     * lot of {@link BlockBP} creation and wiring of {@link Signal}s That's why creation of
+     * <code>BlockBPs</code> is deferred until creation of <code>BlockFuncTable</code>s.
+     * <p>
+     * @throws IOException - if certain errors occur
+     * @return <code>true</code> if file is successfully parsed; otherwise <code>false</code>
      *
      */
     public boolean parseFile()
@@ -656,7 +661,6 @@ public class DAVE {
         this.parseStartTime = System.currentTimeMillis();
 
         // Build XML tree
-
         Document doc = load();
 
         root = doc.getRootElement();

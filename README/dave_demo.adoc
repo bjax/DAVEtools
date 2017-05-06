@@ -3,7 +3,7 @@
 Matlab(R) integration using DAVEtools
 =====================================
 
-Bruce Jackson, Adaptive Aerospace Group, Inc. <bjackson@adaptiveaero.com>
+Bruce Jackson, Digital Flight Dynamics <bruce@digiflightdyn.com>
 
 Shown below is a Matlab(R) script, link:dave_demo.m[], that exercises a DAVE-ML model,
 using the DAVEtools Java objects.
@@ -18,11 +18,11 @@ function dave_demo
 % requires a copy of DAVEtools (NASA Open Source), available
 % from
 %
-%  http://dscb.larc.nasa.gov/Products/SW/DAVEtools.html
+%  https://github.com/bjax/DAVEtools
 %
 % 2011-03-07 Bruce Jackson, NASA Langley
 %            bruce.jackson@nasa.gov
-% 2017-05-05 New URL; new email bjackson@adaptiveaero.com
+% 2017-05-06 New URL; new email bruce@digiflightdyn.com
 %
 %
 pathNeeded = 1;

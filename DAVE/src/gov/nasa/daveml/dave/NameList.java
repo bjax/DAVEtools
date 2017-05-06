@@ -1,7 +1,7 @@
 // NameList
 //
 //  Part of DAVE-ML utility suite, written by Bruce Jackson, originally of NASA LaRC, now at
-//  Adaptive Aerospace Group, Inc. <bjackson@adaptiveaero.com>
+//  Digital Flight Dynamics <bruce@digiflightdyn.com>
 //
 //  Visit <http://daveml.org> for more info.
 //  Latest version can be downloaded from http://github.com/bjax/DAVEtools
@@ -10,7 +10,7 @@
 //  Government as represented by LAR-17460-1. No copyright is claimed in the United States under
 //  Title 17, U.S. Code. All Other Rights Reserved.
 //
-//  Copyright (c) 2017 Adaptive Aerospace Group, Inc.
+//  Copyright (c) 2017 Digital Flight Dynamics
 
 //
 // 020514 EBJ
@@ -24,7 +24,7 @@ package gov.nasa.daveml.dave;
  *     unique block names for Simulink MDL file. Not to be confused with XML and 
  *     JDOM Namespace object which relate to unique names of XML elements; this 
  *     object ensures block and signal names are unique within a model.</p>
- * <p> 031211 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
+ * <p> 031211 Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
  * <p> 2010-05-04 Renamed from NameSpace to NameList to avoid confusion with JDOM Namespace</p>
  *
  */

@@ -1,7 +1,7 @@
 // BlockMathFunction
 //
 //  Part of DAVE-ML utility suite, written by Bruce Jackson, originally of NASA LaRC, now at
-//  Adaptive Aerospace Group, Inc. <bjackson@adaptiveaero.com>
+//  Digital Flight Dynamics <bruce@digiflightdyn.com>
 //
 //  Visit <http://daveml.org> for more info.
 //  Latest version can be downloaded from http://github.com/bjax/DAVEtools
@@ -11,7 +11,7 @@
 //  Title 17, U.S. Code. All Other Rights Reserved.
 //
 //
-//  Copyright (c) 2017 Adaptive Aerospace Group, Inc.
+//  Copyright (c) 2017 Digital Flight Dynamics
 //
 // 040201 Added trig functions
 // 070223 Added csymbol extensions
@@ -22,7 +22,7 @@ package gov.nasa.daveml.dave;
  *
  * Multipurpose function block
  *
- * @author 031214 Bruce Jackson <mailto:bjackson@adaptiveaero.com>
+ * @author 031214 Bruce Jackson <mailto:bruce@digiflightdyn.com>
  *
  **/
 

@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <project name="DAVEtools" default="build" basedir=".">
+  
   <property name="major_ver"        value="0.9"/>
   <property name="full_ver"         value="0.9.8 (2017-05-05)"/>
   <property name="jar.dir"          location="."/>
@@ -12,8 +13,6 @@
   <property name="doc.dir"          location="doc"/>
   <property name="uml-doc.dir"      location="${doc.dir}/uml"/>
   <property name="app-test.dir"     location="tests/app-tests"/>
-  <property name="source_path"      value="${DAVE.dir}/src:${DAVE2SL.dir}/src:${DAVE2POST.dir}/src:${DAVE2OTIS.dir}/src:${ModelSweeper.dir}/src"/>
-  <property name="libraries_path"   value="${DAVE.dir}/vendor/lib/jdom-1.1.1.jar:${DAVE.dir}/vendor/lib/resolver-1.2.jar:${DAVE.dir/vendor/lib/xerces-2.9.0.jar:${ModelSweeper.dir}/vendor/lib/jmathplot.jar:${ModelSweeper.dir}/vendor/lib/jmatharray.jar"/>
 
   <property name="doc_title">
     DAVE-ML Java Utility DAVEtools ${full_ver}
@@ -29,6 +28,26 @@
     for the exchange of aerospace vehicle models. Visit &lt;a
     href="http://daveml.org"&gt;http://daveml.org&lt;/a&gt;
   </property>
+
+  <path id="DAVE.libraries.path">
+    <pathelement location="${DAVE.dir}/vendor/lib/jdom-1.1.1.jar"/>
+    <pathelement location="${DAVE.dir}/vendor/lib/resolver-1.2.jar"/>
+    <pathelement location="${DAVE.dir}/vendor/lib/xerces-2.9.0.jar"/>
+  </path>
+
+  <path id="Project.libraries.path">
+    <path refid = "DAVE.libraries.path"/>
+    <pathelement location="${ModelSweeper.dir}/vendor/lib/jmathplot.jar"/>
+    <pathelement location="${ModelSweeper.dir}/vendor/lib/jmatharray.jar"/>
+  </path>
+
+  <path id="Project.sources.path">
+    <pathelement location="${DAVE.dir}/src"/>
+    <pathelement location="${DAVE2SL.dir}/src"/>
+    <pathelement location="${DAVE2POST.dir}/src"/>
+    <pathelement location="${DAVE2OTIS.dir}/src"/>
+    <pathelement location="${ModelSweeper.dir}/src"/>
+  </path>
 
   <!-- Build (if necessary) and copy the DAVE.jar file into this directory
        build (if necessary) the DAVE2SL.jar file in DAVE2SL subdirectory; 
@@ -73,12 +92,12 @@
 	windowtitle      = "DAVEtools ${major_ver}"
 	header           = "${page_header}"
 	bottom           = "${page_footer}"
-	sourcepath       = "${source_path}"
-	classpath        = "${libraries_path}"
 	packagenames     = "gov.nasa.daveml.*"
 	destdir          = "${doc.dir}"
 	additionalparam  = "-breakiterator"
-	includenosourcepackages = "true">
+        includenosourcepackages = "true">
+      <classpath refid  = "Project.libraries.path"/>
+      <sourcepath refid = "Project.sources.path"/>
     </javadoc>
   </target>
 
@@ -95,10 +114,10 @@
 	windowtitle      = "${window_title}"
 	header           = "${page_header}"
 	bottom           = "${page_footer}"
-	sourcepath       = "${source_path}"
 	packagenames     = "gov.nasa.daveml.*"
-	destdir          = "${uml-doc.dir}"
-	classpath        = "{libraries_path}">
+        destdir          = "${uml-doc.dir}">
+      <sourcepath refid = "Project.sources.path"/>
+      <classpath  refid ="Project.libraries.path"/>
 
       <doclet name="org.umlgraph.doclet.UmlGraphDoc"
 	      path="lib/UMLGraph.jar">

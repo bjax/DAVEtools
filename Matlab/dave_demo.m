@@ -9,7 +9,7 @@ function dave_demo
 %
 % 2011-03-07 Bruce Jackson, NASA Langley
 %            bruce.jackson@nasa.gov
-% 2017-05-05 Updated to new URL, email now bjackson@adaptiveaero.com
+% 2017-05-05 Updated to new URL, email now bruce@digiflightdyn.com
 %
 %
 pathNeeded = 1;

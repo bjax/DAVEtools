@@ -1,7 +1,7 @@
 // Block.java
 //  
 //  Part of DAVE-ML utility suite, written by Bruce Jackson, originally of NASA LaRC, now at
-//  Adaptive Aerospace Group, Inc. <bjackson@adaptiveaero.com>
+//  Digital Flight Dynamics <bruce@digiflightdyn.com>
 //
 //  Visit <http://daveml.org> for more info.
 //  Latest version can be downloaded from http://github.com/bjax/DAVEtools
@@ -10,7 +10,7 @@
 //  Government as represented by LAR-17460-1. No copyright is claimed in the United States under
 //  Title 17, U.S. Code. All Other Rights Reserved.
 //
-//  Copyright (c) 2017 Adaptive Aerospace Group, Inc.
+//  Copyright (c) 2017 Digital Flight Dynamics
 
 package gov.nasa.daveml.dave;
 
@@ -21,21 +21,23 @@ import java.io.Writer;
 
 /**
  * Object representing each <code>Block</code> in a {@link Model}.
- * 
- * There should be one of these for each element in a {@link Model}. These
- * are connected to each other with {@link Signal}s.
  * <p>
- * Construction convention is to call the 'add' method of the upstream element
- * (block or signal) with the port number and reference to the downstream
- * element (block or signal); the upstream element should call the appropriate
- * 'add' method of the downstream element.
+ * There should be one of these for each computational element in a {@link Model}. These are
+ * connected to each other with {@link Signal}s.
+ * <p>
+ * Hook up convention is, after creating a new <code>Block</code> and <code>Signal</code>, to call
+ * the <code>Block</code>'s {@link #addOutput(Signal)} method with the desired output
+ * <code>Signal</code>; in turn, this <code>Block</code> will invoke that <code>Signal</code>'s
+ * {@link Signal#addSource(Block)} method with this <code>Block</code> element as the input
+ * parameter.
  * <p>
  * Modification history:
  * <ul>
- * <li>031211 Written EBJ</li>
+ * <li>2003-12-11 Written EBJ</li>
  * </ul>
  *
- * @author <a href="bjackson@adaptiveaero.com">Bruce Jackson</a>
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
  * @version 0.9
  */
 
@@ -511,9 +513,8 @@ abstract public class Block {
 
     /**
      * <p>
-     * Hookup the output of a block to the given input, creating an output
-     * signal wire if necessary</p>
-     *
+     * Hook up the output of a block to the given input, creating an output
+     * {@link Signal} if necessary
      * @param blk the <tt>Block</tt> to connect the output from
      * @param inPort our input port number (1-based) to connect to the block's
      * output

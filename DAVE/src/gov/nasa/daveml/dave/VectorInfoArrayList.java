@@ -1,7 +1,7 @@
 // VectorInfoArrayList
 //
 //  Part of DAVE-ML utility suite, written by Bruce Jackson, originally of NASA LaRC, now at
-//  Adaptive Aerospace Group, Inc. <bjackson@adaptiveaero.com>
+//  Digital Flight Dynamics <bruce@digiflightdyn.com>
 //
 //  Visit <http://daveml.org> for more info.
 //  Latest version can be downloaded from http://github.com/bjax/DAVEtools
@@ -10,7 +10,7 @@
 //  Government as represented by LAR-17460-1. No copyright is claimed in the United States under
 //  Title 17, U.S. Code. All Other Rights Reserved.
 //
-//  Copyright (c) 2017 Adaptive Aerospace Group, Inc.
+//  Copyright (c) 2017 Digital Flight Dynamics
 
 package gov.nasa.daveml.dave;
 
@@ -18,7 +18,7 @@ package gov.nasa.daveml.dave;
  * <p> Extends ArrayList for VectorInfo objects </p> 
  * <p> A VectorInfo contains external names and values for I/O lists
  * to communicate with other DAVE utilities.</p>
- * <p> 031227 Bruce Jackson <mailto:bjackson@adaptiveaero.com> </p>
+ * <p> 031227 Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
  *
  */
 
