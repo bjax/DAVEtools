@@ -120,7 +120,11 @@ public class BlockMathAbs extends BlockMath
     }
 
     /**
-     * <p> Generate C-code equivalent of our operation</p>
+     *
+     * Generate source-code equivalent of our operation
+     * @return CodeAndVarNames object containing a source code
+     *         representation of an absolute value
+     *
      */
     
     @Override

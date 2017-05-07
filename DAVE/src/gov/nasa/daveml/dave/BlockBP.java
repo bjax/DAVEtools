@@ -15,8 +15,10 @@
 package gov.nasa.daveml.dave;
 
 /**
- * <p> Object representing a breakpoint block </p>
- * <p> 031214 Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
+ *
+ * Object representing a breakpoint block
+ * <p>
+ * 2003-12-14 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;
  *
  **/
 
@@ -26,33 +28,33 @@ import java.util.Iterator;
 
 /**
  *
- * <p>  The BP Block represents a breakpoint set. </p>
+ * The BP Block represents a breakpoint set.
  *
  **/
 
 public class BlockBP extends Block
 {
     /**
+     *
      * The breakpoint set we use
+     *
      */
 
     BreakpointSet bpSet;
 
     /**
      *
-     * Constructor that builds BP block from scratch parts.
+     * Constructor that builds breakpoint block from scratch parts.
      * <p> 
-     * An associated <code>BreakpointSet</code> must be available.
-     *
+     * An associated {@link BreakpointSet} must be predefined.
      * @param bpID  the ID of the associated breakpoint set to reference
      * @param ourName <code>String</code> with the name of this new <code>BlockBP</code>
      * @param inSignal <code>Signal</code> wire that connects to independent variable source
      * @param outSignal <code>Signal</code> wire that connects to function table block
      * @param m Our parent {@link Model}
-     *
      * @throws DAVEException if bpID not found or if unable to connect to output signal
-     *
      * @see BreakpointSet
+     *
      **/
 
     public BlockBP( String bpID, String ourName, Signal inSignal, Signal outSignal, Model m) throws DAVEException
@@ -88,15 +90,19 @@ public class BlockBP extends Block
 
 
     /**
+     *
      * Return our bpID
      * @return String our bpID
+     *
      **/
 
     public String getBPID() { return this.bpSet.getBPID(); }
 
     /**
+     *
      * Update our output value
      * @throws DAVEException if a problem is encountered when parsing
+     *
      **/
 
     @Override
@@ -212,8 +218,10 @@ public class BlockBP extends Block
     }
 
     /**
+     *
      * Returns length of breakpoint vector
      * @return int with number of breakpoint values
+     *
      **/
 
     public int length() {
@@ -222,16 +230,18 @@ public class BlockBP extends Block
 
 
     /**
+     *
      * Returns our breakpoint set
      * @return BreakpointSet
+     *
      **/
 
     public BreakpointSet getBPset() { return this.bpSet; }
 
 
     /**
-     * Generates written description of current instance on output stream
      *
+     * Generates written description of current instance on output stream
      * @param writer FileWriter instance to write to
      * @throws IOException when writing
      *

@@ -16,36 +16,41 @@ package gov.nasa.daveml.dave;
 
 /**
  *
- * <p> Object representing an input block </p>
+ * Object representing an input block
+ * <p>
+ * 2003-12-15 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;
  *
- * <p> 031215 Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
  **/
+
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  *
- * <p>  The Input Block represents an input to the {@link Model} </p>
+ * The Input Block represents an input to the {@link Model}
  *
  **/
 public class BlockInput extends Block {
 
     /**
+     *
      *  units of measure for downstream signal
+     *
      */
     String units;
     
     /**
+     *
      * Indicates if there is an initial value associated
      * with the downstream signal
+     *
      */
     
     boolean hasIC;
 
     /**
      *
-     * <p> Constructor for input Block <p>
-     *
+     * Constructor for input Block
      * @param theSignal Downstream <code>Signal</code> with which to connect
      * @param m <code>Model</code> we're part of
      *
@@ -73,8 +78,8 @@ public class BlockInput extends Block {
     }
 
     /**
-     * Accepts a new input value
      *
+     * Accepts a new input value
      * @param theValue a <code>double</code> value which represents the new input value
      *
      */
@@ -83,8 +88,8 @@ public class BlockInput extends Block {
     }
 
     /**
-     * Returns the units of measure of the input signal
      *
+     * Returns the units of measure of the input signal
      * @return String containing units of measure (encoded per ANSI/AIAA S-119-2011)
      *
      **/
@@ -93,9 +98,11 @@ public class BlockInput extends Block {
     }
     
     /**
-     * <p> Returns flag indicating if an initial condition has 
-     * been specified for the downstream Signal</p>
+     *
+     * Returns flag indicating if an initial condition has 
+     * been specified for the downstream {@link Signal}
      * @return flag indicates if there is an IC value
+     *
      **/
     public boolean hasIC() {
         return this.hasIC;
@@ -114,8 +121,10 @@ public class BlockInput extends Block {
 
     
     /**
+     *
      * Common input documentation scheme for all code types
      * @return string with description of input signal
+     *
      */
     @Override
     public CodeAndVarNames genCode() {
@@ -141,9 +150,10 @@ public class BlockInput extends Block {
 
     /**
      *
-     * <p> Generates description of self </p>
-     *
+     * Generates a description of self on the designated <code>Writer</code>
+     * @param writer the designated output writer
      * @throws IOException if problems writing out description
+     *
      **/
     @Override
     public void describeSelf(Writer writer) throws IOException {
@@ -153,7 +163,7 @@ public class BlockInput extends Block {
 
     /**
      *
-     * <p> Implements update() method </p>
+     * Implements update() method
      * @throws DAVEException if an error occurs while updating
      *
      **/

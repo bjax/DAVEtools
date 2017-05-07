@@ -107,10 +107,10 @@ public class BlockMathConstant extends BlockMath
     }
     
     /**
-     * Generate C-code equivalent of our constant.
-     * 
-     * @return CodeAndVarNames object containing a C source code representation 
-     *         of our constant value
+     *
+     * Generate source-code equivalent of our operation
+     * @return CodeAndVarNames object containing a source code
+     *         representation of our constant value
      */
     
     @Override

@@ -16,9 +16,10 @@ package gov.nasa.daveml.dave;
 
 /**
  *
- * <p> Object representing a two-sided limiter block </p>
- * <p> 2010-12-15 Bruce Jackson, NASA Langley Research Center
- *     <mailto:bruce@digiflightdyn.com> </p>
+ * Object representing a two-sided limiter block
+ * <p>
+ * 2010-12-15 Bruce Jackson, NASA Langley Research Center
+ *     &lt;mailto:bruce@digiflightdyn.com&gt;
  * @author Bruce Jackson
  *
  **/
@@ -28,53 +29,56 @@ import java.io.Writer;
 
 /**
  *
- * <p>  The Limiter Block provides upper and lower limits to an input signal. </p>
+ * The Limiter Block provides upper and lower limits to an input signal.
  *
  **/
 public class BlockLimiter extends Block {
     /**
+     *
      *  units of measure of downstream block
+     *
      */
-
     String units;
 
     /**
+     *
      * lower limit, or -Inf
+     *
      */
-
     Double lowerLim;
 
     /**
+     *
      * upper limit, or +Inf
+     *
      */
-
     Double upperLim;
 
     /**
+     *
      * indicates presence of lower limit (not -Inf)
+     *
      */
-
     boolean hasLowerLim;
 
     /**
+     *
      * indicates presence of valid upper limit (not +Inf)
+     *
      */
-
     boolean hasUpperLim;
 
 
 
     /**
      *
-     * <p> Constructor for output Block <p>
-     *
-     * @param sourceSignal Upstream <code>Signal</code> with which to connect
-     * @param m <code>Model</code> we're part of
+     * Constructor for output Block
+     * @param sourceSignal Upstream {@link Signal} with which to connect
+     * @param m {@link Model} we're part of
      * @param lowerLimit <code>String</code> representing the minimum value we can pass (-Infinity means no limit)
      * @param upperLimit <code>String</code> representing the maximum value we can pass (+Infinity means no limit)
      *
      **/
-
     public BlockLimiter( Signal sourceSignal, Model m, double lowerLimit, double upperLimit )
     {
         // Initialize superblock elements
@@ -106,32 +110,33 @@ public class BlockLimiter extends Block {
 
 
     /**
-     * <p> Returns the output value </p>
      *
-     * <p> This method is distinguished from normal
-     * <code>Block.getValue()</code> in that it is public</p>
+     * Returns the output value
+     * <p>
+     * This method is distinguished from normal
+     * {@link Block.getValue()} in that it is public
+     * @return the output value of this limiter as a <code>double</code>
      *
      **/
-
     @Override
     public double getValue()    { return this.value; }
 
 
     /**
-     * Returns the units of measure of the output signal
      *
+     * Returns the units of measure of the output signal
      * @return String with units of measure (encoded per ANSI/AIAA
      * S-119-2011) of output signal
      *
      **/
-
     public String getUnits() { return this.units; }
     
     /**
+     *
      * Generates source code for all code types
      * @return {link @CodeAndVarNames} with source code to apply limits to input
+     *
      */
-    
     @Override
     public CodeAndVarNames genCode() {
         CodeAndVarNames cvn = new CodeAndVarNames();
@@ -187,10 +192,11 @@ public class BlockLimiter extends Block {
 
 
     /**
+     *
      * Generates description of self
      * @throws IOException if problems encountered when writing description
+     *
      **/
-
     @Override
     public void describeSelf(Writer writer) throws IOException
     {
@@ -202,11 +208,10 @@ public class BlockLimiter extends Block {
 
     /**
      *
-     * <p> Implements update() method </p>
+     * Implements update() method
      * @throws DAVEException if update fails
      *
      **/
-
     @Override
     public void update() throws DAVEException
     {
@@ -260,29 +265,34 @@ public class BlockLimiter extends Block {
     }
 
     /**
+     *
      * Indicates a practical lower limit has been defined
      * @return true if lower limit exists
+     *
      */
-
     public boolean hasLowerLimit() { return hasLowerLim; }
 
-
     /**
+     *
      * Indicates a practical upper limit has been defined
      * @return true if upper limit exists
+     *
      */
     public boolean hasUpperLimit() { return hasUpperLim; }
 
-
     /**
+     *
      * Returns the value of the lower limit
      * @return lower limit as a double
+     *
      */
     public double getLowerLimit() { return lowerLim.doubleValue(); }
 
     /**
+     *
      * Returns the value of the upper limit
      * @return upper limit as a double
+     *
      */
     public double getUpperLimit() { return upperLim.doubleValue(); }
 

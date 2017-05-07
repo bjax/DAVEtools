@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
+ *
  * Object representing each <code>Block</code> in a {@link Model}.
  * <p>
  * There should be one of these for each computational element in a {@link Model}. These are
@@ -40,63 +41,86 @@ import java.io.Writer;
  * @author Bruce Jackson, Digital Flight Dynamics
  * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
  * @version 0.9
+ *
  */
 
 abstract public class Block {
 
     /**
-     * our model parent
+     *
+     * The <code>Model</code> parent of this <code>Block</code>
+     *
      */
 
     Model ourModel;
 
     /**
-     * name of block
+     *
+     * Name of this <code>Block</code>
+     *
      */
     String myName;
 
     /**
-     * our type
+     *
+     * This type of Block
+     *
      */
     String myType;
 
     /**
+     *
      * Guarantees unique XML name of block
+     *
      */
     NameList nameList;
 
     /**
+     *
      * variable IDs associated with each input - keep in sync with inputs!
+     *
      */
     private ArrayList<String> inVarIDs;
 
     /**
+     *
      * list of input signals
+     *
      */
     SignalArrayList inputs;
 
     /**
+     *
      * only one output variable - not set by all blocks!
+     *
      */
     protected String outVarID;
 
     /**
+     *
      * our sole output {@link Signal}
+     *
      */
     private Signal output;
 
     /**
+     *
      * value of {@link Model} <code>cycleCounter</code> when results were last valid
+     *
      */
     protected int resultsCycleCount;
 
     /**
+     *
      * our latest output value
+     *
      */
     double value;
 
     /**
+     *
      * are we chatty?
+     *
      */
     boolean verboseFlag;
 
@@ -109,12 +133,16 @@ abstract public class Block {
     protected boolean selectedFlag;
 
     /**
-     * possible masking object (like {@link SLBlock})
+     *
+     * possible masking object (e.g. {@link SLBlock})
+     *
      */
     Object mask;
 
     /**
+     *
      * Basic constructor for <code>Block</code>
+     *
      */
     public Block() {
         this.ourModel = null;
@@ -132,10 +160,11 @@ abstract public class Block {
     }
 
     /**
+     *
      * More detailed Constructor for <code>Block</code> that adds itself 
      * to the parent {@link Model}.
-     *
      * @param m Model we're part of
+     *
      */
     public Block(Model m) {
         this();
@@ -145,14 +174,11 @@ abstract public class Block {
 
     /**
      *
-     * <p>
-     * Constructor for Block </p>
-     *
+     * Constructor for Block
      * @param blockName Name of block - must be unique
      * @param blockType The type of block to build
      * @param numInputs number of input ports
      * @param m <code>Model</code> we're part of
-     *
      *
      */
     public Block(String blockName, String blockType, int numInputs, Model m) {
@@ -168,9 +194,7 @@ abstract public class Block {
     /**
      *
      * Performs a deep copy of supplied <code>Block</code>
-     *
      * @param b The Block to clone
-     *
      *
      */
     public Block(Block b) {
@@ -189,9 +213,7 @@ abstract public class Block {
     /**
      *
      * Returns our current value.
-     *
      * @return the current value
-     *
      *
      */
     protected double getValue() {
@@ -201,9 +223,7 @@ abstract public class Block {
     /**
      *
      * Indicates if all results are up-to-date.
-     *
      * @return true if our result is up-to-date
-     *
      *
      */
     public boolean isReady() {
@@ -213,7 +233,6 @@ abstract public class Block {
     /**
      *
      * Indicates if all inputs are connected
-     *
      * @return true if all inputs are connected to Signals
      *
      */
@@ -229,7 +248,6 @@ abstract public class Block {
     /**
      *
      * Indicates if output is connected
-     *
      * @return true if the output is connected to a Signal
      *
      */
@@ -240,9 +258,7 @@ abstract public class Block {
     /**
      *
      * Checks to see if all upstream blocks are ready.
-     *
      * @return true if all inputs to this block are ready
-     *
      *
      */
     public boolean allInputsReady() {
@@ -268,8 +284,7 @@ abstract public class Block {
 
     /**
      *
-     * Sets verbose flag.
-     *
+     * Sets our verbose flag.
      *
      */
     public void makeVerbose() {
@@ -280,7 +295,6 @@ abstract public class Block {
      *
      * Unsets verbose flag.
      *
-     *
      */
     public void silence() {
         this.verboseFlag = false;
@@ -289,9 +303,7 @@ abstract public class Block {
     /**
      *
      * Returns our verbose state.
-     *
      * @return true if the verbose flag is set.
-     *
      *
      */
     public boolean isVerbose() {
@@ -299,18 +311,20 @@ abstract public class Block {
     }
 
     /**
-     * Sets the block as 'selected'
      *
+     * Sets this <code>Block</code> as 'selected'
      * @since 0.9.4
+     *
      */
     public void select() {
         selectedFlag = true;
     }
 
     /**
-     * Sets the block and all ancestors as 'selected'
      *
+     * Sets this <code>Block</code> and all ancestors as 'selected'
      * @since 0.9.4
+     *
      */
     public void selectWithAncestors() {
         this.select();
@@ -325,19 +339,21 @@ abstract public class Block {
     }
 
     /**
-     * Unselects the block
      *
+     * Unselects the block
      * @since 0.9.4
+     *
      */
     public void deselect() {
         selectedFlag = false;
     }
 
     /**
-     * Returns the status of selection
      *
+     * Returns the status of selection
      * @return selectedFlag
      * @since 0.9.4
+     *
      */
     public boolean isSelected() {
         return selectedFlag;
@@ -346,9 +362,7 @@ abstract public class Block {
     /**
      *
      * Set a pointer to some masking object (like Simulink SLBlock)
-     *
      * @param o the object of whose mask we are a part
-     *
      *
      */
     public void setMask(Object o) {
@@ -358,9 +372,7 @@ abstract public class Block {
     /**
      *
      * Returns the masking object (possibly null).
-     *
      * @return mask the masking object
-     *
      *
      */
     public Object getMask() {
@@ -370,13 +382,10 @@ abstract public class Block {
     /**
      *
      * Adds input to next port.
-     *
      * <p>
      * Returns port number (1-based).
-     *
      * @param inSignal signal to add
      * @return port number (1-based)
-     *
      *
      */
     public int addInput(Signal inSignal) {
@@ -398,10 +407,8 @@ abstract public class Block {
 
     /**
      *
-     * <p>
-     * Adds input to specified port </p>
-     *
-     * @param inSignal signal to add
+     * Adds input {@link Signal} to specified port
+     * @param inSignal <code>Signal</code> to add
      * @param portNum port (1-based) to add signal
      *
      */
@@ -425,12 +432,9 @@ abstract public class Block {
 
     /**
      *
-     * <p>
-     * Add input variable ID (usually to hook up later) </p>
-     *
+     * Add input variable ID (usually to hook up later)
      * @param portNum port to associate with varID (1-based)
      * @param varID <code>String</code> containing unique variable ID
-     *
      *
      */
     public void addVarID(int portNum, String varID) {
@@ -457,12 +461,13 @@ abstract public class Block {
     }
 
     /**
-     * Replace current input Signal with new input Signal; used to insert
-     * in-line limiters in Model's setUpLimiterFor() method
      *
+     * Replace current input {@link Signal} with new input <code>Signal</code>; used to insert
+     * in-line limiters in {@link Model#setUpLimiterFor} method
      * @param oldSignal - the signal to replace
      * @param newSignal - the signal to use instead of oldSignal
      * @since 0.9.3
+     *
      */
     public void replaceInput(Signal oldSignal, Signal newSignal) {
         // find oldSignal's varID; in not found, ignore
@@ -478,10 +483,9 @@ abstract public class Block {
 
     /**
      *
-     * Hook up output signal
-     *
-     * @param outSignal signal to add
-     * @throws DAVEException if signal varID is different from expected or if
+     * Hook up an output {@link Signal}
+     * @param outSignal Signal to add
+     * @throws DAVEException if Signal varID is different from expected or if
      * already hooked up to different signal
      *
      */
@@ -504,8 +508,7 @@ abstract public class Block {
 
     /**
      *
-     * Record output varID
-     *
+     * Record output varID.
      * @param outVarID <code>String</code> varID of output signal
      *
      */
@@ -514,12 +517,13 @@ abstract public class Block {
     }
 
     /**
-     * <p>
+     * 
      * Hook up the output of a block to the given input, creating an output
-     * {@link Signal} if necessary
+     * {@link Signal} if necessary.
      * @param blk the <tt>Block</tt> to connect the output from
      * @param inPort our input port number (1-based) to connect to the block's
      * output
+     *
      */
     protected void addInput(Block blk, int inPort) {
         Signal sig;
@@ -540,12 +544,9 @@ abstract public class Block {
 
     /**
      *
-     * <p>
-     * Creates new upstream const block and signal wire </p>
-     *
+     * Creates new upstream const block and signal wire
      * @param constantValue <code>String</code> containing value
      * @param inPort <code>int</code> value of our input port to use (1-based)
-     *
      *
      */
     protected void addConstInput(String constantValue, int inPort) {
@@ -560,9 +561,7 @@ abstract public class Block {
     /**
      *
      * Returns our model.
-     *
      * @return our model to which we belong
-     *
      *
      */
     public Model getModel() {
@@ -572,9 +571,7 @@ abstract public class Block {
     /**
      *
      * Returns our name.
-     *
      * @return a String containing our name
-     *
      *
      */
     public String getName() {
@@ -584,9 +581,7 @@ abstract public class Block {
     /**
      *
      * Returns our type.
-     *
      * @return a String containing our block type
-     *
      *
      */
     public String getType() {
@@ -595,13 +590,10 @@ abstract public class Block {
 
     /**
      *
-     * <p>
      * Returns variable ID (<code>varID</code>) associated with particular INPUT
-     * port number (1-based). </p>
-     *
+     * port number (1-based).
      * @param portNum (1-based) port number
      * @return the variable ID associated with the given inport
-     *
      *
      */
     public String getVarID(int portNum) {
@@ -611,11 +603,8 @@ abstract public class Block {
 
     /**
      *
-     * <p>
-     * Returns an iterator to loop through input signals </p>
-     *
+     * Returns an iterator to loop through input signals
      * @return <code>Iterator</code>
-     *
      *
      */
     public Iterator<Signal> getInputIterator() {
@@ -625,10 +614,10 @@ abstract public class Block {
     /**
      *
      * Returns signal hooked up to specified input port (0-based)
-     *
      * @param index (0-based) of port
      * @return the signal from the given input port
      * @since 0.9
+     *
      */
     public Signal getInput(int index) {
         return inputs.get(index);
@@ -637,9 +626,7 @@ abstract public class Block {
     /**
      *
      * Returns our output signal
-     *
-     * @return our output Signal
-     *
+     * @return our output {@link Signal}
      *
      */
     public Signal getOutput() {
@@ -648,11 +635,8 @@ abstract public class Block {
 
     /**
      *
-     * <p>
-     * Returns an iterator to loop through input variable IDs </p>
-     *
+     * Returns an iterator to loop through input variable IDs
      * @return <code>Iterator</code>
-     *
      *
      */
     public Iterator<String> getVarIDIterator() {
@@ -662,9 +646,7 @@ abstract public class Block {
     /**
      *
      * Returns our output signal's ID
-     *
      * @return a String with the output variable ID
-     *
      *
      */
     public String getOutputVarID() {
@@ -673,12 +655,9 @@ abstract public class Block {
 
     /**
      *
-     * <p>
-     * Set name list and adjust name to match language requirements </p>
-     *
-     * @param newNameList <code>NameList</code> name must meet and be unique
-     * within
-     *
+     * Set name list and adjust name to match language requirements
+     * @param newNameList <code>NameList</code> name must meet source code variable restrictions 
+     * and be unique within the list
      *
      */
     public void setNameList(NameList newNameList) {
@@ -690,9 +669,7 @@ abstract public class Block {
     /**
      *
      * Change name of block to one acceptable to namespace
-     *
      * @param newName the new name to record
-     *
      *
      */
     protected void setName(String newName) {
@@ -707,8 +684,7 @@ abstract public class Block {
     /**
      *
      * This method forces the output varID to match that of the downstream
-     * signal It is used when the downstream variable inserts a limiter block.
-     *
+     * {@link Signal}. It is used when the downstream variable inserts a limiter block.
      *
      */
     public void renameOutVarID() {
@@ -718,8 +694,7 @@ abstract public class Block {
     /**
      *
      * Forces the variable ID of the specified input port to match the connected
-     * signal
-     *
+     * {@link Signal}
      * @param portNum the input port number (1-based) to modify
      *
      */
@@ -731,11 +706,8 @@ abstract public class Block {
 
     /**
      *
-     * <p>
-     * Returns number of inputs </p>
-     *
+     * Returns number of inputs
      * @return an int with the number of inputs
-     *
      *
      */
     public int numInputs() {
@@ -748,11 +720,8 @@ abstract public class Block {
 
     /**
      *
-     * <p>
-     * Returns number of VarIDs </p>
-     *
+     * Returns number of VarIDs
      * @return an int with the number of input variable IDS
-     *
      *
      */
     public int numVarIDs() {
@@ -761,15 +730,12 @@ abstract public class Block {
 
     /**
      *
-     * <p>
-     * Hook up a single input signal, if it exists; otherwise, leave unconnected
-     * for now. Returns true if successful. </p>
-     *
+     * Hook up a single input {@link Signal}, if it exists; otherwise, leave unconnected for
+     * now. Returns true if successful.
      * @param port <code>int</code> with 1-based input number
      * @return true if successful
      * @throws DAVEException if the expected input variableID doesn't match the
      * associated signal's variableID
-     *
      *
      */
     protected boolean hookUpInput(int port) throws DAVEException {
@@ -791,11 +757,13 @@ abstract public class Block {
     }
 
     /**
-     * Hook up to input signals
      *
-     * For each input port that is not connected to a Signal, search for 
-     * a Signal in the model with the correct variable ID and connect to it;
+     * Hook up to input signals
+     * <p>
+     * For each input port that is not connected to a {@link Signal}, search for 
+     * a <code>Signal</code> in the {@link Model} with the correct variable ID and connect to it;
      * otherwise, leave port unconnected.
+     *
      */
     protected void hookUpInputs() {
         int portCount = 0;
@@ -821,10 +789,9 @@ abstract public class Block {
     }
 
     /**
+     *
      * Attempts to hook up all inputs and the output to existing signals.
-     *
-     * @throws DAVEException if a necessary <code>Signal</code> is not found.
-     *
+     * @throws DAVEException if a necessary {@link Signal} is not found.
      *
      */
     public void hookUp() throws DAVEException {
@@ -875,11 +842,10 @@ abstract public class Block {
     /**
      *
      * Verify that all inputs are connected. If not, try again to hook them up.
+     * <p>
      * Returns true if all inputs are successfully connected to upstream
-     * signals.
-     *
-     * @return true if inputs are connected to Signals
-     *
+     * {@link Signal}s.
+     * @return true if inputs are connected to {@link Signal}s
      *
      */
     public boolean verifyInputs() {
@@ -931,13 +897,11 @@ abstract public class Block {
 
     /**
      *
-     * <p>
      * Verify that all outputs are connected. If not, try again to hook them up.
+     * <p>
      * Returns true if all outputs are successfully connected to downstream
-     * signals. </p>
-     *
+     * {@link Signal}s.
      * @return true if all outputs are connected to signals
-     *
      *
      */
     public boolean verifyOutputs() {
@@ -962,10 +926,9 @@ abstract public class Block {
 
     /**
      *
-     * Generate C-code equivalent of our operation This procedure should be
+     * Generate desired source code equivalent of our operation. This procedure should be
      * overridden.
-     *
-     * @return a CodeAndVarNames new instance containing a comment
+     * @return a new instance of {@link CodeAndVarNames} containing a comment
      * @since 0.9.4
      *
      */
@@ -979,7 +942,6 @@ abstract public class Block {
     /**
      *
      * Generate appropriate indentation spaces
-     *
      * @return a String with the correct number of indentation spaces for the
      * current level of indentation
      * @since 0.9.4
@@ -1002,11 +964,11 @@ abstract public class Block {
     /**
      *
      * Wrap message in appropriate language
-     *
      * @param comment the comment String to wrap in the appropriate comment
      * block
      * @return String with original String wrapped in comment delimiters
      * @since 0.9.4
+     *
      */
     public String wrapComment(String comment) {
         String wrappedComment = "";
@@ -1026,10 +988,10 @@ abstract public class Block {
     /**
      *
      * Wrap error message in appropriate dialect
-     *
      * @param errMsg a String containing an error message
      * @return String with the original message preceded with 'ERROR: '
      * @since 0.9.4
+     *
      */
     public String errorComment(String errMsg) {
         return this.wrapComment("ERROR: " + errMsg);
@@ -1038,9 +1000,9 @@ abstract public class Block {
     /**
      *
      * Add appropriate statement-ending characters
-     *
      * @return String with the appropriate line ending characters
      * @since 0.9.4
+     *
      */
     public String endLine() {
         String lineEnd = "\n";
@@ -1053,11 +1015,11 @@ abstract public class Block {
     /**
      *
      * Generate appropriate 'if' statement for given language
-     *
      * @param condition A String containing a condition test
      * @return String containing the appropriate 'if' statement syntax to wrap
      * the condition string
      * @since 0.9.4
+     *
      */
     public String beginIf(String condition) {
         String ifStart = "";
@@ -1076,9 +1038,9 @@ abstract public class Block {
     /**
      *
      * Generate appropriate if statement ending for given language
-     *
      * @return String with the appropriate if-then ending grammar
      * @since 0.9.4
+     *
      */
     public String endIf() {
         String ifEnd = "";
@@ -1097,10 +1059,8 @@ abstract public class Block {
     /**
      *
      * Generates brief description on output stream
-     *
      * @param writer FileWriter to use
      * @throws IOException if writing has a problem
-     *
      *
      */
     public void describeSelf(Writer writer) throws IOException {
@@ -1219,9 +1179,7 @@ abstract public class Block {
     /**
      *
      * Updates the output value of the block.
-     *
      * @throws DAVEException if problems are encountered updating the block
-     *
      *
      */
     abstract public void update() throws DAVEException; // updates value of block

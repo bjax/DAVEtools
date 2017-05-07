@@ -48,11 +48,11 @@ public class BlockMathMinmax extends BlockMath
     
     /**
      *
-     * <p> Constructor for Min-Max Block <p>
+     * Constructor for Min-Max Block
      *
      * @param applyElement Reference to <code>org.jdom.Element</code>
-     * containing "apply" element
-     * @param m         The parent <code>Model</code>
+     * containing <code>&lt;apply&gt;</code> element
+     * @param m The parent <code>Model</code>
      *
      **/
 
@@ -108,8 +108,10 @@ public class BlockMathMinmax extends BlockMath
     
     
     /**
+     *
      * Returns the extrema function desired.
      * @return String containing function type (either "max" or "min")
+     *
      */
     public String getFuncType() {
         return funcType;

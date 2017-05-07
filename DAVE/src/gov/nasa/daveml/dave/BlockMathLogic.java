@@ -119,7 +119,7 @@ public class BlockMathLogic extends BlockMath
 
 
     /**
-     * <p> Generate code equivalent of a logic test </p>
+     * Generate code equivalent of a logic test
      * @return String with automatically generated code
      */
     

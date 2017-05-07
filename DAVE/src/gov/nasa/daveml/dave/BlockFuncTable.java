@@ -17,12 +17,11 @@ package gov.nasa.daveml.dave;
 
 /**
  * 
- * <p> Object representing a linear interpolation block. </p>
- *
- * <p> Despite misleading name, the actual table is stored as a
- *     FuncTable block and is referenced by this Block.</p>
- *
- * @author Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
+ * Object representing a linear interpolation block.
+ * <p>
+ * Despite misleading name, the actual table is stored as a
+ * FuncTable block and is referenced by this Block.
+ * @author Bruce Jackson &lt;bruce@digiflightdyn.com&gt;
  *
  **/
 
@@ -35,59 +34,62 @@ import org.jdom.Namespace;
 
 /**
  *
- * <p>  The Function Table Block represents a nonlinear, multidimensional function. </p>
+ * The Function Table Block represents a nonlinear, multidimensional function.
  *
  **/
 
 public final class BlockFuncTable extends Block
 {
     /**
-     *  if true, have no local breakpoint IDs - only varIDs
+     *
+     *  if true, this block has no local breakpoint IDs - only varIDs
+     *
      */
-
     boolean simple;
 
     /**
+     *
      *  ID of gridded data table
+     *
      */
-
     String gtID;
 
     /**
+     *
      *  points to function table definition stored elsewhere
+     *
      */
-
     FuncTable functionTableDef;
 
     /**
+     *
      *  description of function
+     *
      */
-
     String description;
 
     /**
+     *
      *  name of function definition ("unnamed" for simple functions)
+     *
      */
-
     String functionDefName;
 
     /**
+     *
      * Default namespace of parent <code>&lt;root&gt;</code> element
+     *
      */
-    
     Namespace ns;
-
 
     /**
      * Constructor for BlockFuncTable
+     * @param function Top-level Element function definition
+     * @param m {@link Model} to which we attach
+     * @throws IOException if problems are encountered 
      *
-     * @param function  Top-level Element function definition
-     * @param m <code>Model</code> to which we attach
-     * @throws IOException if problems encountered 
      **/
-
-    public BlockFuncTable( Element function, Model m) throws IOException
-    { 
+    public BlockFuncTable( Element function, Model m) throws IOException { 
 	// Save our name, generate default scalar input and output ports.
 	super(function.getAttributeValue("name"), "function table", 3, m);
 
@@ -174,10 +176,11 @@ public final class BlockFuncTable extends Block
 
 
     /**
-     * Copy constructor
-     * @param b The BlockFuncTable to be copied
+     *
+     * Copy constructor for <code>BlockFuncTable</code>
+     * @param b The <code>BlockFuncTable</code> to be copied
+     *
      **/
-
     public BlockFuncTable( BlockFuncTable b ) 
     {
 	super( b );		// call Block copy constructor
@@ -191,21 +194,21 @@ public final class BlockFuncTable extends Block
 
 
     /**
-     * Return pointer to function table 
      *
+     * Return pointer to function table 
      * @return pointer to function table
+     *
      **/
-
     public FuncTable getFunctionTableDef() { return this.functionTableDef; }
 
 
     /**
      *
-     * <p> Parse elements of a simple function (no explicit breakpoint
-     * refs or table refs/defs). Must create & hook up own breakpoint objects. </p>
-     *
-     * @param function JDOM "function" element
+     * Parse elements of a simple function (no explicit breakpoint
+     * refs or table refs/defs). Must create &amp; hook up own breakpoint objects.
+     * @param function JDOM <code>&lt;function&gt;</code> element
      * @throws IOException
+     *
      **/
 
     @SuppressWarnings("unchecked")
@@ -291,13 +294,11 @@ public final class BlockFuncTable extends Block
 
     /**
      *
-     * <p> Finds and saves a list of independent variable references found in an
-     *     <code>function</code> element
-     *
+     * Finds and saves a list of independent variable references found in an
+     * <code>&lt;function&gt;</code> element
      * @param function JDOM "function" element
      *
      **/
-
     @SuppressWarnings("unchecked")
 	protected void parseVarIDsFromFunctionElement( Element function )
     {
@@ -328,14 +329,12 @@ public final class BlockFuncTable extends Block
     /**
      *
      * Using specified output (dependent) variable name, look for
-     * such a declared variable. If not found, create appropriate
+     * such a declared variable. If not found, create an appropriate
      * one.
-     *
      * @param function JDOM function Element
      * @return dependent variable name String 
      *
      **/
-
     protected String hookUpOutput( Element function )
     {
 
@@ -395,14 +394,12 @@ public final class BlockFuncTable extends Block
      *
      * Create a new breakpoint block and associated
      * index-and-weight signal to serve as an input to this block.
-     *
      * @param bpID String with ID of breakpoint table
      * @param varID String with ID of independent variable for breakpoint
      * @param iwSignalID String with name of output Signal ID
      * @param portNum 1-based? input port number
      *
      **/
-
     protected void createAndHookUpIWPath( String bpID, String varID, 
 					 String iwSignalID, int portNum ) {
 
@@ -456,6 +453,7 @@ public final class BlockFuncTable extends Block
 
 
     /**
+     *
      * Hook up to specified breakpoint blocks. 
      * <p>
      * Note that a breakpoint vector can be used by more than one function block 
@@ -466,7 +464,6 @@ public final class BlockFuncTable extends Block
      * (normalized breakpoint) when they have the same combined name.
      *
      **/
-
     @Override
     protected void hookUpInputs()
     {
@@ -540,12 +537,12 @@ public final class BlockFuncTable extends Block
 
 
     /** 
-     * This method directs output to designated Writer
      *
+     * This method directs output to designated <code>Writer</code>
      * @param writer <code>PrinterWriter</code> to receive values
      * @throws IOException if problem encountered writing table
+     *
      **/
-
     public void printTable( Writer writer )
 	throws IOException
     {
@@ -558,8 +555,8 @@ public final class BlockFuncTable extends Block
 
 
     /**
-     * Generates written description of current instance on output stream
      *
+     * Generates written description of current instance on output stream
      * @param writer FileWriter instance to write to
      * @throws IOException if problem encountered performing output
      *
@@ -576,11 +573,10 @@ public final class BlockFuncTable extends Block
 
     /**
      *
-     * <p> Implements update() method </p>
+     * Implements the <code>update()</code> method
      * @throws DAVEException if an error occurs
      *
      **/
-
     @Override
     public void update() throws DAVEException
     {
@@ -649,10 +645,14 @@ public final class BlockFuncTable extends Block
 
     
     /**
-     * <p> Performs interpolation based on normalized breakpoint vector </p>
+     *
+     * Performs interpolation based on normalized breakpoint vector
+     * @param index_and_weights An array of doubles with index and weights for table interpolation based on associated breakpoints
+     * @param indices An array of integers with indices into the table 
+     * @param interpDimension Sets the dimension for a recursive n-D interpolation
+     * @return double the interpolated value
      *
      **/
-
     private double interpolate( double[] index_and_weights, int[] indices, int interpDimension )
     {
 	int select;
@@ -703,8 +703,10 @@ public final class BlockFuncTable extends Block
     }
     
     /**
+     *
      * Returns the contents of the description field, with spaces substituted for newlines
      * @return contents of the <code>description</code> field
+     *
      */
 
     public String getDescription() {

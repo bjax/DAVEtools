@@ -81,7 +81,11 @@ public class BlockMathMinus extends BlockMath
     
     
     /**
-     * <p> Generate code equivalent of our operation</p>
+     * 
+     * Generate code equivalent of our operation
+     * @return CodeAndVarNames object containing a source code
+     *         representation of our constant value
+     * 
      */
     
     @Override

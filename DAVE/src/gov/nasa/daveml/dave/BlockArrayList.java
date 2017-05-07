@@ -15,21 +15,25 @@
 package gov.nasa.daveml.dave;
 
 /**
- * Extends ArrayList for {@link Block} objects
+ *
+ * Extends <code>ArrayList</code> for {@link Block} objects
  * <p>
  * Modification history:
  * <ul>
  * <li>031211 Bruce Jackson <mailto:bruce@digiflightdyn.com></li>
  * </ul>
+ *
  */
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 /**
+ *
  * The <code>BlockArrayList</code> extends the standard Java
  * <code>ArrayList</code> object to allow searching for specific types
  * of {@link Block}s.
+ *
  **/
 
 @SuppressWarnings("serial")
@@ -37,24 +41,28 @@ public class BlockArrayList extends ArrayList<Block>
 {
 
     /**
-     * Simplest BlockArrayList Constructor takes no arguments
+     *
+     * Simplest <code>BlockArrayList</code> constructor that takes no arguments
+     *
      **/
 
     public BlockArrayList() { super(); }
 
     /**
-     * BlockArrayList Constructor takes initial capacity estimate
      *
+     * <code>BlockArrayList</code> constructor takes initial capacity estimate
      * @param initialCapacity integer estimate of required slots
+     *
      **/
 
     public BlockArrayList( int initialCapacity ) { super(initialCapacity); }
 
 
     /**
-      BlockArrayList Constructor converts existing {@link Collection}
      *
+     * <code>BlockArrayList</code> constructor converts existing {@link Collection}
      * @param c existing Collection to convert
+     *
      **/
 
     public BlockArrayList( Collection<Block> c ) { super(c); }

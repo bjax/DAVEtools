@@ -29,23 +29,27 @@ import org.jdom.Attribute;
 import org.jdom.Element;
 
 /**
- * The Math block extends the generic {@link Block} to represent an arbitrary 
- * math function, and is the superclass for all Math blocks.
+ *
+ * The <code>BlockMath</code> block extends the generic {@link Block} to represent an arbitrary 
+ * math function, and is the superclass for all <code>BlockMath</code> derived blocks.
+ *
  **/
 
 abstract public class BlockMath extends Block
 {
     
     /**
+     *
      *  variable ID
+     *
      */
-
     static String variableID;
 
     /**
+     *
      * Basic BlockMath constructor.
+     *
      **/
-
     public BlockMath()
     {
 	// Initialize Block elements
@@ -54,11 +58,11 @@ abstract public class BlockMath extends Block
     }
 
     /**
-     * BlockMath Constructor that accepts a {@link Model}.
      *
+     * BlockMath Constructor that accepts a {@link Model}.
      * @param m {@link Model} we're part of
+     *
      **/
-
     public BlockMath( Model m)
     {
 	// Initialize Block elements
@@ -68,13 +72,13 @@ abstract public class BlockMath extends Block
 
 
     /**
+
      * BlockMath Constructor that accepts a name and type String.
-     *
      * @param blockName our name
      * @param blockType our type
      * @param m {@link Model} we're part of
+     *
      **/
-
     public BlockMath(String blockName, String blockType, Model m)
     {
 	// Initialize Block elements
@@ -87,13 +91,12 @@ abstract public class BlockMath extends Block
      *
      * BlockMath Constructor that accepts a name and type String and an 
      * estimate of the number of inputs needed.
-     *
      * @param blockName our name
      * @param blockType our type
      * @param numInputs how many inputs we have
      * @param m {@link Model} we're part of
+     *
      **/
-
     public BlockMath(String blockName, String blockType, int numInputs, Model m)
     {
 	// Initialize Block elements
@@ -102,12 +105,12 @@ abstract public class BlockMath extends Block
     }
     
     /**
+     *
      * Put variable name on System error stream.
-     * 
      * @param errorMsg Message to be preceded with variableID
      * @since 0.9.8
+     *
      */
-    
     static public void printErrWithVarID( String errorMsg ) {
         System.err.println("In calculations for variable '" + variableID + "':");
         System.err.println( errorMsg );
@@ -115,13 +118,14 @@ abstract public class BlockMath extends Block
 
 
     /**
-     * Determines block type and calls appropriate constructor.
      *
+     * Determines block type and calls appropriate constructor.
      * @param applyElement Reference to {@link org.jdom.Element}
      * containing "apply" element
      * @param m Our parent {@link Model}
      * @return Math block of appropriate type
      * @throws DAVEException if problems were encountered
+     *
      **/
 
     @SuppressWarnings("unchecked")
@@ -208,10 +212,11 @@ abstract public class BlockMath extends Block
     }
 
     /**
+     *
      * Finds or generates appropriate inputs from math constructs.
-     * 
      * @param ikid List <code>Iterator</code> for elements of top-level &lt;apply&gt;.
      * @param inputPortNumber <code>Int</code> with 1-based input number
+     *
      **/
 
     public void genInputsFromApply( Iterator<Element> ikid, int inputPortNumber ) 
