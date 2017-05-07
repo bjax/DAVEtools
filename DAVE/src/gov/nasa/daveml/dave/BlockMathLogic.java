@@ -16,8 +16,9 @@ package gov.nasa.daveml.dave;
 
 /**
  *
- * <p> Logical operator math function block </p>
- * <p> 2015-02-13 Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
+ * Logical operator math function block
+ * <p>
+ * 2015-02-13 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;
  * @since 0.9.7
  *
  **/
@@ -31,43 +32,44 @@ import org.jdom.Element;
 
 /**
  *
- * <p>  The MathLogic block represents an Logical operator (scalar input) function</p>
+ * The MathLogic block represents an Logical operator (scalar input) function
  *
  **/
 
 public class BlockMathLogic extends BlockMath
 {
     /**
+     *
      * Defined logics, for speed of execution
+     *
      **/
-
     private static final int UNK = 0;
     private static final int OR  = 1;
     private static final int AND = 2;
     private static final int NOT = 3;
 
     /**
+     *
      * Which algebraic logic we're testing
+     *
      */
-
     String logicOp;
 
     /**
+     *
      * Which algebraic logic we're testing, using encoded value from internal table
+     *
      */
-
     int logic;
     
     /**
      *
-     * <p> Constructor for logic Block <p>
-     *
+     * Constructor for logic <code>Block</code>
      * @param applyElement Reference to <code>org.jdom.Element</code>
      * containing "apply" element
      * @param m         The parent <code>Model</code>
      *
      **/
-
     @SuppressWarnings("unchecked")
     public BlockMathLogic( Element applyElement, Model m )
     {
@@ -100,12 +102,10 @@ public class BlockMathLogic extends BlockMath
 
     /**
      *
-     * <p> Determines if string is acceptable MathML logic </p>
-     *
+     * Determines if string is acceptable MathML logic
      * @return <code>boolean</code> true if is a logic
      *
      **/
-
     protected final boolean validateLogic( )
     {
     	this.logic = UNK;
@@ -119,8 +119,10 @@ public class BlockMathLogic extends BlockMath
 
 
     /**
+     *
      * Generate code equivalent of a logic test
      * @return String with automatically generated code
+     *
      */
     
     @Override
@@ -216,9 +218,11 @@ public class BlockMathLogic extends BlockMath
     }
 
     /**
-     * Sets logic operator from String
+     *
+     * Sets logic operator from <code>String</code>
      * @param logicString String with desired operator
      * @throws DAVEException if logic string is unrecognized
+     *
      */
     
     public void setLogicOp( String logicString ) throws DAVEException {
@@ -231,8 +235,8 @@ public class BlockMathLogic extends BlockMath
     /**
      *
      * Returns logic value
-     *
      * @return boolean result
+     *
      **/
 
     public boolean getBoolValue() {
@@ -243,8 +247,8 @@ public class BlockMathLogic extends BlockMath
     /**
      *
      * Returns logic operator as String
-     *
      * @return String with char representation of logic operator
+     *
      **/
 
     public String getLogicOp() { return this.logicOp; }

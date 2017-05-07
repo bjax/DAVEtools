@@ -15,38 +15,42 @@
 package gov.nasa.daveml.dave;
 
 /**
+ *
  * Object representing a constant value in a {@link Model}.
- * 
+ * <p>
  * Modification history: 
  * <ul> 
- * <li>031214 Bruce Jackson <mailto:bruce@digiflightdyn.com> </li> 
+ * <li>2003-12-14 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt; </li> 
  * </ul>
+ *
  */
 
 import java.io.IOException;
 import java.io.Writer;
 
 /**
- * The constant block represents a constant value source.
+ *
+ * The constant math {@link Block} represents a constant value source.
+ *
  **/
 
 public class BlockMathConstant extends BlockMath
 {
     /**
+     *
      * The value of this constant
+     *
      */
-
     String stringValue;
 
     /**
-     * BlockMathConstant: Constructor for constant value Block.
      *
+     * <code>BlockMathConstant</code> Constructor for constant value <code>Block</code>.
      * @param constantValue {@link String} containing value of constant
      * @param m Our parent {@link Model}
+     *
      **/
-
-    public BlockMathConstant( String constantValue, Model m )
-    {
+    public BlockMathConstant( String constantValue, Model m )    {
 	// Initialize superblock elements
 	super("const_" + m.getNumBlocks(), "constant value", m);
 	this.setValue(constantValue);
@@ -54,11 +58,11 @@ public class BlockMathConstant extends BlockMath
 
 
     /**
+     *
      * Returns our numeric value.
-     * 
      * @return double containing the current output value
+     *
      **/
-
     public double getValueAsDouble() { return this.value; }
 
 
@@ -67,20 +71,18 @@ public class BlockMathConstant extends BlockMath
      *
      * @return String representing the current output value
      **/
-
     public String getValueAsString() { return this.stringValue; }
 
 
     /**
      * Sets our value from a string.
-     * 
-     * If the provided String can't be converted to a double, we emit an error
-     * message on System.err and exit the program.
-     * 
+     * <p>
+     * If the provided <code>String</code> can't be converted to a double, we emit an error
+     * message on <code>System.err</code> and exit the program.
      * @param newValue is a String containing a representation of the value of the 
      * constant to which we're set.
+     *
      */
-    
     public final void setValue( String newValue ) {
     	this.stringValue = newValue;
 
@@ -96,9 +98,10 @@ public class BlockMathConstant extends BlockMath
     }
     
     /**
-     * Sets our value from a Double.
-     * 
-     * @param newValue is the value of the constant to which we're to be set
+     *
+     * Sets our value from a <code>Double</code>.
+     * @param newValue is the value of the constant to which we're to be set.
+     *
      */
     
     public void setValue( Double newValue ) {
@@ -136,11 +139,12 @@ public class BlockMathConstant extends BlockMath
 
         
     /**
-     * Generates description of self.
-     * 
+     *
+     * Generates description of self on designated <code>Writer</code>
+     * @param writer the output <code>Writer</code> to receive our description
      * @throws IOException if problems encountered writing description
+     *
      **/
-
     @Override
     public void describeSelf(Writer writer) throws IOException
     {
@@ -149,11 +153,11 @@ public class BlockMathConstant extends BlockMath
     }
 
     /**
-     * Implements update() method.
-     * 
-     * If the verbose flag is on, generate a narrative on System.out.
-     * 
+     * Implements the <code>update()</code> method.
+     * <p>
+     * If the verbose flag is on, generate a narrative on <code>System.out<code>.
      * @throws DAVEException if the block has any inputs (it should be a constant)
+     *
      **/
 
     @Override
@@ -172,13 +176,13 @@ public class BlockMathConstant extends BlockMath
 	resultsCycleCount = ourModel.getCycleCounter();
     }
     
-    /**
+   /**
     *
     * Indicates if all results are up-to-date.
-    * 
-    * Constant blocks are always ready!
+    * <p>
+    * [Constant blocks are always ready!]
+    * @return true, always
     *
-    * @return true always
     **/
 
     @Override

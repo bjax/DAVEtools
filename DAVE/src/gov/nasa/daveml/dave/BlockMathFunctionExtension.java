@@ -20,8 +20,8 @@ package gov.nasa.daveml.dave;
  *
  * DAVE-ML extensions to MathML 2 functions
  *
- * @author 070223 Bruce Jackson <mailto:bruce@digiflightdyn.com>
- * @since version 0.8 / rev 193
+ * @author 2007-02-23 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;
+ * @since version 0.8
  *
  **/
 
@@ -34,30 +34,31 @@ import org.jdom.Element;
 
 /**
  *
- * <p> The MathExtension block represents an official DAVE-ML extension to MathML </p>
- * @since version 0.8 / rev 193
+ * The MathExtension block represents an official DAVE-ML extension to MathML
+ * @since version 0.8
+ *
  **/
 
-public class BlockMathFunctionExtension extends BlockMathFunction
-{
+public class BlockMathFunctionExtension extends BlockMathFunction {
 
     /**
+     *
      * Defined supported functions, for speed of execution
      * see BlockMathFunction for MathML2 list
-     * @since version 0.8 / rev 193
+     * @since version 0.8
+     *
      **/
-
     private static final int ATAN2 = 11;        // double-digits implies two inputs
     private static final String DAVEML_EXT_URL = "http://daveml.org/function_spaces.html";
 
     /**
      *
-     * <p> Constructor for Math Extension Block <p>
+     * Constructor for Math Extension Block
      *
      * @param applyElement Reference to <code>org.jdom.Element</code>
      * containing "apply" element
      * @param m         The parent <code>Model</code>
-     * @since version 0.8 / rev 193
+     * @since version 0.8 
      *
      **/
 
@@ -157,10 +158,12 @@ public class BlockMathFunctionExtension extends BlockMathFunction
     }
 
     /**
+     *
      * Change extended function type (calls superclass setFunction if not "atan2")
      * @param functionType String with name of function
      * @throws DAVEException if extended function fails
      * @since 0.9
+     *
      */
     @Override
     public void setFunction(String functionType) throws DAVEException {
@@ -177,8 +180,8 @@ public class BlockMathFunctionExtension extends BlockMathFunction
      * @param writer FileWriter on which to generate description
      * @throws IOException if unable to write to writer
      * @since version 0.8 / rev 193
+     *
      **/
-
     public void describeSelf(FileWriter writer) throws IOException
     {
         super.describeSelf(writer);

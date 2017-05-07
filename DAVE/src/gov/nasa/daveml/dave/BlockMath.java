@@ -15,12 +15,14 @@
 package gov.nasa.daveml.dave;
 
 /**
+ *
  * Superclass representing an arbitrary math function.
- * 
+ * <p> 
  * Modification history:
  * <ul>
- * <li>031212 Bruce Jackson <mailto:bruce@digiflightdyn.com></li>
+ * <li>2003-12-12 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;</li>
  * </ul>
+ *
  **/
 
 import java.util.Iterator;
@@ -72,8 +74,9 @@ abstract public class BlockMath extends Block
 
 
     /**
-
-     * BlockMath Constructor that accepts a name and type String.
+     *
+     * <code>BlockMath</code> constructor that accepts a name and type
+     * <code>String</code>.
      * @param blockName our name
      * @param blockType our type
      * @param m {@link Model} we're part of
@@ -89,8 +92,9 @@ abstract public class BlockMath extends Block
 
     /**
      *
-     * BlockMath Constructor that accepts a name and type String and an 
-     * estimate of the number of inputs needed.
+     * <code>BlockMath</code> constructor that accepts a name and type
+     * <code>String</code> and an estimate of the number of inputs
+     * needed.
      * @param blockName our name
      * @param blockType our type
      * @param numInputs how many inputs we have

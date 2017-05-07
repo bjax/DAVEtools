@@ -21,8 +21,8 @@ package gov.nasa.daveml.dave;
 /**
  *
  * Multipurpose function block
- *
- * @author 031214 Bruce Jackson <mailto:bruce@digiflightdyn.com>
+ * <p>
+ * @author 2003-12-14 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;
  *
  **/
 
@@ -35,7 +35,7 @@ import org.jdom.Element;
 
 /**
  *
- * <p> The MathFunction block represents a scalar exponentiation block </p>
+ * The MathFunction block represents a scalar exponentiation block
  *
  **/
 
@@ -43,9 +43,10 @@ public class BlockMathFunction extends BlockMath
 {
 
     /**
+     *
      * Defined supported functions, for speed of execution
+     *
      **/
-
     private static final int UNK    = 0;
     private static final int SIN    = 1;
     private static final int COS    = 2;
@@ -65,9 +66,7 @@ public class BlockMathFunction extends BlockMath
      * Constructor for Function Block
      *
      **/
-
-    public BlockMathFunction( )
-    {
+    public BlockMathFunction( ) {
         super();
         this.funcType = null;
         this.op = UNK;
@@ -75,12 +74,10 @@ public class BlockMathFunction extends BlockMath
 
     /**
      *
-     * <p> Constructor for Function Block <p>
-     *
+     * Constructor for Function Block (<code>BlockMathFunction</code>
      * @param m         The parent <code>Model</code>
      *
      **/
-
     public BlockMathFunction( Model m )
     {
         super(m);
@@ -90,8 +87,7 @@ public class BlockMathFunction extends BlockMath
 
     /**
      *
-     * Constructor for Function Block
-     *
+     * More complex constructor for Function Block (<code>BlockMathFunction</code>
      * @param applyElement Reference to <code>org.jdom.Element</code>
      * containing "apply" element
      * @param m is the parent Model
@@ -162,20 +158,18 @@ public class BlockMathFunction extends BlockMath
     /**
      *
      * Returns type string
-     *
      * @return String with math function name (type)
+     *
      **/
-
     public String getFuncType() { return funcType; }
 
  
     /**
      *
      * Generates description of self
-     *
      * @throws IOException if problems generating description
+     *
      **/
-
     @Override
     public void describeSelf(Writer writer) throws IOException
     {

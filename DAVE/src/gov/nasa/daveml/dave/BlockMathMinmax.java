@@ -16,8 +16,9 @@ package gov.nasa.daveml.dave;
 
 /**
  *
- * <p> Extrema math function block </p>
- * <p> 2011-07-26 Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
+ * Extrema math function block
+ * <p>
+ * 2011-07-26 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;
  *
  **/
 
@@ -29,16 +30,17 @@ import org.jdom.Element;
 
 /**
  *
- * <p> The MathMinmax block provides min, max functions </p>
+ * The MathMinmax block provides min, max functions
  *
  **/
 
 public class BlockMathMinmax extends BlockMath
 {
     /**
+     *
      * Defined supported functions, for speed of execution
+     *
      **/
-
     private static final int UNK   = 0;
     private static final int MIN   = 1;
     private static final int MAX   = 2;
@@ -48,14 +50,12 @@ public class BlockMathMinmax extends BlockMath
     
     /**
      *
-     * Constructor for Min-Max Block
-     *
+     * Constructor for Min-Max Math Block
      * @param applyElement Reference to <code>org.jdom.Element</code>
      * containing <code>&lt;apply&gt;</code> element
      * @param m The parent <code>Model</code>
      *
      **/
-
     @SuppressWarnings("unchecked")
     public BlockMathMinmax( Element applyElement, Model m )
     {

@@ -16,8 +16,9 @@ package gov.nasa.daveml.dave;
 
 /**
  *
- * <p> Multiplication math function block </p>
- * <p> 031211 Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
+ * Multiplication math function block
+ * <p>
+ * 2003-12-11 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;
  *
  **/
 
@@ -29,17 +30,17 @@ import org.jdom.Element;
 
 /**
  *
- * <p> The MathProduct block represents a scalar multiply/divide block </p>
+ * The MathProduct block represents a scalar multiply/divide block
  *
  **/
-
 public class BlockMathProduct extends BlockMath
 {
 
     /**
+     *
      *  should be either "times" or "quotient" or "divide"
-     */
-
+     *
+     **/
     String blockType;
 
     // quotient/divide blocks have only two inputs and calculate #1/#2.
@@ -47,14 +48,12 @@ public class BlockMathProduct extends BlockMath
     
     /**
      *
-     * <p> Constructor for Product Block <p>
-     *
+     * Constructor for Product Block (<code>BlockMathProduct</code>)
      * @param applyElement Reference to <code>org.jdom.Element</code>
      * containing "apply" element
-     * @param m		The parent <code>Model</code>
+     * @param m	The parent <code>Model</code>
      *
      **/
-
     @SuppressWarnings("unchecked")
     public BlockMathProduct( Element applyElement, Model m )
     {
@@ -101,14 +100,15 @@ public class BlockMathProduct extends BlockMath
      * @return the block type as a String
      *
      **/
-
     public String getBlockType() { return this.blockType; }
 
 
     /**
-     * <p> Generate code equivalent of our operation</p>
+     *
+     * Generate code equivalent of our operation
+     * @return {@link CodeAndVarNames} containing variable names and operands for desired language implementation
+     *
      */
-    
     @Override
     public CodeAndVarNames genCode() {
         CodeAndVarNames cvn = new CodeAndVarNames();
@@ -149,7 +149,6 @@ public class BlockMathProduct extends BlockMath
      * @throws IOException if unable to write description
      *
      **/
-
     @Override
     public void describeSelf(Writer writer) throws IOException
     {
@@ -163,7 +162,6 @@ public class BlockMathProduct extends BlockMath
      * @throws DAVEException if update fails
      *
      **/
-
     @Override
     public void update() throws DAVEException
     {

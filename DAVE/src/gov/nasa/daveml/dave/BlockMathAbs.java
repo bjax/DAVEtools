@@ -16,8 +16,9 @@ package gov.nasa.daveml.dave;
 
 /**
  *
- * <p> Absolute value math function block </p>
- * <p> 031214 Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
+ * Absolute value math function block
+ * <p>
+ * 2003-12-14 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;
  *
  **/
 
@@ -29,23 +30,19 @@ import org.jdom.Element;
 
 /**
  *
- * <p>  The Math block represents an absolute value (scalar input) function</p>
+ * The {@link BlockMath} block represents an absolute value (scalar input) function
  *
  **/
-
-public class BlockMathAbs extends BlockMath
-{
+public class BlockMathAbs extends BlockMath {
     
     /**
      *
-     * <p> Constructor for abs Block <p>
-     *
+     * Constructor for abs function <code>Block</code> <p>
      * @param applyElement Reference to <code>org.jdom.Element</code>
      * containing "apply" element
      * @param m		The parent <code>Model</code>
      *
      **/
-
     @SuppressWarnings("unchecked")
     public BlockMathAbs( Element applyElement, Model m )
     {
@@ -78,11 +75,9 @@ public class BlockMathAbs extends BlockMath
     /**
      *
      * Update our output value
-     *
      * @throws DAVEException if error occurs during update
      *
      **/
-
     @Override
     public void update() throws DAVEException
     {
@@ -123,10 +118,9 @@ public class BlockMathAbs extends BlockMath
      *
      * Generate source-code equivalent of our operation
      * @return CodeAndVarNames object containing a source code
-     *         representation of an absolute value
+     * representation of an absolute value
      *
      */
-    
     @Override
     public CodeAndVarNames genCode() {
         CodeAndVarNames cvn = new CodeAndVarNames();
@@ -158,15 +152,16 @@ public class BlockMathAbs extends BlockMath
 
 
     /**
-     * Generates description of self
+     *
+     * Generates description of self on designated <code>Writer</code>
+     * @param writer the output <code>Writer</code> to receive our description
      * @throws IOException if problems encountered writing description
+     *
      **/
-
     @Override
     public void describeSelf(Writer writer) throws IOException
     {
 	super.describeSelf(writer);
 	writer.write(" and is an Absolute Value math block.");
     }
-
 }

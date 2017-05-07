@@ -16,9 +16,11 @@ package gov.nasa.daveml.dave;
 
 /**
  *
- * <p> Minus value math function block </p>
- * <p> Was named BlockMathGain, but that isn't supported by mathml2?</p>
- * <p> 031211 Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
+ * Minus value math function block
+ * <p> 
+ * Was named BlockMathGain, but that isn't supported by mathml2?
+ * <p>
+ * 2003-12-11 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;
  *
  **/
 
@@ -30,22 +32,19 @@ import org.jdom.Element;
 
 /**
  *
- * <p> The BlockMathMinus block represents a minus block </p>
+ * The BlockMathMinus block represents a minus block
  *
  **/
-
 public class BlockMathMinus extends BlockMath
 {
     /**
      *
-     * <p> Constructor for Minus Block <p>
-     *
+     * Constructor for Minus Block
      * @param applyElement Reference to <code>org.jdom.Element</code>
      * containing "apply" element
      * @param m		The parent <code>Model</code>
      *
      **/
-
     @SuppressWarnings("unchecked")
 	public BlockMathMinus( Element applyElement, Model m )
     {
@@ -87,7 +86,6 @@ public class BlockMathMinus extends BlockMath
      *         representation of our constant value
      * 
      */
-    
     @Override
     public CodeAndVarNames genCode() {
         CodeAndVarNames cvn = new CodeAndVarNames();
@@ -125,7 +123,6 @@ public class BlockMathMinus extends BlockMath
      * @throws IOException if unable to generate description
      *
      **/
-
     @Override
     public void describeSelf(Writer writer) throws IOException
     {
@@ -139,7 +136,6 @@ public class BlockMathMinus extends BlockMath
      * @throws DAVEException if update fails
      *
      **/
-
     @Override
     public void update() throws DAVEException
     {
