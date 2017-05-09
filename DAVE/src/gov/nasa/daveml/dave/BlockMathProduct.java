@@ -16,9 +16,10 @@ package gov.nasa.daveml.dave;
 
 /**
  *
- * Multiplication math function block
- * <p>
- * 2003-12-11 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;
+ * Multiplication math function <code>Block</code>
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  **/
 

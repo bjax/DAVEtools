@@ -18,9 +18,10 @@ package gov.nasa.daveml.dave;
  *
  * Minus value math function block
  * <p> 
- * Was named BlockMathGain, but that isn't supported by mathml2?
- * <p>
- * 2003-12-11 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;
+ * Was named <code>BlockMathGain</code>, but that isn't supported by mathml2?
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  **/
 

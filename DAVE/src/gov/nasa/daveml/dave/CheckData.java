@@ -16,9 +16,10 @@ package gov.nasa.daveml.dave;
 
 /**
  *
- * Check case data for self-verification
- *
- * @author Bruce Jackson, AAG
+ * Represents a set of check-cases for self-verification
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  **/
 
@@ -30,29 +31,26 @@ import org.jdom.Element;
 /**
  * 
  * A class to handle checkcases found in DAVE-ML files
- * 
- * @since DAVE_tools 0.4
- * @author Bruce Jackson
- * 040202: Written, EBJ
+ * @since 0.4
  *
  **/
 
 public class CheckData
 {
     /**
-     *  composed of StaticShot objects
+     *
+     * An <code>ArrayList</code> composed of {@link StaticShot} objects
+     *
      */
-
     ArrayList<StaticShot> staticShots;
 
     /** 
      *
-     * Constructor to built from JDOM Elements
-     * @param shots a List of source file defined Elements from which
-     * to construct the CheckData
+     * Constructor to build from JDOM Elements
+     * @param shots a <code>List</code> of source file defined
+     * org.jdom.Elements from which to construct the CheckData
      *
      **/
-
     public CheckData( List<Element> shots )
     {
 	staticShots = new ArrayList<StaticShot>( 20);
@@ -69,16 +67,14 @@ public class CheckData
      * @return an ArrayList of StaticShots defined by the model source
      *
      **/
-
     public ArrayList<StaticShot> getStaticShots() { return this.staticShots; }
 
     /**
      *
-     * Return the count of checkcases
+     * Return a count of checkcases included
      * @return the number of StaticShots defined by the model source
      *
      **/
-
     public int count() { return this.staticShots.size(); }
 
 }

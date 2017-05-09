@@ -14,12 +14,6 @@
 
 package gov.nasa.daveml.dave;
 
-/**
- * <p>  Object representing each "variable" in algorithm </p>
- * <p> 031211 Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
- *
- */
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,19 +23,15 @@ import org.jdom.Element;
 import org.jdom.Namespace;
 
 /**
+ *
  * Object representing each "variable" in a model implementation algorithm.
  * <p> 
  * There should be one of these for each signal line going between
  * {@link Block}s in a {@link Model}. Each signal has a parent
  * <code>Block</code> &amp; port and one or more child
  * <code>Block</code>s &amp; ports - in essence, a network.
- *<p> 
- * Modification history: 
- * <ul>
- *  <li>031211: Written EBJ</li>
- * </ul>
- *
- * @author Bruce Jackson <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
  * @version 0.9
  *
  **/
@@ -49,151 +39,177 @@ import org.jdom.Namespace;
 public class Signal
 {
     /**
-     *  our model parent
+     *
+     * This <code>Signal</code>'s parent {@link Model}
+     *
      */
-
     Model ourModel;
 
     /**
-     *  name of signal
+     *
+     * The name of this <code>Signal</code>
+     *
      */
-
     String myName;
 
     /**
-     *  variable name
+     *
+     * The variable name for this <code>Signal</code>
+     *
      */
-
     String myVarID;
 
     /**
-     *  units of signal
+     *
+     * The units (encoded per AIAA S-119) of this <code>Signal</code>
+     *
      */
-
     String myUnits;
     
     /**
-     *  Description of signal
+     *
+     * Description of this <code>Signal</code>
+     *
      */
-    
     String description;
 
     /**
-     *  source block for signal
+     *
+     * The upstream source {@link Block} for this <code>Signal</code>
+     *
      */
-
     Block source;
 
     /**
-     *  port number on source block (1-based)
+     *
+     * The port number on this <code>Signal</code>'s source {@link Block} (1-based)
+     *
      */
-
     int sourcePort;
 
     /**
-     *  list of downstream blocks
+     *
+     *  A <code>BlockArrayList</code> of downstream blocks
+     *
      */
-
     BlockArrayList dests;
 
     /**
-     *  list of port numbers (1-based) on output blocks
+     *
+     * An <code>ArrayList</code> of port numbers <code>Integers</code>
+     * (1-based) on output blocks
+     *
      */
-
     ArrayList<Integer> destPorts;
 
     /**
-     *  flag to indicate an initial value has been specified
+     *
+     * Flag to indicate an initial value has been specified
+     *
      */
-
     boolean hasIC;
 
     /**
-     *  initial value of signal (e.g. for constants)
+     *
+     * Initial value of this signal (e.g. for constants)
+     *
      */
-
     private String IC;
 
     /**
-     *  flag to indicate this is an input signal
+     *
+     * Flag to indicate this is an input signal
+     *
      */
-
     private boolean isInput;
 
     /**
-     *  flag to indicate this is a simulation control variable
+     *
+     * Flag to indicate this is a simulation control variable
+     *
      */
-
     private boolean isControl;
 
     /**
-     *  flag to indicate this is a disturbance signal
+     *
+     * Flag to indicate this is a disturbance signal
+     *
      */
-
     private boolean isDisturbance;
 
     /**
-     *  flag to indicate this is a state variable
+     *
+     * Flag to indicate this is a state variable
+     *
      */
-
     private boolean isState;
 
     /**
-     *  flag to indicate this is a state derivative
+     *
+     * Flag to indicate this is a state derivative
+     *
      */
-
     private boolean isStateDeriv;
 
     /**
-     *  flag to indicate this should be an output signal
+     *
+     * Flag to indicate this should be an output signal
+     *
      */
-
     private boolean isOutput;
 
     /**
-     *  flag to indicate this variable is one of the standard AIAA predefined
+     *
+     * Flag to indicate this variable is one of the standard AIAA predefined
      * variables
+     *
      */
-
     private boolean isStdAIAA;
 
     /**
-     *  indicates if we're to be chatty
+     *
+     * Indicates if we're to be chatty
+     *
      */
-
     boolean verboseFlag = false;
 
     /**
-     *  indicates this signal does not correspond to a declared varDef
+     *
+     * Indicates this signal does not correspond to a declared varDef
+     *
      */
-
     private boolean derived = false;
 
     /**
-     * indicates this signals equivalent code has been emitted by a call to 
-     * {@link genCode}
+     *
+     * Indicates this signals equivalent code has been emitted by a call to 
+     * {@link genCode}.
      * 
      */
-    
     private boolean defined = false;
     
     /**
-     * general purpose marking capability; all signals initially unmarked
+     *
+     * Indicates this <code>Signal</code> is marked for some
+     * purpose. Used as a general-purpose marking capability; all
+     * signals initially unmarked.
      * @since 0.9.4
+     *
      */
-    
     private boolean marked = false;
     
     /**
-     * lower limit. Default is -Infinity (no lower limit)
+     *
+     * A lower limit to this Signal's range. Default is -Infinity (no lower limit)
+     *
      */
-
     private double lowerLim = Double.NEGATIVE_INFINITY;
 
     /**
-     * upper limit. Default is +Infinity (no upper limit)
+     *
+     * An upper limit to this Signal's range. Default is +Infinity (no upper limit)
+     *
      */
-
     private double upperLim = Double.POSITIVE_INFINITY;
 
     /**
@@ -201,7 +217,6 @@ public class Signal
      * Elementary constructor
      *
      **/
-
     public Signal()
     {
         ourModel = null;
@@ -232,14 +247,13 @@ public class Signal
 
     /**
      *
-     * <p> Simple constructor </p>
+     * Simple constructor
      *
      * @param signalName A <code>String</code> containing the name of
      * the signal to construct
      * @param m <code>Model</code> we're part of
      *
      **/
-
     public Signal(String signalName, Model m)
     {
         this( signalName, Signal.toValidId(signalName), "unkn", 1, m);
@@ -248,7 +262,7 @@ public class Signal
 
     /**
      * 
-     * <p> Explicit constructor to create <code>Signal</code> from scratch </p>
+     * Explicit constructor to create <code>Signal</code> from scratch
      *
      * @param signalName Name of signal - does not have to be unique
      * @param varID ID of signal - must be unique
@@ -257,7 +271,6 @@ public class Signal
      * @param m <code>Model</code> we're part of
      *
      **/
-
     public Signal(String signalName, String varID, String units, int numConnects, Model m)
     {
         this();
@@ -281,19 +294,23 @@ public class Signal
      *
      * Builds <code>Signal</code> from {@link org.jdom.Element}
      * <p>
-     * The supplied element can be either a <code>&lt;variableDef&gt;</code> or an
-     * <code>&lt;apply&gt;</code> element.  Based on the type of <code>Element</code> encountered,
-     * different actions occur.
+     * The supplied element can be either a
+     * <code>&lt;variableDef&gt;</code> or an
+     * <code>&lt;apply&gt;</code> element.  Based on the type of
+     * <code>Element</code> encountered, different actions occur.
      * <p>
-     * A <code>variableDef</code> element is parsed for information about the <code>Signal</code>;
-     * if a sequence of child <code>&lt;math&gt;&lt;calculation&gt;&lt;apply&gt;</code> elements are
-     * found, the first <code>&lt;apply&gt;</code> element is handled (an upstream block of proper
-     * type is created, and our Signal is hooked onto it).
+     * A <code>variableDef</code> element is parsed for information
+     * about the <code>Signal</code>; if a sequence of child
+     * <code>&lt;math&gt;&lt;calculation&gt;&lt;apply&gt;</code>
+     * elements are found, the first <code>&lt;apply&gt;</code>
+     * element is handled (an upstream block of proper type is
+     * created, and our Signal is hooked onto it).
      * <p>
-     * An <code>&lt;apply&gt;</code> element is treated the same (we create an upstream
-     * <code>Block</code> and connect this <code>Signal</code> to its output port) but no
-     * <code>&lt;variableDef&gt;</code> attribute (like <code>varID</code> or <code>units</code>) is
-     * parsed.
+     * An <code>&lt;apply&gt;</code> element is treated the same (we
+     * create an upstream <code>Block</code> and connect this
+     * <code>Signal</code> to its output port) but no
+     * <code>&lt;variableDef&gt;</code> attribute (like
+     * <code>varID</code> or <code>units</code>) is parsed.
      * <p>
      * @param signalElement a <code>jdom.org.Element</code> <code>&lt;variableDef&gt;</code> or
      * <code>&lt;apply&gt;</code> XML element
@@ -303,7 +320,6 @@ public class Signal
      * @throws DAVEException if syntax error is found in top-level <code>&lt;apply&gt;</code> element
      *
      **/
-
     public Signal(Element signalElement, Model m) throws DAVEException
     {
         this(signalElement.getAttributeValue("name" ), m);
@@ -387,11 +403,11 @@ public class Signal
     
     /**
      *
-     * Converts String to valid XML ID by replacing spaces with underscores
+     * Converts <code>String</code> to valid XML ID by replacing spaces with underscores
      * @param input String with possible whitespace (invalid XML id}
      * @return String with whitespace replaced with underscores
+     *
      */
-    
     protected static String toValidId( String input ) {
         String output = "";
         if (input != null) {
@@ -401,12 +417,12 @@ public class Signal
     }
     
     /**
+     *
      * Look for and deal with a single <code>&lt;calculation&gt;</code> child element
      * 
      * @param theVarDefElement  variableDef parent
      * @param m  Model to which calculations should be added
      */
-
     private void handleCalculation( Element theVarDefElement, Model m ) {
         Element calc = theVarDefElement.getChild("calculation", theVarDefElement.getNamespace());
         if (calc != null) {
@@ -434,13 +450,13 @@ public class Signal
     
     
     /**
+     *
      * Look for a MathML element (with or without MathML namespace)
-     * 
      * @param e Parent element of potential MathML subelement
      * @param elementType Type of MathML element to search for
      * @return child MathML element of desired type, or null if not found
+     *
      */
-    
     private Element findMathMLChild( Element e, String elementType ) {
     	Namespace mathml = Namespace.getNamespace("", "http://www.w3.org/1998/Math/MathML");
     	Element child;
@@ -454,11 +470,9 @@ public class Signal
     /**
      *
      * Does deep copy of supplied <code>Signal</code>
-     *
      * @param s the original to copy
      *
      **/
-
     public Signal( Signal s ) {
         this();                 // invoke basic constructor
         this.ourModel   = s.ourModel;   // our model parent
@@ -496,7 +510,6 @@ public class Signal
      * @throws DAVEException if missing source block
      *
      **/
-
     public boolean sourceReady() throws DAVEException
     {
         if (source == null) {
@@ -513,7 +526,6 @@ public class Signal
      * @throws DAVEException if missing source block
      *
      **/
-
     public double sourceValue() throws DAVEException
     {
         if (source == null) {
@@ -528,7 +540,6 @@ public class Signal
      * Sets verbose flag
      *
      **/
-
     public void makeVerbose() { this.verboseFlag = true; }
 
 
@@ -537,7 +548,6 @@ public class Signal
      * Unsets verbose flag
      *
      **/
-
     public void silence() { this.verboseFlag = false; }
 
 
@@ -546,29 +556,23 @@ public class Signal
      * Returns verbose flag
      * @return <code>true</code> if we're to be chatty; otherwise <code>false</code>
      **/
-
     public boolean isVerbose() { return this.verboseFlag; }
-
-
 
     /**
      *
      * Recursive function that builds math element networks.
      * <p>
-     *
      * This method returns the last block of a perhaps extensive network of blocks constructed in
      * accordance with a calculation element. It builds and connects blocks and signals as required
      * to complete the specified calculation.  Implicit signals (variables not named in
      * <code>&lt;ci&gt;</code> elements) are created and attached to necessary blocks. Explicit
      * inputs (those called out in <code>&lt;ci&gt;</code> elements) are simply named as block
      * inputs to be hooked up later.
-     *
      * @param applyElement JDOM <code>Element</code> representing the <code>&lt;apply&gt;</code> XML
      * element
      * @return Block that represents the output of the calculation.
      *
      **/
-
     private Block handleApply( Element applyElement, Model m )
     {
         Block b = null;
@@ -602,37 +606,32 @@ public class Signal
 
 
     /**
-     * <p> Set the name of the signal </p>
-     *
+     * 
+     * Set the name of the signal
      * @param theName <code>String</code> to use for name
      *
      **/
-
     public void setName( String theName ) { this.myName = theName; }
 
     
     /**
      *
-     * <p> Set the units of the signal </p>
-     *
+     * Set the units of the signal
      * @param theUnits <code>String</code> to use for name
      *
      **/
-
     public void setUnits( String theUnits ) { this.myUnits = theUnits; }
 
 
 
     /**
      *
-     * <p> Set the unique varID of the signal </p>
-     * 
-     * <p> Also changes the varID of connected blocks </p>
-     *
+     * Set the unique varID of the signal
+     * <p>
+     * Also changes the varID of connected blocks
      * @param theVarID <code>String</code> to use for varID
      *
      **/
-
     public void setVarID( String theVarID ) { 
         // set our variable ID
         this.myVarID = theVarID;
@@ -663,177 +662,188 @@ public class Signal
     /**
      *
      * Sets the indicator flag to show this was automatically generated
-     *
      * <p>
-     *  This flag should be set for all 'derived' signals; i.e. those
-     *  not corresponding to varDefs in the DAVE-ML source file
+     * This flag should be set for all 'derived' signals; i.e. those
+     * not corresponding to varDefs in the DAVE-ML source file
      *
      **/
-
     public void setDerivedFlag() { this.derived = true; }
 
     
     /**
+     *
      * Clears the derived flag
+     *
      */
-    
     public void clearDerivedFlag() { this.derived = false; }
 
 
     /**
      *
      * Returns the indicator flag to show this was automatically generated
-     *
-     *  This flag should be set for all 'derived' signals; i.e. those
-     *  not corresponding to varDefs in the DAVE-ML source file
-     *
+     * <p>
+     * This flag should be set for all 'derived' signals; i.e. those
+     * not corresponding to varDefs in the DAVE-ML source file
      * @return <code>true</code> if this Signal was automatically
      * generated, else <code>false</code>
+     *
      **/
-
     public boolean isDerived() { return this.derived; }
 
     /**
+     *
      * Sets the indicator flag to show this has been defined in code
+     *
      */
-    
     protected void setDefinedFlag() { this.defined = true; }
     
     
     /**
+     *
      * Clears the indicator flag (unlikely instance)
+     *
      */
-    
     protected void clearDefinedFlag() { this.defined = false; }
     
     
     /**
+     *
      * Returns true if this signal has been encoded already
      * @return <code>true</code> if this Signal has already been
      * encoded; otherwise <code>false</code>
+     *
      */
-    
     public boolean isDefined() { return this.defined; }
     
-    
     /**
+     *
      * Sets general purpose marker flag
      * @since 0.9.4
+     *
      */
-    
     public void mark() { this.marked = true; }
     
     /**
+     *
      * Clears the general purpose marking flag
      * @since 0.9.4
+     *
      */
-    
     public void unmark() { this.marked = false; }
     
     /**
+     *
      * Returns true if the signal is marked for some reason
      * @return <code>true</code> if signal is marked, otherwise <code>false</code>
      * @since 0.9.4
+     *
      */
-    
     public boolean isMarked() { return this.marked; }
     
     /**
-     * indicates a lower limit is in force
+     *
+     * Indicates a lower limit is in force
+     *
      */
-
     boolean hasLowerLimit() {
       return lowerLim != Double.NEGATIVE_INFINITY;
     }
 
     /**
-     * indicates a lower limit is in force
+     *
+     * Indicates a lower limit is in force
+     *
      */
-
     boolean hasUpperLimit() {
       return upperLim != Double.POSITIVE_INFINITY;
     }
 
     /**
-     * indicates a limit of some type is in force
+     *
+     * Indicates a limit of some type is in force
+     *
      */
-
     boolean isLimited() {
         return hasLowerLimit() || hasUpperLimit();
     }
 
     /**
-     * sets value of lower limit (string argument)
+     *
+     * Sets value of lower limit (string argument)
      * @param strValue String containing the value
+     *
      */
-
     protected final void setLowerLimit( String strValue ) {
         lowerLim = Double.parseDouble( strValue );
     }
 
     /**
-     * sets value of lower limit (numeric argument)
+     *
+     * Sets value of lower limit (numeric argument)
      * @param value the value of the lower limit
+     *
      */
-
     void setLowerLimit( double value ) {
         lowerLim = value;
     }
 
     /**
-     * gets value of lower limit
+     *
+     * Gets value of lower limit
      * @return double
+     *
      */
-
     double getLowerLimit() {
         return lowerLim;
     }
 
     /**
-     * sets value of upper limit (string argument)
+     *
+     * Sets value of upper limit (string argument)
      * @param strValue String containing the value
+     *
      */
-
     protected final void setUpperLimit( String strValue ) {
         upperLim = Double.parseDouble( strValue );
     }
 
     /**
-     * sets value of upper limit (numeric argument)
+     *
+     * Sets value of upper limit (numeric argument)
      * @param value the value of the upper limit
+     *
      */
-
     void setUpperLimit( double value ) {
         upperLim = value;
     }
 
     /**
-     * gets value of lower limit
+     *
+     * Gets value of lower limit
      * @return double
+     *
      */
-
     double getUpperLimit() {
         return upperLim;
     }
 
     /**
+     *
      * Clears the isOutput flag
+     *
      */
-
     void clearIsOutputFlag() { this.isOutput = false; }
 
     /**
      *
-     * <p> Connect to upstream source block </p>
-     *
-     * <p> By convention, upstream block is responsible for recording
-     *     this connection for itself. </p>
-     *
+     * Connect to upstream source block
+     * <p>
+     * By convention, upstream block is responsible for recording
+     * this connection for itself.
      * @param sourceBlock the source block
      * @param portNum the source block's port number (1-based)
      *
      **/
-
     public void addSource(Block sourceBlock, int portNum)
     {
         //System.out.println("  Signal " + myName + " is adding source block " + sourceBlock.getName());
@@ -843,16 +853,14 @@ public class Signal
 
     /**
      *
-     * <p> Connect to downstream block </p>
-     *
-     * <p> By convention, the upstream element (this signal) alerts
-     *     downstream block of the new connection. </p>
-     *
+     * Connect to downstream block
+     * <p>
+     * By convention, the upstream element (this signal) alerts
+     * downstream block of the new connection.
      * @param sinkBlock the downstream block to add
      * @param portNum the port number on the downstream block (1-based)
      *
      **/
-
     public void addSink(Block sinkBlock, int portNum)
     {
         //System.out.println("  Signal " + myName + " is adding sink block " + sinkBlock.getName());
@@ -862,23 +870,23 @@ public class Signal
     }
     
     /**
-     * Returns a BlockArrayList containing pointers to all the destination
+     *
+     * Returns a {@link BlockArrayList} containing pointers to all the destination
      * blocks for this signal.
      * @return BlockArrayList the list of destination blocks for this signal
      * @since 0.9.6
+     *
      */
-    
     public BlockArrayList getDestBlocks() { return this.dests; }
 
     /**
      *
-     * <p> Returns output block array list </p>.
+     * Returns a {@link BlockArrayList} containing all destination blocks fo this <code>Signal</code>.
      * <em> Alias for getDestBlocks() </em>
      * @return {@link BlockArrayList} of destination blocks
      * @deprecated since 0.9.6
      *
      **/
-
     public BlockArrayList getDests() { return this.getDestBlocks(); }
 
     /**
@@ -888,23 +896,19 @@ public class Signal
      * @return ArrayList with the port numbers of the associated output blocks
      *
      **/
-
     public ArrayList<Integer> getDestPortNumbers()
     {
         return this.destPorts;
     }
 
-
     /**
      * 
-     * <p> Sets the (1-indexed) port number for (0-indexed) numbered
-     *     destination port </p>
-     *
+     * Sets the (1-indexed) port number for (0-indexed) numbered
+     * destination port
      * @param portIndex indicates which destination port we're renumbering
      * @param newPortNumber the new (1-based) port number to assign
      *
      **/
-
     public void setPortNumber( int portIndex, int newPortNumber )
     {
         destPorts.set(portIndex, new Integer(newPortNumber));
@@ -917,7 +921,6 @@ public class Signal
      * @return String with the nane of this Signal
      *
      **/
-
     public String getName() { return myName; }
 
     /**
@@ -926,7 +929,6 @@ public class Signal
      * @return String with the varID of this Signal
      *
      **/
-
     public String getVarID() { return myVarID; }
 
     /**
@@ -935,7 +937,6 @@ public class Signal
      * @return String with the units-of-measure encoded per ANSI/AIAA-S-119-2011
      *
      **/
-
     public String getUnits() { return myUnits; }
 
     /**
@@ -943,7 +944,6 @@ public class Signal
      * @return Block the <code>Signal</code>'s source block
      * @since 0.9.6
      */
-    
     public Block getSourceBlock() { return this.source; }
     
     /**
@@ -954,7 +954,6 @@ public class Signal
      * @deprecated
      *
      **/
-    
     public Block getSource() { return this.getSourceBlock(); }
 
 
@@ -965,7 +964,6 @@ public class Signal
      * Block
      *
      **/
-    
     public int getSourcePort() { return sourcePort; }
 
 
@@ -976,7 +974,6 @@ public class Signal
      * Block, else <code>false</code>
      *
      **/
-
     public boolean hasSource() { return (source != null); }
 
 
@@ -987,7 +984,6 @@ public class Signal
      * downstream Block, else <code>false</code>
      *
      **/
-
     public boolean hasDest() { 
         if (this.dests == null) {
             return false;
@@ -996,9 +992,10 @@ public class Signal
     }
 
     /**
+     *
      * Clears the list of destination blocks
+     *
      */
-
     public void removeDestBlocks() {
         if (this.dests != null) {
             this.dests.clear();
@@ -1015,26 +1012,23 @@ public class Signal
      * specified for this Signal, otherwise <code>false</code>. 
      *
      **/
-
     public boolean hasIC() { return this.hasIC; }
 
     
     /**
      *
-     * <p> Returns text value of initial condition </p>
-     *
+     * Returns text value of initial condition
      * @return String containing IC value
+     *
      **/
-
     public String getIC() { return this.IC; }
 
     /**
      * 
-     * <p> Returns value of initial condition as Double </p>
-     * 
+     * Returns value of initial condition as Double
      * @return Double representing IC value
+     *
      **/
-    
     public Double getICValue() {
         return Double.parseDouble(this.getIC());
     }
@@ -1046,7 +1040,6 @@ public class Signal
      * otherwise <code>false</code>.
      *
      */
-
     public boolean isInput() { return this.isInput; }
 
     /**
@@ -1057,7 +1050,6 @@ public class Signal
      * otherwise <code>false</code>
      *
      */
-
     public boolean isControl() { return this.isControl; }
 
     /**
@@ -1068,7 +1060,6 @@ public class Signal
      * <code>false</code>.
      *
      */
-
     public boolean isDisturbance() { return this.isDisturbance; }
 
     /**
@@ -1079,7 +1070,6 @@ public class Signal
      * <code>false</code>.
      *
      */
-
     public boolean isState() { return this.isState; }
 
     /**
@@ -1100,7 +1090,6 @@ public class Signal
      * Signal, otherwise <code>false</code>.
      *
      **/
-
     public boolean isOutput() { return this.isOutput; }
 
     /**
@@ -1111,7 +1100,6 @@ public class Signal
      * ANSI/AIAA-S-119-2011, otherwise <code>false</code>.
      *
      */
-
     public boolean isStdAIAA() { return this.isStdAIAA; }
     
     
@@ -1121,7 +1109,6 @@ public class Signal
      * @param newDescription String containing our description
      *
      */
-    
     public void setDescription( String newDescription ) {
         this.description = newDescription;
     }
@@ -1132,7 +1119,6 @@ public class Signal
      * @return String containing out description
      *
      */
-    
     public String getDescription() { return this.description; }
     
     /**
@@ -1142,7 +1128,6 @@ public class Signal
      * into source code based on the code dialect selected.
      *
      */
-    
     public CodeAndVarNames genCode( ) {
         CodeAndVarNames cvn = new CodeAndVarNames();
         if (this.isDerived()) {
@@ -1169,7 +1154,6 @@ public class Signal
      * @throws IOException if unable to write description
      *
      **/
-    
     public void describeSelf( FileWriter writer ) throws IOException
     {
         int numDests = dests.size();

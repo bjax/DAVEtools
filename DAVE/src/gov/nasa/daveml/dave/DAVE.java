@@ -41,15 +41,8 @@ import org.jdom.input.SAXBuilder;
  * <p>
  * More information about DAVE-ML is available at the project website,
  * <a href="http://daveml.org">http://daveml.org</a>
- * <p>
- * Modification history: 
- * <ul> 
- *  <li>2002-04-19: Written EBJ</li> 
- *  <li>2003-12-20: Substantially modified for DAVEtools 0.4</li> 
- *  <li>2017-05-06: Cleanup of documentation for 0.9.8. See README for complete change history</li>
- * </ul>
- *
- * @author Bruce Jackson
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
  * @version 0.9
  *
  */

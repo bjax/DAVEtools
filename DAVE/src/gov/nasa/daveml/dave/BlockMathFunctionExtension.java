@@ -11,16 +11,15 @@
 //  Title 17, U.S. Code. All Other Rights Reserved.
 //
 //  Copyright (c) 2017 Digital Flight Dynamics
-//
-// 070223 Added to DAVE
 
 package gov.nasa.daveml.dave;
 
 /**
  *
  * DAVE-ML extensions to MathML 2 functions
- *
- * @author 2007-02-23 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  * @since version 0.8
  *
  **/

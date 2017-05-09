@@ -17,11 +17,9 @@ package gov.nasa.daveml.dave;
 /**
  *
  * Superclass representing an arbitrary math function.
- * <p> 
- * Modification history:
- * <ul>
- * <li>2003-12-12 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;</li>
- * </ul>
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  **/
 

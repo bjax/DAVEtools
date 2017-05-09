@@ -16,8 +16,10 @@ package gov.nasa.daveml.dave;
 
 /**
  *
- * <p> Switch element math function block </p>
- * <p> 031211 Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
+ * Switch element math function block
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  **/
 import java.io.IOException;
@@ -29,8 +31,7 @@ import org.jdom.Namespace;
 
 /**
  *
- * <p>  This Block represents a simple two-position switch function.</p>
- * 
+ * This Block represents a simple two-position switch function.
  * <p>
  * A switch has a minimum of three inputs: <code>A</code>, <code>A_case</code>, 
  * and <code>B</code> for a two-position switch.
@@ -52,12 +53,10 @@ import org.jdom.Namespace;
  * <p>
  * which emits input signal <code>A</code> if <code>A_case</code> is true
  * (non-zero); otherwise it emits <code>B</code>.
- * </p>
  * <p>
  * To implement a switch with more than two positions, such as the three-position
  * switch described in this MathML snippet:
- * </p>
-<pre>
+ <pre>
 
     &lt;piecewise&gt;
       &lt;piece&gt;
@@ -77,26 +76,20 @@ import org.jdom.Namespace;
  *
  * then the problem has five inputs: <code>A</code>, <code>A_case</code>, 
  * <code>B</code>, <code>B_case</code>, and <code>C</code>. 
- *
  * <p>
  * The output should be the first input pair whose case is true (non-zero); if no 
  * input is true, the otherwise input (<code>C</code>) should be chosen.
- * </p>
- *
  * <p>
- * This is implemented in our {@link Model} by cascading BlockMathSwitches, one per input pair;
- * the final downstream block deals with <code>A</code> and <code>A_case</code>;
- * the 'otherwise' input is the output from an upstream block that deals with
- * <code>B</code> and <code>B_case</code>, with <code>C</code> as 
- * its otherwise block.
- * </p>
- *
+ * This is implemented in our {@link Model} by cascading
+ * <code>BlockMathSwitches</code>, one per input pair; the final
+ * downstream block deals with <code>A</code> and <code>A_case</code>;
+ * the 'otherwise' input is the output from an upstream block that
+ * deals with <code>B</code> and <code>B_case</code>, with
+ * <code>C</code> as its 'otherwise' block.
  * <p>
  * The multiple case switch is implemented this way as it is the 'lowest common
  * denominator' way of several potential software implementations 
  * (not all languages have a switch/case statement).
- * </p>
- * 
  * 
  **/
 
@@ -104,10 +97,10 @@ public class BlockMathSwitch extends BlockMath {
 
     /**
      *
-     * <p> Constructor for switch Block <p>
+     * Constructor for switch Block
      *
      * @param applyElement Reference to <code>org.jdom.Element</code>
-     * containing "apply" element
+     * containing <code>&lt;apply&gt;</code> element
      * @param m         The parent <code>Model</code>
      *
      **/
@@ -205,9 +198,10 @@ public class BlockMathSwitch extends BlockMath {
     
     
     /**
-     * <p> Generate code equivalent of a two-position switch (if-then-else)</p>
+     *
+     * Generate code equivalent of a two-position switch (if-then-else)
+     *
      */
-    
     @Override
     public CodeAndVarNames genCode() {
         CodeAndVarNames cvn = new CodeAndVarNames();
@@ -263,7 +257,6 @@ public class BlockMathSwitch extends BlockMath {
      * @throws IOException if unable to generate self-description on output Writer
      *
      **/
-    
     @Override
     public void describeSelf(Writer writer) throws IOException {
         super.describeSelf(writer);
@@ -272,9 +265,9 @@ public class BlockMathSwitch extends BlockMath {
 
     /**
      *
-     * Implements update() method
+     * Overrides the generic {@link Block#update()} method.
+     * <p>
      * Passes input 0 if input 1 &gt; 0.; otherwise passes input 2 to output
-     *
      * @throws DAVEException if unable to perform update
      *
      **/

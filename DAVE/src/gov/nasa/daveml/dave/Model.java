@@ -27,138 +27,161 @@ import java.util.Set;
  *
  * Object representing top-level model; owns all blocks and signals
  *
- * @author 2003-12-11 Bruce Jackson &lt;<a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>&gt;
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  **/
 
 public class Model
 {
     /**
-     *  name of model
+     *
+     *  name of this model
+     *
      */
-
     protected String ourName;
 
     /**
-     *  signals in order of construction
+     *
+     *  A {@link SignalsArrayList} containing signals in order of construction
+     *
      */
-
     SignalArrayList signals;
 
     /**
-     *  blocks in order of construction
+     *
+     * A {@link BlockArraylist} containing blocks in order of construction
+     *
      */
-
     BlockArrayList blocks;
 
     /**
-     *  maps bpIDs to breakpoint sets
+     *
+     *  A <code>Map</code> that connects bpIDs to breakpoint sets
+     *
      */
-
     Map<String, BreakpointSet> breakpointSets;
 
     /**
-     *  reusable function tables (griddedTableDefs)
+     *
+     *  A <code>Map</code> connecting gtIDs to reusable function tables (griddedTableDefs)
+     *
      */
-
     Map<String, FuncTable> tables;
 
     /**
-     *  list of breakpoint blocks  -- do we really use this?
+     *
+     * A <code>Map</code> connecting bpIDs to reusable breakpoint blocks
+     *
      */
-
     Map<String, BlockBP> bpBlocks;
 
     /**
-     *  blocks in order of execution
+     *
+     * A {@link BlockArrayList} containing blocks in order of execution
+     *
      */
-
     BlockArrayList executeOrder;
 
     /**
-     *  list of input blocks
+     *
+     * A {@link BlockArrayList} containing all input blocks
+     *
      */
-
     BlockArrayList inputBlocks;
 
     /**
-     *  list of output blocks
+     *
+     * A {@link BlockArrayList} containing all output blocks
+     *
      */
-
     BlockArrayList outputBlocks;
 
     /**
-     *  input vector (if null, not yet established)
+     *
+     * A {@link VectorInfoArrayList} serving as the
+     * <code>Model</code>'s input vector (if null, not yet
+     * established)
+     *
      */
-
     VectorInfoArrayList inputVec;
     
     /**
-     *  output vector (if null, not yet established)
+     *
+     * A {@link VectorInfoArrayList} serving as the
+     * <code>Model</code>'s output vector (if null, not yet
+     * established)
+     *
      */
-
     VectorInfoArrayList outputVec;
     
     /**
-     * Data format string
+     *
+     * C-style format string for output (<code>double</code>) data representation
+     *
      */
-    
     String dataFormat;
 
     /**
+     *
      *  indicates if we've set up our execution order, etc.
+     *
      */
-
     boolean initialized;
 
     /**
+     *
      *  if true, allow objects to report things
+     *
      */
-
     boolean verbose;
 
     /**
+     *
      *  serves as master clock, counting the number of cycles of execution of the Model.
+     *
      */
-
     int cycleCounter;
     
     /**
+     *
      * Code output dialect
+     *
      */
-    
     int codeDialect;
     
     /**
-     * Code generation dialects
+     *
+     * Supported code generation dialects
+     *
      */
     
     public static final int DT_FORTRAN = 0;
     public static final int DT_ANSI_C  = 1;
 
     /**
+     *
      * private return codes
+     *
      */
-
     private static final int exit_success = 0;
     private static final int exit_failure = 1;
     
-    
     /**
-     * Data format string
+     *
+     * The default output data format string (C-style)
+     *
      */
-    
     private static String defaultDataFormat = "0.000000E00";
     
     /**
      *
-     * <p> Constructor for Model </p>
-     *
+     * Simple constructor for <code>Model</code>
      * @param numBlocks  Estimated number of blocks expected
      * @param numSignals Estimated number of signals expected
      *
      **/
-
     public Model(int numBlocks, int numSignals)
     {
 	this.signals = new SignalArrayList(numSignals);
@@ -180,10 +203,9 @@ public class Model
 
     /**
      *
-     * <p> Constructor for Model with default number of signals and blocks </p>
+     * Constructor for Model with default number of signals and blocks
      *
      **/
-
     public Model()
     {
 	this(20, 20);
@@ -191,12 +213,10 @@ public class Model
 
     /**
      *
-     * <p> Sets name of this <code>Model</code> </p>
-     *
+     * Sets name of this <code>Model</code>
      * @param theName <code>String</code> containing new name of <code>Model</code>
      *
      **/
-
     public void setName(String theName)
     {
 	this.ourName = theName;
@@ -209,7 +229,6 @@ public class Model
      * @return a String containing the Model name
      *
      **/
-
     public String getName() { return this.ourName; }
 
 
@@ -219,7 +238,6 @@ public class Model
      * @return an int counter that can be incremented and reset externally
      *
      **/
-
     public int getCycleCounter() { return this.cycleCounter; }
 
 
@@ -228,7 +246,6 @@ public class Model
      * Resets the cycleCounter
      *
      **/
-
     public void resetCycleCounter() { this.cycleCounter = 0; }
 
 
@@ -237,16 +254,14 @@ public class Model
      * Increments the cycleCounter 
      *
      **/
-    
     public void incrementCycleCounter() { this.cycleCounter++; }
      
 
     /**
      *
-     * Sets verbose flag for model and all <code>Blocks</code> and <code>Signals</code>.
+     * Sets verbose flag for model and all {@link Block}s and {@link Signal}s.
      *
      **/
-
     public void makeVerbose() 
     { 
 	this.verbose = true;
@@ -268,9 +283,10 @@ public class Model
 
 
     /**
-     * <p> unsets verbose flag </p>
+     *
+     * unsets verbose flag
+     *
      **/
-
     public void silence() 
     { 
 	this.verbose = false;
@@ -292,17 +308,20 @@ public class Model
 
     
     /**
+     *
      * Return status of verbose flag
-     * @return <code>false</code> if verbosity flag set, else <code>true</code>
+     * @return <code>false</code> if verbose flag set, else <code>true</code>
+     *
      **/
 
     public boolean isVerbose() { return this.verbose; }
 
     /**
+     *
      * Deselects all blocks
      * @since 0.9.4
+     *
      */
-    
     public void clearSelections() {
         Iterator<Block> blkIt = this.blocks.iterator();
         while (blkIt.hasNext()) {
@@ -312,12 +331,13 @@ public class Model
     }
     
     /**
+     *
      * Selects all blocks involved in feeding specified input
      * @param varName String with the name of the variable sought
      * @return found <code>true</code> if varName is found, else <code>false</code>
      * @since 0.9.4
+     *
      */
-    
     public boolean selectOutputByName( String varName ) {
         boolean found = false;
         Iterator<Block> blkIt = this.outputBlocks.iterator();
@@ -341,7 +361,6 @@ public class Model
      * @return a {@link SignalArrayList} containing all the {@link Signal} objects in the model
      *
      **/
-
     public SignalArrayList getSignals() { return signals; }
 
 
@@ -351,7 +370,6 @@ public class Model
      * @return a {@link BlockArrayList} containing all the {@link Block} objects in the model
      *
      **/
-
     public BlockArrayList getBlocks() { return blocks; }
 
 
@@ -361,7 +379,6 @@ public class Model
      * @return an integer count of the number of {@link BlockInput} objects in the model
      *
      **/
-
     public int getNumInputBlocks() { return inputBlocks.size(); }
 
 
@@ -371,7 +388,6 @@ public class Model
      * @return {@link BlockArrayList} with all the {@link BlockInput} objects in the model
      *
      **/
-
     public BlockArrayList getInputBlocks() { return inputBlocks; }
 
 
@@ -379,8 +395,8 @@ public class Model
      *
      * Return number of output blocks
      * @return an integer count of the number of {@link BlockOutput} objects in the model
+     *
      **/
-
     public int getNumOutputBlocks() { return outputBlocks.size(); }
 
 
@@ -390,7 +406,6 @@ public class Model
      * @return {@link BlockArrayList} with all the {@link BlockOutput} objects in the model
      *
      **/
-
     public BlockArrayList getOutputBlocks() { return outputBlocks; }
 
     /**
@@ -399,7 +414,6 @@ public class Model
      * @return int indicating what programming language is preferred if any is generated (e.g. DT_FORTRAN, DT_ANSI_C)
      * 
      **/
-    
     public int getCodeDialect() { return codeDialect; }
     
     /**
@@ -408,17 +422,15 @@ public class Model
      * @param dialect int indicating what programming language is preferred if any is generated (e.g. DT_FORTRAN, DT_ANSI_C)
      * 
      **/
-    
     public void setCodeDialect( int dialect ) { codeDialect = dialect; }
 
     /**
      *
-     * Add block
+     * Add a {@link Block} to our list of <code>Blocks</code>
      *
      * @param newBlock <code>Block</code> to be added to blocks list
      *
      **/
-
     public void add( Block newBlock ) 
     { 
 	if (this.verbose) {
@@ -439,16 +451,12 @@ public class Model
         }
     }
 
-
-
     /**
      *
-     * <p> Add signal </p>
-     *
+     * Add a {@link Signal} to our list of <code>Signals</code>
      * @param newSignal <code>Signal</code> to be added to signals list
      *
      **/
-
     public void add( Signal newSignal ) 
     { 
 	if (this.verbose) {
@@ -458,15 +466,12 @@ public class Model
 	signals.add(newSignal); 
     }
 
-
     /**
      *
-     * <p> Register breakpoint set definition </p>
-     *
+     * Register a new breakpoint set definition
      * @param newBPSet <code>BreakpointSet</code> to be added to bpID list
      *
      **/
-
     public void register( BreakpointSet newBPSet )
     { 
 	int oldSize = 0;
@@ -497,13 +502,11 @@ public class Model
 
     /**
      *
-     * <p> Look up a breakpoint set by its ID </p>
-     *
+     * Look up a breakpoint set by its ID
      * @param bpID <code>String</code> with ID of BreakpointSet
      * @return BreakpointSet matching ID, or null
      *
      **/
-
     public BreakpointSet getBPSetByID( String bpID )
     {
 	if (this.verbose) {
@@ -521,12 +524,10 @@ public class Model
 
     /**
      *
-     * <p> Register breakpoint block definition </p>
-     *
+     * Register a new breakpoint block definition
      * @param newBPBlock <code>BlockBP</code> to be added to list
      *
      **/
-
     public void register( BlockBP newBPBlock )
     { 
 	int oldSize = 0;
@@ -559,13 +560,11 @@ public class Model
 
     /**
      *
-     * <p> Look up a breakpoint block by its ID </p>
-     *
+     * Look up a breakpoint block by its ID
      * @param bpID <code>String</code> with ID of BlockBP
      * @return BlockBP matching ID, or null
      *
      **/
-
     public BlockBP getBPBlockByID( String bpID )
     {
 	if (this.verbose) {
@@ -583,12 +582,10 @@ public class Model
 
     /**
      *
-     * <p> Register function table definition </p>
-     *
+     * Register a new function table definition
      * @param newTable <code>FuncTable</code> to be added to tables list
      *
      **/
-
     public void register( FuncTable newTable )
     { 
 	int oldSize = 0;
@@ -628,13 +625,11 @@ public class Model
 
     /**
      *
-     * <p> Look up a griddedTableDef by its ID </p>
-     *
+     * Look up a griddedTableDef by its ID
      * @param gtID <code>String</code> with ID of griddedTableDef
      * @return FuncTable matching ID, or null
      *
      **/
-
     public FuncTable getTableByID( String gtID )
     {
 	if (this.verbose) {
@@ -653,38 +648,35 @@ public class Model
 
     /**
      *
-     * Return number of blocks
+     * Return the number of defined {@link Block}s
      * @return number of {@link Block} objects in this Model
      *
      **/
-
     public int getNumBlocks() { return blocks.size(); }
 
 
     /**
      *
-     * Return number of signals
+     * Return the number of defined {@link Signal}s
      * @return number of {@link Signal} objects in this Model
      *
      **/
-
     public int getNumSignals() { return signals.size(); }
 
 
     /**
      *
-     * Return number of tables
+     * Return the number of tables
      * @return int returning the number of {@link BlockFuncTable} objects in the model
      *
      **/
-
     public int getNumTables() { return tables.size(); }
 
 
     /**
      *
      * Calls each block and tells it to hook up inputs &amp; outputs
-     *
+     * <p>
      * This should be called after all the {@link Block}s and {@link
      * Signal}s have been defined; the ports find any missing signals
      * by ID.
@@ -715,8 +707,10 @@ public class Model
 
 
     /**
+     *
      * Creates any missing constant (or input) and output blocks (and any
      * required connector Signals). Also sets up any necessary limiters on Signals
+     *
      **/
 
     public void hookUpIO()
@@ -866,9 +860,10 @@ public class Model
 
     
     /**
-     * Verify model integrity
      *
+     * Verify model integrity
      * @return true if no discussions found
+     *
      **/
 
     public boolean verifyIntegrity()
@@ -931,11 +926,9 @@ public class Model
      * <p>
      * Only emits those signals corresponding to varDefs in the
      * DAVE-ML input file for clarity.
-     *
      * @param out Where to put the output.
      *
      **/
-
     public void generateInternalValues( PrintWriter out ) {
 	Iterator<?> it = this.signals.iterator();
 	// make sure there are signals to evaluate
@@ -980,7 +973,6 @@ public class Model
      * @throws DAVEException if something goes wrong
      *
      **/
-
     public void initialize() throws DAVEException 
     {
         int passCount = 0;
@@ -1130,9 +1122,9 @@ public class Model
 
     }
 
-        /**
+    /**
      *
-     * <p> Performs model reset: </p>
+     * Performs model reset:
      * <ol>
      *   <li>Resets cycle counter</li>
      *   <li>Sets input blocks to their output signal's IC value</li>
@@ -1160,14 +1152,13 @@ public class Model
     
     
     /**
+     *
      * Builds &amp; returns the current values of {@link BlockOutput}s
      * @return {@link VectorInfoArrayList} of output values
      * @throws DAVEException if something goes wrong
+     *
      **/
-
-
     public VectorInfoArrayList getOutputVector() throws DAVEException
-
     {
 	if (this.outputVec == null) {
 	    this.outputVec = new VectorInfoArrayList();
@@ -1194,11 +1185,12 @@ public class Model
 
 
     /**
+     *
      * Builds &amp; returns the current values of all {@link BlockInput} blocks
      * @return {@link VectorInfoArrayList} of input values
      * @throws DAVEException if anything goes wrong
+     *
      **/
-
     public VectorInfoArrayList getInputVector() throws DAVEException
 
     {
@@ -1232,11 +1224,9 @@ public class Model
      * providing values for each element of the input vector obtained
      * by calling the {@link #getInputVector()} method. It updates the
      * values of the output vector (obtained by calling {@link Model#getOutputVector()}
-     *
      * @throws DAVEException if anything goes wrong
      *
      **/
-
     public void cycle() throws DAVEException
     {
         if (this.isVerbose()) {
@@ -1341,7 +1331,6 @@ public class Model
      * Reports number of things on output
      *
      **/
-
     public void reportStats()
     {
 	// sum the number of data points found
@@ -1368,11 +1357,14 @@ public class Model
     }
     
     /**
-     * Returns all the blocks in execution sorted order; available only after call to initialize()
+     *
+     * Returns all the blocks in execution sorted order; available
+     * only after call to initialize()
      * @return BlockArrayList of sorted blocks, in appropriate order of execution
-     * @throws DAVEException if the execution order list {@link #executeOrder} has not been created
+     * @throws DAVEException if the execution order list
+     * {@link #executeOrder} has not been created
+     *
      */
-    
     public BlockArrayList getSortedBlocks() throws DAVEException {
         if (executeOrder == null) {
             throw new DAVEException("Execution order not yet determined");
@@ -1381,6 +1373,7 @@ public class Model
     }
     
     /**
+     *
      * Returns all the selected blocks in execution order; available only after
      * a call to {@link #initialize()}. By default, all blocks are selected; to select
      * blocks involved in calculating only some outputs, a call should be made to
@@ -1390,8 +1383,8 @@ public class Model
      * in appropriate order of execution
      * @throws DAVEException if something goes wrong with the sort.
      * @since 0.9.4
+     *
      */
-    
     public BlockArrayList getSelectedBlocks() throws DAVEException {
         BlockArrayList sortedBlocks = getSortedBlocks();
         BlockArrayList selectedBlocks = new BlockArrayList();
@@ -1406,10 +1399,12 @@ public class Model
     }
     
     /**
+     *
      * Return the block that represents the final math operation for the indicated
      * variable.
      * @param theVarID identifies the variable whose source block is sought
      * @return the source block, or null if not found
+     *
      */
     public Block getBlockByOutputVarID(String theVarID) {
         // easiest way is to find single with proper ID, then
@@ -1423,12 +1418,13 @@ public class Model
     }
 
     /**
+     *
      * Builds &amp; returns the current values of all variables
      * @return {@link VectorInfoArrayList} of internal values
      * @throws DAVEException if something goes awry
+     *
      **/
-
-     public VectorInfoArrayList getInternalsVector() throws DAVEException {
+    public VectorInfoArrayList getInternalsVector() throws DAVEException {
         VectorInfoArrayList internalsVec = new VectorInfoArrayList();
         Iterator<?> allBlks = this.blocks.iterator();
         while (allBlks.hasNext()) {

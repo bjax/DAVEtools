@@ -17,8 +17,9 @@ package gov.nasa.daveml.dave;
 /**
  *
  * Logical operator math function block
- * <p>
- * 2015-02-13 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9.7
  * @since 0.9.7
  *
  **/

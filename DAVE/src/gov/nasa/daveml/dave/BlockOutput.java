@@ -16,9 +16,10 @@ package gov.nasa.daveml.dave;
 
 /**
  *
- * <p> Object representing an output block </p>
- * <p> 031215 Bruce Jackson, NASA Langley Research Center
- *     <mailto:bruce@digiflightdyn.com> </p>
+ * Object representing an output <code>Block</code>
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  **/
 
@@ -27,29 +28,26 @@ import java.io.Writer;
 
 /**
  *
- * <p>  The Output Block represents an output to the system </p>
+ * The <code>BlockOutput</code> represents an output from the system 
  *
  **/
 
-public class BlockOutput extends Block
-{
+public class BlockOutput extends Block {
     /**
+     *
      *  units of measure of downstream block
+     *
      */
-
     String units;
     
     /**
      *
-     * <p> Constructor for output Block <p>
-     *
-     * @param sourceSignal Upstream <code>Signal</code> with which to connect
-     * @param m <code>Model</code> we're part of
+     * Constructor for output <code>Block</code>
+     * @param sourceSignal upstream {@link Signal} with which to connect
+     * @param m {@link Model} we're part of
      *
      **/
-
-    public BlockOutput( Signal sourceSignal, Model m )
-    {
+    public BlockOutput( Signal sourceSignal, Model m )  {
         // Initialize superblock elements
         super(sourceSignal.getName(), "output", 1, m);
 
@@ -64,32 +62,34 @@ public class BlockOutput extends Block
 
 
     /**
-     * <p> Returns the output value </p>
-     *
-     * <p> This method is distinguished from normal
-     * <code>Block.getValue()</code> in that it is public</p>
+     * 
+     * Returns the output value of the associated output {@link Signal}
+     * <p>
+     * This <code>public</code>method has to override the private
+     * generic {@link Block#getValue()} method
+     * @return value of output Signal as a <code>double</code>
      *
      **/
-
     @Override
     public double getValue()    { return this.value; }
 
 
     /**
+     *
      * Returns the units of measure of the output signal
-     * @return a String containing the units-of-measure, in ANSI/AIAA-S-119-2011 encoding
+     * @return a String containing the units-of-measure, in
+     * ANSI/AIAA-S-119-2011 encoding
+     *
      **/
-
     public String getUnits() { return this.units; }
 
 
     /**
      *
      * Returns our sequence number (1-based) such as output 1, output 2, etc.
-     * @return our sequuence number (1-base)
+     * @return our sequuence number (1-based)
      *
      **/
-
     public int getSeqNumber()
     {
         BlockArrayList outputs = this.ourModel.getOutputBlocks();
@@ -97,8 +97,10 @@ public class BlockOutput extends Block
     }
 
     /**
-     * Generate C-code comment about inputs
-     * @return string containing C comment description of output
+     *
+     * Generate source code formatted comment about output
+     * @return string containing source code comment description of output
+     *
      */
     @Override
     public CodeAndVarNames genCode() {
@@ -109,8 +111,10 @@ public class BlockOutput extends Block
     }
 
     /**
+     *
      * Common output documentation scheme for all code types
      * @return string with description of input signal
+     *
      */
     private String genComment() {
         String code = "";
@@ -139,7 +143,6 @@ public class BlockOutput extends Block
      * @throws IOException if unable to write self-description
      *
      **/
-
     @Override
     public void describeSelf(Writer writer) throws IOException
     {
@@ -153,7 +156,6 @@ public class BlockOutput extends Block
      * @throws DAVEException if update fails
      *
      **/
-
     @Override
     public void update() throws DAVEException
     {

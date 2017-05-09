@@ -32,12 +32,6 @@ import java.io.Writer;
  * {@link Signal#addSource(Block, int portNum)} method with this <code>Block</code> element as the
  * input parameter to port <code>portNum</code>. [This process is normally done in the output
  * Signal's private {@link Signal#handleApply(Element, Model)} method.]
- * <p>
- * Modification history:
- * <ul>
- * <li>2003-12-11 Written EBJ</li>
- * </ul>
- *
  * @author Bruce Jackson, Digital Flight Dynamics
  * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
  * @version 0.9

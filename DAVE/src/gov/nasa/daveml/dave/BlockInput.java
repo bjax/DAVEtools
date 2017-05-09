@@ -17,8 +17,9 @@ package gov.nasa.daveml.dave;
 /**
  *
  * Object representing an input block
- * <p>
- * 2003-12-15 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  **/
 

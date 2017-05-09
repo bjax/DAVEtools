@@ -17,11 +17,10 @@ package gov.nasa.daveml.dave;
 /**
  *
  * Extends <code>ArrayList</code> for {@link Block} objects
- * <p>
- * Modification history:
- * <ul>
- * <li>031211 Bruce Jackson <mailto:bruce@digiflightdyn.com></li>
- * </ul>
+ * @author Bruce Jackson, Digital  &lt;bruce@digiflightdyn.com&gt;</li>
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  */
 

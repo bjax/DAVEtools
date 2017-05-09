@@ -17,10 +17,10 @@ package gov.nasa.daveml.dave;
 
 /**
  * 
- * <p> Object representing a Breakpoint Set definition </p>
- * <p> 040107 Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
- *
- * @author Bruce Jackson
+ * Object representing a Breakpoint Set definition
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  **/
 
@@ -31,67 +31,71 @@ import org.jdom.Namespace;
 
 /**
  *
- * The <code>BreakpointSet</code> stores a breakpoint set and its associated <code>bpID</code>;
- * it also registers users ({@link BlockBP}s) that reference it.
+ * The <code>BreakpointSet</code> stores a breakpoint set and its
+ * associated <code>bpID</code>; it also registers users ({@link
+ * BlockBP}s) that reference it.
  *
  **/
-
-public class BreakpointSet // throws DAVEException
-{
+public class BreakpointSet { // throws DAVEException
 
     /**
-     *  our identifier
+     *
+     * This breakpoint set's identifier
+     *
      */
-
     String bpid;
 
     /**
-     *  stored as an <code>ArrayList</code> of <code>Double</code>s
+     * 
+     * Breakpoint set values stored as an <code>ArrayList</code> of
+     * <code>Double</code>s
+     *
      */
-
     ArrayList<Double> bpValues;
 
     /**
-     *  description of set - can be null
+     *
+     * Description of this breakpoint set - can be null
+     *
      */
-
     String myDescription;
 
     /**
-     *  name of set - can be null
+     *
+     * The name of this breakpoint set - can be null
+     *
      */
-
     String myName;
 
     /**
-     * our parent model
+     *
+     * Our parent {@link Model}
+     *
      */
-
     Model myModel;
 
     /**
-     *  debugging flag
+     *
+     *  debugging flag, generates a lot of output
+     *
      */
-
     boolean verbose;
 
     /**
-     *  {@link BlockBP}s that reference our table
+     *
+     *  A {@link BlockArrayList} of {@link BlockBP}s that reference our table
+     *
      */
-
     BlockArrayList users;
 
 
     /**
      *
-     * Simple constructor 
-     *
-     * @param m <code>Model</code> to which we attach
+     * Simplest constructor 
+     * @param m {@link Model} to which we attach
      *
      **/
-
-    public BreakpointSet( Model m )
-    {
+    public BreakpointSet( Model m ) {
         this.bpid = "";
         this.bpValues = null;
         this.myDescription = "";
@@ -104,17 +108,14 @@ public class BreakpointSet // throws DAVEException
 
     /**
      *
-     * Constructor for BreakpointSet
-     *
-     * @param bpdef defining <code>&lt;breakpointDef&gt;</code> {@link org.jdom.Element} 
+     * Constructor for BreakpointSet that accepts XML markup
+     * @param bpdef An {@link org.jdom.Element} containing the source
+     * <code>&lt;breakpointDef&gt;</code> specification
      * @param m {@link Model} to which we attach
-     *
      * @throws DAVEException if error during construction
      *
      **/
-
-    public BreakpointSet( Element bpdef, Model m) throws DAVEException
-    { 
+    public BreakpointSet( Element bpdef, Model m) throws DAVEException {
         this( m );      // call early constructor
 
         // Save our name, if any
@@ -168,16 +169,18 @@ public class BreakpointSet // throws DAVEException
     }
 
     /**
-     * Constructor from parts, not XML elements
+     *
+     * Most complex constructor; builds from parts, not XML elements
      * <p>
-     * This constructor intended for non-reused, simple breakpoint sets defined on-the-fly from
-     * function table definitions that aren't defined by <code>&lt;griddedTableDef&gt;</code> or
-     * <code>&lt;griddedTableRef&gt;</code> XML elements. We still need to know what {@link Model}
-     * we're associated with so we can look up breakpoint sets by ID.
+     * This constructor intended for non-reused, simple breakpoint
+     * sets defined on-the-fly from function table definitions that
+     * aren't defined by <code>&lt;griddedTableDef&gt;</code> or
+     * <code>&lt;griddedTableRef&gt;</code> XML elements. We still
+     * need to know what {@link Model} we're associated with so we can
+     * look up breakpoint sets by ID.
      * <p>
      * The {@link BlockBP} should also call the {@link #register(BlockBP)} method so this object can
      * keep track of who is using this set definition.
-     *
      * @param setName String containing the name of this <code>BreakpointSet</code>
      * @param bpID Breakpoint identifier String
      * @param setValues a String containing comma separated floating-point values for breakpoints
@@ -186,7 +189,6 @@ public class BreakpointSet // throws DAVEException
      * @throws DAVEException if unable to construct the BreakpointSet
      *
      **/
-
     public BreakpointSet( String setName, String bpID, String setValues, String description, Model m )
         throws DAVEException
     {
@@ -214,12 +216,10 @@ public class BreakpointSet // throws DAVEException
      * @param userBlockBP <code>BlockBP</code> that wishes to register
      *
      **/
-
     public void register( BlockBP userBlockBP )
     {
         this.users.add( userBlockBP );
     }
-
 
     /**
      *
@@ -227,23 +227,21 @@ public class BreakpointSet // throws DAVEException
      * @return verbose status as a boolean
      *
      **/
-
     public boolean isVerbose() { return this.verbose; }
 
-
     /**
-     * Sets verbose status flag
+     *
+     * Sets the verbose flag
+     *
      **/
-    
     public void makeVerbose() { this.verbose = true; }
 
-
     /**
+     *
      * Clears the verbose flag
+     *
      **/
-
     public void silence() { this.verbose = false; }
-
 
     /**
      * 
@@ -251,7 +249,6 @@ public class BreakpointSet // throws DAVEException
      * @return String containing name of this BreakpointSet
      *
      **/
-
     public String getName() { return this.myName; }
 
 
@@ -261,7 +258,6 @@ public class BreakpointSet // throws DAVEException
      * @return the breakpoint set ID
      *
      **/
-
     public String getBPID() { return this.bpid; }
 
 
@@ -271,7 +267,6 @@ public class BreakpointSet // throws DAVEException
      * @return the number of breakpoints in this set
      *
      **/
-
     public int length() { 
     	if (bpValues == null) {
             return 0;
@@ -286,7 +281,6 @@ public class BreakpointSet // throws DAVEException
      * @return all the breakpoint values as an ArrayList of Double
      *
      **/
-
     public ArrayList<Double> values() { return this.bpValues; }
 
 }

@@ -16,8 +16,10 @@ package gov.nasa.daveml.dave;
 
 /**
  *
- * <p> Relational operator math function block </p>
- * <p> 031214 Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
+ * Relational operator math function block
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  **/
 
@@ -30,14 +32,17 @@ import org.jdom.Element;
 
 /**
  *
- * <p>  The MathRelation block represents an Relational operator (scalar input) function</p>
+ * The <code>MathRelation</code> block represents an relational
+ * operator (scalar input) function
  *
  **/
 
 public class BlockMathRelation extends BlockMath
 {
     /**
+     *
      * Defined relations, for speed of execution
+     *
      **/
 
     private static final int UNK = 0;
@@ -49,24 +54,28 @@ public class BlockMathRelation extends BlockMath
     private static final int NEQ = 6;
 
     /**
-     * Which algebraic relation we're testing
+     *
+     * String that indicates which algebraic relation we're testing
+     *
      */
 
     String relationOp;
 
     /**
-     * Which algebraic relation we're testing, using encoded value from internal table
+     *
+     * Integer flag indicates Which algebraic relation we're testing,
+     * using encoded value from internal table
+     *
      */
 
     int relation;
     
     /**
      *
-     * <p> Constructor for relation Block <p>
-     *
+     * Constructor for relation block (<code>BlockMathReleation</code>)
      * @param applyElement Reference to <code>org.jdom.Element</code>
-     * containing "apply" element
-     * @param m         The parent <code>Model</code>
+     * containing <code>&lt;apply&gt;</code> element
+     * @param m The parent {@link Model}
      *
      **/
 
@@ -107,7 +116,7 @@ public class BlockMathRelation extends BlockMath
 
     /**
      *
-     * <p> Determines if string is acceptable MathML relation </p>
+     * Determines if string is acceptable MathML relation
      *
      * @return <code>boolean</code> true if is a relation
      *
@@ -129,7 +138,9 @@ public class BlockMathRelation extends BlockMath
 
 
     /**
-     * <p> Generate code equivalent of a relationship test </p>
+     *
+     * Generates code equivalent of a relationship test
+     *
      */
     
     @Override
@@ -218,9 +229,11 @@ public class BlockMathRelation extends BlockMath
     }
 
     /**
-     * Sets relationship operator from String
+     *
+     * Sets relationship operator from <code>String</code>
      * @param relationString the String that describes the relation (case insensitive)
      * @throws DAVEException if the input String is unrecognized
+     *
      */
     
     public void setRelationOp( String relationString ) throws DAVEException {
@@ -232,7 +245,7 @@ public class BlockMathRelation extends BlockMath
 
     /**
      *
-     * Returns relationship operator as String
+     * Returns relationship operator as <code>String</code>
      * @return the String representing our relational operator
      *
      **/

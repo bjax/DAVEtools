@@ -14,13 +14,6 @@
 
 package gov.nasa.daveml.dave;
 
-/**
- *
- * <p> Object to convert string containing list of comma, tab, or
- *      space-separated values into an array. </p>
- * <p> 031214 Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
- *
- **/
 
 import java.io.*;
 import java.util.ArrayList;
@@ -28,27 +21,31 @@ import java.util.Iterator;
 
 /**
  *
- * <p>  Class to convert a string containing comma, tab, or
- *      space-separated values into an array. </p>
+ * Object to convert string containing list of comma, tab, or
+ * space-separated values into an array.
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  **/
 
 public class ParseText
 {
     /**
+     *
      * the stream tokenizer chosen
+     *
      */
-
     protected StreamTokenizer st;
 
     /**
+     *
      * indicates a good number has been read
+     *
      */
-
     protected boolean goodNumber;
 
-    public ParseText(String inputData)
-    {
+    public ParseText(String inputData) {
         StringReader sr = new StringReader(inputData);
         st = new StreamTokenizer(sr);
         st.resetSyntax();                       // all chars ignored
@@ -66,9 +63,11 @@ public class ParseText
     }
 
     /**
+     *
      * Returns next floating point number in input string
      * @return next floating point value in input string
      * @throws IOException if unable to parse
+     *
      */
     public double next()
         throws IOException
@@ -107,8 +106,10 @@ public class ParseText
     }
 
     /**
+     *
      * Indicates if end-of-file has been reached in input string
      * @return true if at end-of-file
+     *
      */
     public boolean eof()
     {
@@ -116,8 +117,10 @@ public class ParseText
     }
 
     /**
+     *
      * Indicates if previous word read was a valid number
      * @return true if previous number was valid
+     *
      */
     public boolean validNumber()
     {
@@ -135,7 +138,6 @@ public class ParseText
      * @see #toList(String)
      *
      **/
-
     public ArrayList<Double> toList() throws IOException
     {
         ArrayList<Double> al = new ArrayList<Double>(10);
@@ -154,14 +156,12 @@ public class ParseText
     /**
      *
      * Static version of routine toList
-     *
      * @param values String containing comma- or whitespace-separated values.
      * @return ArrayList of type Double from parsing of the input text
      * @throws IOException if unable to parse a string as a Double
      * @see #toList()
      *
      **/
-
     static public ArrayList<Double> toList(String values) throws IOException
     {
         ParseText pt = new ParseText(values);
@@ -174,7 +174,6 @@ public class ParseText
      * use, run : java ParseText\$Test
      *
      **/
-
     public static class Test {
 
         /** 

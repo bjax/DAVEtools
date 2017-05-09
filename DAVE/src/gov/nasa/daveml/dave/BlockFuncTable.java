@@ -21,7 +21,9 @@ package gov.nasa.daveml.dave;
  * <p>
  * Despite misleading name, the actual table is stored as a
  * FuncTable block and is referenced by this Block.
- * @author Bruce Jackson &lt;bruce@digiflightdyn.com&gt;
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  **/
 

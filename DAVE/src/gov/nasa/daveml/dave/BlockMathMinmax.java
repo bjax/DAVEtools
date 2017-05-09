@@ -17,8 +17,9 @@ package gov.nasa.daveml.dave;
 /**
  *
  * Extrema math function block
- * <p>
- * 2011-07-26 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt;
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  **/
 

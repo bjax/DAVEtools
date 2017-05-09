@@ -17,11 +17,9 @@ package gov.nasa.daveml.dave;
 /**
  *
  * Object representing a constant value in a {@link Model}.
- * <p>
- * Modification history: 
- * <ul> 
- * <li>2003-12-14 Bruce Jackson &lt;mailto:bruce@digiflightdyn.com&gt; </li> 
- * </ul>
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  */
 
@@ -153,9 +151,10 @@ public class BlockMathConstant extends BlockMath
     }
 
     /**
+     *
      * Implements the <code>update()</code> method.
      * <p>
-     * If the verbose flag is on, generate a narrative on <code>System.out<code>.
+     * If the verbose flag is on, generate a narrative on <code>System.out</code>.
      * @throws DAVEException if the block has any inputs (it should be a constant)
      *
      **/

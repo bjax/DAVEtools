@@ -16,14 +16,13 @@ package gov.nasa.daveml.dave;
 
 /**
  *
- * <p> Exception class for DAVE package </p>
- * @author Bruce Jackson {@link <mailto:bruce@digiflightdyn.com>} </p>
- * @since DAVE_tools 0.4
- **/
-
-/**
- *
- * <p> Exception class for DAVE package </p>
+ * Exception class for DAVE package
+ * <p>
+ * Simple wraps the standard Java <code>Exception</code>
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
+ * @since 0.4
  *
  **/
 
@@ -31,17 +30,21 @@ package gov.nasa.daveml.dave;
 public class DAVEException extends Exception {
     
     /**
-     * <p> Constructor for DAVEException </p>
      *
-     **/
-    public DAVEException()
-    {
+     * Default constructor for DAVEException
+     *
+     */
+    public DAVEException() {
 	super();
     }
 
-    public DAVEException(String s)
-    {
+    /**
+     *
+     * Constructor with message
+     * @param s <code>String</code> with the exception message
+     *
+     */
+    public DAVEException(String s) {
 	super(s);
     }
-
 }

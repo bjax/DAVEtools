@@ -17,10 +17,9 @@ package gov.nasa.daveml.dave;
 /**
  *
  * Object representing a two-sided limiter block
- * <p>
- * 2010-12-15 Bruce Jackson, NASA Langley Research Center
- *     &lt;mailto:bruce@digiflightdyn.com&gt;
- * @author Bruce Jackson
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  **/
 
@@ -114,7 +113,7 @@ public class BlockLimiter extends Block {
      * Returns the output value
      * <p>
      * This method is distinguished from normal
-     * {@link Block.getValue()} in that it is public
+     * {@link Block#getValue()} in that it is public
      * @return the output value of this limiter as a <code>double</code>
      *
      **/

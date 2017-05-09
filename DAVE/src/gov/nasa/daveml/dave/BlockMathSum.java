@@ -16,8 +16,10 @@ package gov.nasa.daveml.dave;
 
 /**
  *
- * <p> Summing math function block </p>
- * <p> 031211 Bruce Jackson <mailto:bruce@digiflightdyn.com> </p>
+ * Summing math function <code>Block</code>
+ * @author Bruce Jackson, Digital Flight Dynamics
+ * <a href="mailto:bruce@digiflightdyn.com">bruce@digiflightdyn.com</a>
+ * @version 0.9
  *
  **/
 
@@ -29,7 +31,7 @@ import org.jdom.Element;
 
 /**
  *
- * <p> The MathSum block represents a scalar summer </p>
+ * The MathSum block represents a scalar summer
  *
  **/
 
@@ -38,11 +40,11 @@ public class BlockMathSum extends BlockMath
     
     /**
      *
-     * <p> Constructor for Sum Block <p>
+     * Constructor for summing <code>Block</code>
      *
      * @param applyElement Reference to org.jdom.Element
-     * containing "apply" element
-     * @param m Our parent Model
+     * containing <code>&lt;apply&gt;</code> element
+     * @param m Our parent {@link Model}
      * @throws DAVEException if constructor fails
      *
      **/
@@ -75,7 +77,9 @@ public class BlockMathSum extends BlockMath
     }
 
     /**
-     * <p> Generate code equivalent of our operation</p>
+     *
+     * Generate code equivalent of our operation
+     *
      */
     
     @Override
@@ -110,6 +114,7 @@ public class BlockMathSum extends BlockMath
      * Generates description of self
      * @param writer the Writer to receive our self-description
      * @throws IOException if unable to generate description on output Writer
+     *
      **/
 
     @Override
@@ -121,7 +126,7 @@ public class BlockMathSum extends BlockMath
 
     /**
      *
-     * Implements update() method
+     * Implements and overrides {@link Block#update()} method
      * @throws DAVEException if update fails
      *
      **/
